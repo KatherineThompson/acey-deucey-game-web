@@ -5474,9 +5474,12 @@ body {
     border-right: 5px solid mediumseagreen; }
     #board #home p {
       margin-left: auto;
-      margin-right: auto; }
+      margin-right: auto;
+      margin-bottom: .25rem; }
     #board #home #top-home {
       border-bottom: 5px solid mediumseagreen; }
+    #board #home #message-area {
+      padding: .15em; }
     #board #home #bottom-home {
       border-top: 5px solid mediumseagreen; }
   #board #spaces {
@@ -5486,18 +5489,20 @@ body {
 
 .piece {
   font-size: 1rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   background: #00558b;
-  color: white; }
+  color: white;
+  cursor: pointer; }
 
 .dice {
   font-size: 1rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   background: blue;
   color: white;
-  border-radius: 0; }
+  border-radius: 0;
+  cursor: default; }
 
 .space {
   width: 10%;
@@ -5522,3 +5527,27 @@ body {
 .white {
   background-color: antiquewhite;
   color: red; }
+
+.red-text {
+  color: red; }
+
+.white-text {
+  color: antiquewhite; }
+
+.used {
+  opacity: .35; }
+
+.active {
+  border: 3px solid #00CC00; }
+
+.winner {
+  font-weight: bold;
+  font-size: 4rem; }
+
+#win-message {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%); }

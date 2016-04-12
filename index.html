@@ -16,7 +16,7 @@
                             <p class="text-center">Initial</p>
                         </div>
                         <div class="align-center grid-block">
-                            <span class="red piece">x5</span>
+                            <span class="red active piece">x5</span>
                         </div>
                     </div>
                     <div id="white-winning"" class=" vertical grid-block">
@@ -27,6 +27,11 @@
                             <span class="white piece">x5</span>
                         </div>                        
                     </div>
+                </div>
+                <div id="message-area" class="vertical shrink grid-block">
+                    <p class="text-center"><span class="red-text">Red</span>, it's your turn</p>
+                    <button class="expand success button">Submit turn</button>
+                    <button class=" expand alert button">Reset turn</button>
                 </div>
                 <div id="bottom-home" class="vertical grid-block">
                     <div id="white-initial" class="vertical grid-block">
@@ -59,7 +64,7 @@
                     </div>
                     <div id="red-dice" class="align-center v-align grid-block">
                         <div class="shrink align-center grid-block">
-                            <span class="red dice">4</span>
+                            <span class="red used dice">4</span>
                         </div>
                         <div class="shrink align-center small-offset-1 grid-block">
                             <span class="red dice">1</span>
@@ -109,6 +114,9 @@
                     </div>                    
                 </div>
             </div>
+        </div>
+        <div id="win-message">
+            <p class="hide red-text winner">Red, you've won!</p>
         </div>
     </div>
 </body>

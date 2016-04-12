@@ -14,10 +14,15 @@ body {
         p {
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: .25rem;
         }
         
         #top-home {
             border-bottom: $innerBorder;
+        }
+        
+        #message-area {
+            padding: .15em;
         }
         
         #bottom-home {
@@ -40,19 +45,21 @@ body {
 .piece {
     @include badge (
         $color: white,
-        $diameter: 1.5rem,
+        $diameter: 2.25rem,
         $fontsize: 1rem
     );
+    cursor: pointer;
 }
 
 .dice {
     @include badge (
         $background: blue,
         $color: white,
-        $diameter: 1.5rem,
+        $diameter: 2rem,
         $fontsize: 1rem
     );
     border-radius: 0;
+    cursor: default;
 }
 
 .space {
@@ -88,4 +95,34 @@ $white: antiquewhite;
 .white{
     background-color: $white;
     color: $red;
+}
+
+.red-text {
+    color: $red;
+}
+
+.white-text {
+    color: $white;
+}
+
+.used {
+    opacity: .35;
+}
+
+.active {
+    border: 3px solid #00CC00;
+}
+
+.winner {
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+#win-message {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+  /* bring your own prefixes */
+    transform: translate(-50%, -50%);
 }

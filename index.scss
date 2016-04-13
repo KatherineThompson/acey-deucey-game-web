@@ -44,28 +44,26 @@ body {
 
 }
 
-.red.piece {
-    circle {
-        fill: $red;
-    }
-    text {
-        fill: $white;
-    }
-}
-
-.white.piece {
-    circle {
-        fill: $white;
-    }
-    text {
-        fill: $red;
-    }    
-}
-
 .piece {
     width: 100%;
     height: 100%;
-    cursor: pointer;    
+    cursor: pointer;
+    &.white {
+        circle {
+            fill: $white;
+        }
+        text {
+            fill: $red;
+        }    
+    }        
+    &.red {
+        circle {
+            fill: $red;
+        }
+        text {
+            fill: $white;
+        }
+    }
 }
 
 .top {
@@ -83,6 +81,17 @@ body {
     );
     border-radius: 0;
     cursor: default;
+    
+    &.red {
+        color: $white;
+        background-color: $red;
+    }
+    
+    &.white {
+        color: $red;
+        background-color: $white;
+        
+    }
 }
 
 .space {
@@ -91,17 +100,6 @@ body {
     polygon {
         fill: $space-color;         
     }
-}
-
-.dice.red {
-    color: $white;
-    background-color: $red;
-}
-
-.dice.white {
-    color: $red;
-    background-color: $white;
-    
 }
 
 .red-text {

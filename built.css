@@ -5487,22 +5487,18 @@ body {
     #board #spaces #bar {
       background-color: mediumseagreen; }
 
-.red.piece circle {
-  fill: red; }
-
-.red.piece text {
-  fill: antiquewhite; }
-
-.white.piece circle {
-  fill: antiquewhite; }
-
-.white.piece text {
-  fill: red; }
-
 .piece {
   width: 100%;
   height: 100%;
   cursor: pointer; }
+  .piece.white circle {
+    fill: antiquewhite; }
+  .piece.white text {
+    fill: red; }
+  .piece.red circle {
+    fill: red; }
+  .piece.red text {
+    fill: antiquewhite; }
 
 .top {
   margin-bottom: auto; }
@@ -5518,20 +5514,18 @@ body {
   color: #fff;
   border-radius: 0;
   cursor: default; }
+  .dice.red {
+    color: antiquewhite;
+    background-color: red; }
+  .dice.white {
+    color: red;
+    background-color: antiquewhite; }
 
 .space {
   width: 100%;
   height: 100%; }
   .space polygon {
     fill: green; }
-
-.dice.red {
-  color: antiquewhite;
-  background-color: red; }
-
-.dice.white {
-  color: red;
-  background-color: antiquewhite; }
 
 .red-text {
   color: red; }

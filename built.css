@@ -5492,13 +5492,17 @@ body {
   height: 100%;
   cursor: pointer; }
   .piece.white circle {
-    fill: antiquewhite; }
+    fill: ivory; }
   .piece.white text {
     fill: red; }
+  .piece.white:hover circle {
+    fill: #ffff71; }
   .piece.red circle {
     fill: red; }
   .piece.red text {
-    fill: antiquewhite; }
+    fill: ivory; }
+  .piece.red:hover circle {
+    fill: maroon; }
 
 .top {
   margin-bottom: auto; }
@@ -5515,11 +5519,11 @@ body {
   border-radius: 0;
   cursor: default; }
   .dice.red {
-    color: antiquewhite;
+    color: ivory;
     background-color: red; }
   .dice.white {
     color: red;
-    background-color: antiquewhite; }
+    background-color: ivory; }
 
 .space {
   width: 100%;
@@ -5531,7 +5535,7 @@ body {
   color: red; }
 
 .white-text {
-  color: antiquewhite; }
+  color: ivory; }
 
 .grayed-out {
   opacity: .35;

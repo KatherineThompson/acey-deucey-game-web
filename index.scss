@@ -2,7 +2,7 @@
 $border-color: mediumseagreen;
 $inner-border: 5px solid $border-color;
 $red: red;
-$white: antiquewhite;
+$white: ivory;
 $space-color: green;
 
 body {
@@ -54,6 +54,11 @@ body {
         }
         text {
             fill: $red;
+        }
+        &:hover {
+            circle {
+                fill: darken($white, 25%);
+            }
         }    
     }        
     &.red {
@@ -62,6 +67,11 @@ body {
         }
         text {
             fill: $white;
+        }
+        &:hover {
+            circle {
+                fill: darken($red, 25%);
+            }
         }
     }
 }

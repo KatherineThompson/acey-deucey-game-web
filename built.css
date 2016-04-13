@@ -2132,52 +2132,52 @@ meter {
 /*
   Blocks are containers for actual content. They're the "columns" of Foundation for Apps.
 */
-.vertical.grid-frame, .vertical.grid-block, .vertical.space, .vertical.small-grid-block, .vertical.medium-grid-block, .vertical.large-grid-block {
+.vertical.grid-frame, .vertical.grid-block, .vertical.small-grid-block, .vertical.medium-grid-block, .vertical.large-grid-block {
   flex-flow: column nowrap;
   align-items: stretch; }
 
-.small-vertical.grid-frame, .small-vertical.grid-block, .small-vertical.space, .small-vertical.small-grid-block, .small-vertical.medium-grid-block, .small-vertical.large-grid-block {
+.small-vertical.grid-frame, .small-vertical.grid-block, .small-vertical.small-grid-block, .small-vertical.medium-grid-block, .small-vertical.large-grid-block {
   flex-flow: column nowrap;
   align-items: stretch; }
 
-.small-horizontal.grid-frame, .small-horizontal.grid-block, .small-horizontal.space, .small-horizontal.small-grid-block, .small-horizontal.medium-grid-block, .small-horizontal.large-grid-block {
+.small-horizontal.grid-frame, .small-horizontal.grid-block, .small-horizontal.small-grid-block, .small-horizontal.medium-grid-block, .small-horizontal.large-grid-block {
   flex-flow: row wrap; }
 
 @media only screen and (min-width: 40em) {
-  .medium-vertical.grid-frame, .medium-vertical.grid-block, .medium-vertical.space, .medium-vertical.small-grid-block, .medium-vertical.medium-grid-block, .medium-vertical.large-grid-block {
+  .medium-vertical.grid-frame, .medium-vertical.grid-block, .medium-vertical.small-grid-block, .medium-vertical.medium-grid-block, .medium-vertical.large-grid-block {
     flex-flow: column nowrap;
     align-items: stretch; }
-  .medium-horizontal.grid-frame, .medium-horizontal.grid-block, .medium-horizontal.space, .medium-horizontal.small-grid-block, .medium-horizontal.medium-grid-block, .medium-horizontal.large-grid-block {
+  .medium-horizontal.grid-frame, .medium-horizontal.grid-block, .medium-horizontal.small-grid-block, .medium-horizontal.medium-grid-block, .medium-horizontal.large-grid-block {
     flex-flow: row wrap; } }
 
 @media only screen and (min-width: 75em) {
-  .large-vertical.grid-frame, .large-vertical.grid-block, .large-vertical.space, .large-vertical.small-grid-block, .large-vertical.medium-grid-block, .large-vertical.large-grid-block {
+  .large-vertical.grid-frame, .large-vertical.grid-block, .large-vertical.small-grid-block, .large-vertical.medium-grid-block, .large-vertical.large-grid-block {
     flex-flow: column nowrap;
     align-items: stretch; }
-  .large-horizontal.grid-frame, .large-horizontal.grid-block, .large-horizontal.space, .large-horizontal.small-grid-block, .large-horizontal.medium-grid-block, .large-horizontal.large-grid-block {
+  .large-horizontal.grid-frame, .large-horizontal.grid-block, .large-horizontal.small-grid-block, .large-horizontal.medium-grid-block, .large-horizontal.large-grid-block {
     flex-flow: row wrap; } }
 
-.align-right.grid-frame, .align-right.grid-block, .align-right.space, .align-right.small-grid-block, .align-right.medium-grid-block, .align-right.large-grid-block {
+.align-right.grid-frame, .align-right.grid-block, .align-right.small-grid-block, .align-right.medium-grid-block, .align-right.large-grid-block {
   justify-content: flex-end; }
 
-.align-center.grid-frame, .align-center.grid-block, .align-center.space, .align-center.small-grid-block, .align-center.medium-grid-block, .align-center.large-grid-block {
+.align-center.grid-frame, .align-center.grid-block, .align-center.small-grid-block, .align-center.medium-grid-block, .align-center.large-grid-block {
   justify-content: center; }
 
-.align-justify.grid-frame, .align-justify.grid-block, .align-justify.space, .align-justify.small-grid-block, .align-justify.medium-grid-block, .align-justify.large-grid-block {
+.align-justify.grid-frame, .align-justify.grid-block, .align-justify.small-grid-block, .align-justify.medium-grid-block, .align-justify.large-grid-block {
   justify-content: space-between; }
 
-.align-spaced.grid-frame, .align-spaced.grid-block, .align-spaced.space, .align-spaced.small-grid-block, .align-spaced.medium-grid-block, .align-spaced.large-grid-block {
+.align-spaced.grid-frame, .align-spaced.grid-block, .align-spaced.small-grid-block, .align-spaced.medium-grid-block, .align-spaced.large-grid-block {
   justify-content: space-around; }
 
-.wrap.grid-frame, .wrap.grid-block, .wrap.space, .wrap.small-grid-block, .wrap.medium-grid-block, .wrap.large-grid-block {
+.wrap.grid-frame, .wrap.grid-block, .wrap.small-grid-block, .wrap.medium-grid-block, .wrap.large-grid-block {
   flex-wrap: wrap;
   align-items: flex-start; }
 
-.shrink.grid-block, .shrink.space, .shrink.grid-content, .shrink.small-grid-block, .shrink.small-grid-content, .shrink.medium-grid-block, .shrink.medium-grid-content, .shrink.large-grid-block, .shrink.large-grid-content {
+.shrink.grid-block, .shrink.grid-content, .shrink.small-grid-block, .shrink.small-grid-content, .shrink.medium-grid-block, .shrink.medium-grid-content, .shrink.large-grid-block, .shrink.large-grid-content {
   flex: 0 0 auto;
   overflow: visible; }
 
-.noscroll.grid-block, .noscroll.space, .noscroll.grid-content, .noscroll.small-grid-block, .noscroll.small-grid-content, .noscroll.medium-grid-block, .noscroll.medium-grid-content, .noscroll.large-grid-block, .noscroll.large-grid-content {
+.noscroll.grid-block, .noscroll.grid-content, .noscroll.small-grid-block, .noscroll.small-grid-content, .noscroll.medium-grid-block, .noscroll.medium-grid-content, .noscroll.large-grid-block, .noscroll.large-grid-content {
   overflow: visible; }
 
 .grid-frame {
@@ -2193,7 +2193,7 @@ meter {
   justify-content: flex-start;
   order: 0; }
 
-.grid-block, .space {
+.grid-block {
   display: flex;
   height: auto;
   position: relative;
@@ -2218,15 +2218,15 @@ meter {
   flex: 1 1 auto; }
   .grid-content.collapse {
     padding: 0; }
-  .grid-content .grid-block, .grid-content .space {
+  .grid-content .grid-block {
     margin-left: -1rem;
     margin-right: -1rem;
     flex-wrap: wrap;
     overflow: visible; }
-    .grid-content .grid-block.nowrap, .grid-content .nowrap.space {
+    .grid-content .grid-block.nowrap {
       flex-wrap: nowrap;
       align-items: stretch; }
-    .grid-content .grid-block .grid-content, .grid-content .space .grid-content {
+    .grid-content .grid-block .grid-content {
       overflow: visible; }
 
 .grid-container {
@@ -2442,7 +2442,7 @@ meter {
     flex: 0 0 100%;
     max-width: 100%; }
 
-.small-2, .space {
+.small-2 {
   flex: 0 0 16.66667%;
   max-width: 16.66667%; }
 
@@ -3059,7 +3059,7 @@ meter {
       flex: 0 0 8.33333%;
       max-width: 8.33333%; } }
 
-.grid-content .modal .grid-block, .grid-content .modal .space {
+.grid-content .modal .grid-block {
   flex-wrap: nowrap; }
 
 /*
@@ -3183,7 +3183,7 @@ meter {
 /*
   Badge
 */
-.badge, .piece, .dice {
+.badge, .dice {
   align-items: center;
   justify-content: center;
   display: inline-flex;
@@ -3768,7 +3768,7 @@ meter {
     .modal {
       height: auto;
       max-width: 600px; } }
-  .modal .grid-content, .modal .grid-block, .modal .space {
+  .modal .grid-content, .modal .grid-block {
     margin: 0; }
   .modal .close-button, .modal [fa-close] {
     z-index: 1001; }
@@ -5475,7 +5475,7 @@ body {
     #board #home p {
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: .25rem; }
+      margin-bottom: auto; }
     #board #home #top-home {
       border-bottom: 5px solid mediumseagreen; }
     #board #home #message-area {
@@ -5487,38 +5487,42 @@ body {
     #board #spaces #bar {
       background-color: mediumseagreen; }
 
-.piece {
-  font-size: 1rem;
-  width: 2.25rem;
-  height: 2.25rem;
-  background: #00558b;
-  color: white;
-  cursor: pointer; }
+.red-piece {
+  width: 100%;
+  height: 100%; }
+  .red-piece circle {
+    fill: red; }
+  .red-piece text {
+    fill: antiquewhite; }
+
+.white-piece {
+  width: 100%;
+  height: 100%; }
+  .white-piece circle {
+    fill: antiquewhite; }
+  .white-piece text {
+    fill: red; }
+
+.top {
+  margin-bottom: auto; }
+
+.bottom {
+  margin-top: auto; }
 
 .dice {
   font-size: 1rem;
   width: 2rem;
   height: 2rem;
-  background: blue;
-  color: white;
+  background: #00558b;
+  color: #fff;
   border-radius: 0;
   cursor: default; }
 
 .space {
-  width: 10%;
-  height: 0;
-  padding-left: 10%;
-  padding-bottom: 10%;
-  overflow: hidden; }
-  .space:after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    margin-left: -500px;
-    border-left: 500px solid transparent;
-    border-right: 500px solid transparent;
-    border-bottom: 500px solid #4679BD; }
+  width: 100%;
+  height: 100%; }
+  .space polygon {
+    fill: green; }
 
 .red {
   background-color: red;
@@ -5537,9 +5541,6 @@ body {
 .used {
   opacity: .35; }
 
-.active {
-  border: 3px solid #00CC00; }
-
 .winner {
   font-weight: bold;
   font-size: 4rem; }
@@ -5549,5 +5550,4 @@ body {
   z-index: 1;
   top: 50%;
   left: 50%;
-  /* bring your own prefixes */
   transform: translate(-50%, -50%); }

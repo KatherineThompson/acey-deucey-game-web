@@ -1,6 +1,9 @@
 @import "foundation";
 $borderColor: mediumseagreen;
 $innerBorder: 5px solid $borderColor;
+$red: red;
+$white: antiquewhite;
+
 body {
     background-color: lightgray;
 }
@@ -14,7 +17,7 @@ body {
         p {
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: .25rem;
+            margin-bottom: auto;
         }
         
         #top-home {
@@ -40,21 +43,38 @@ body {
 
 }
 
+.red-piece {
+    width: 100%;
+    height: 100%;
+    circle {
+        fill: $red;
+    }
+    text{
+        fill: $white;
+    }
+}
 
+.white-piece {
+    width: 100%;
+    height: 100%;
+    circle {
+        fill: $white;
+    }
+    text{
+        fill: $red;
+    }    
+}
 
-.piece {
-    @include badge (
-        $color: white,
-        $diameter: 2.25rem,
-        $fontsize: 1rem
-    );
-    cursor: pointer;
+.top {
+    margin-bottom: auto;
+}
+
+.bottom {
+    margin-top: auto;
 }
 
 .dice {
     @include badge (
-        $background: blue,
-        $color: white,
         $diameter: 2rem,
         $fontsize: 1rem
     );
@@ -63,29 +83,12 @@ body {
 }
 
 .space {
-    width: 10%;
-    height: 0;    
-    padding-left:10%;
-    padding-bottom: 10%;
-    overflow: hidden;
-    
-    &:after {
-        content: "";
-        display: block;
-        width: 0;
-        height: 0;
-        margin-left:-500px;
-        border-left: 500px solid transparent;
-        border-right: 500px solid transparent;
-        border-bottom: 500px solid #4679BD;        
+    width: 100%;
+    height: 100%;
+    polygon {
+        fill: green;         
     }
-    
-    @extend .small-2;
-    @extend .grid-block;
 }
-
-$red: red;
-$white: antiquewhite;
 
 .red {
     background-color: $red;
@@ -109,10 +112,6 @@ $white: antiquewhite;
     opacity: .35;
 }
 
-.active {
-    border: 3px solid #00CC00;
-}
-
 .winner {
     font-weight: bold;
     font-size: 4rem;
@@ -123,6 +122,5 @@ $white: antiquewhite;
     z-index: 1;
     top: 50%;
     left: 50%;
-  /* bring your own prefixes */
     transform: translate(-50%, -50%);
 }

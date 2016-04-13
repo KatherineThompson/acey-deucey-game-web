@@ -16,7 +16,10 @@
                             <p class="text-center">Initial</p>
                         </div>
                         <div class="align-center grid-block">
-                            <span class="red active piece">x5</span>
+                            <svg class="red-piece" viewbox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"/>
+                                <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                            </svg>
                         </div>
                     </div>
                     <div id="white-winning"" class=" vertical grid-block">
@@ -24,7 +27,10 @@
                             <p class="text-center">Winning</p>
                         </div>
                         <div class=" align-center grid-block">
-                            <span class="white piece">x5</span>
+                            <svg class="white-piece" viewbox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"/>
+                                <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                            </svg>
                         </div>                        
                     </div>
                 </div>
@@ -39,7 +45,10 @@
                             <p class="text-center">Initial</p>
                         </div>
                         <div class="grid-block align-center">
-                            <span class="white piece">x5</span>
+                            <svg class="white-piece" viewbox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"/>
+                                <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                            </svg>
                         </div>                        
                     </div>
                     <div id="red-winning" class="vertical grid-block">
@@ -47,7 +56,10 @@
                             <p class="text-center">Winning</p>
                         </div>
                         <div class="grid-block align-center">
-                            <span class="red piece">x5</span>
+                            <svg class="red-piece" viewbox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"/>
+                                <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                            </svg>
                         </div>                            
                     </div>
                 </div>
@@ -55,12 +67,66 @@
             <div id="spaces" class="small-11 grid-block">
                 <div id="left-spaces" class="vertical grid-block">
                     <div id="spaces-18-23" class="grid-block">
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece23" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece23" transform="scale(.75), translate(17, -65)"></use> 
+                            </svg>
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece22" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece22" transform="scale(.75), translate(17, -65)"></use> 
+                            </svg>                            
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece21" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece21" transform="scale(.75), translate(17, -65)"></use> 
+                            </svg>                            
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece20" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece20" transform="scale(.75), translate(17, -65)"></use> 
+                            </svg>                            
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece19" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece19" transform="scale(.75), translate(17, -65)"></use> 
+                            </svg>                            
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece18" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece18" transform="scale(.75), translate(17, -65)"></use> 
+                            </svg>                            
+                        </div>
                     </div>
                     <div id="red-dice" class="align-center v-align grid-block">
                         <div class="shrink align-center grid-block">
@@ -71,30 +137,139 @@
                         </div>
                     </div>
                     <div id="spaces-0-5" class="grid-block">
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>                        
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece0" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece0" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece1" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece1" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>                            
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece2" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece2" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>                            
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece3" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece3" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>                            
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece4" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece4" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>                            
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece5" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece5" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>                            
+                        </div>                        
                     </div>
                 </div>
                 <div id="bar" class="small-1 vertical grid-block">
                     <div id="red-bar" class="grid-block align-center v-align">
-                        <span class="red piece align-center">x1</span>
+                        <svg class="red-piece" viewbox="0 0 100 100">
+                            <circle cx="50" cy="50" r="50"/>
+                            <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                        </svg>
                     </div>
                     <div id="white-bar" class="grid-block align-center v-align">
-                        <span class="white piece align-center">x0</span>                        
+                        <svg class="white-piece" viewbox="0 0 100 100">
+                            <circle cx="50" cy="50" r="50"/>
+                            <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                        </svg>                
                     </div>
                 </div>
                 <div id="right-spaces" class="vertical grid-block">
                     <div id="spaces-12-17" class="grid-block">
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece17" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece17" transform="scale(.75), translate(17, -65)"></use> 
+                            </svg>                            
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece16" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece16" transform="scale(.75), translate(17, -65)"></use>                             
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece15" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece15" transform="scale(.75), translate(17, -65)"></use>                             
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece14" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece14" transform="scale(.75), translate(17, -65)"></use>                             
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece13" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece13" transform="scale(.75), translate(17, -65)"></use>                             
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="top space" viewbox="0 0 100 250">
+                                <symbol id="piece12" class="white-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" fill="blue" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
+                                </symbol>
+                                <polygon points="0,0 100,0 50,250"/>
+                                <use xlink:href="#piece12" transform="scale(.75), translate(17, -65)"></use>                             
+                        </div>
                     </div>
                     <div id="white-dice" class="align-center v-align grid-block">
                         <div class="shrink align-center grid-block">
@@ -105,12 +280,66 @@
                         </div>
                     </div>
                     <div id="spaces-6-11" class="grid-block">
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>
-                        <div class="space"></div>                        
+                        <div class="small-2 grid-block">
+                          <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece6" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece6" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece7" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece7" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece8" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece8" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece9" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece9" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece10" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece10" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>
+                        </div>
+                        <div class="small-2 grid-block">
+                            <svg class="bottom space" viewbox="0 0 100 250">
+                                <symbol id="piece11" class="red-piece" viewbox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"/>
+                                    <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">1x</text>
+                                </symbol>
+                                <polygon points="0,250 100,250 50,0"/>
+                                <use xlink:href="#piece11" transform="scale(.75), translate(17, 150)"></use> 
+                            </svg>
+                        </div>                        
                     </div>                    
                 </div>
             </div>

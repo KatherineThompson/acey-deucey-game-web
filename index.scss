@@ -44,28 +44,28 @@ body {
 
 }
 
-.red-piece {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+.red.piece {
     circle {
         fill: $red;
     }
-    text{
+    text {
         fill: $white;
     }
 }
 
-.white-piece {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+.white.piece {
     circle {
         fill: $white;
     }
-    text{
+    text {
         fill: $red;
     }    
+}
+
+.piece {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;    
 }
 
 .top {
@@ -93,14 +93,15 @@ body {
     }
 }
 
-.red {
-    background-color: $red;
+.dice.red {
     color: $white;
+    background-color: $red;
 }
 
-.white{
-    background-color: $white;
+.dice.white {
     color: $red;
+    background-color: $white;
+    
 }
 
 .red-text {

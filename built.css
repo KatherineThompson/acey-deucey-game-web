@@ -5487,23 +5487,22 @@ body {
     #board #spaces #bar {
       background-color: mediumseagreen; }
 
-.red-piece {
-  width: 100%;
-  height: 100%;
-  cursor: pointer; }
-  .red-piece circle {
-    fill: red; }
-  .red-piece text {
-    fill: antiquewhite; }
+.red.piece circle {
+  fill: red; }
 
-.white-piece {
+.red.piece text {
+  fill: antiquewhite; }
+
+.white.piece circle {
+  fill: antiquewhite; }
+
+.white.piece text {
+  fill: red; }
+
+.piece {
   width: 100%;
   height: 100%;
   cursor: pointer; }
-  .white-piece circle {
-    fill: antiquewhite; }
-  .white-piece text {
-    fill: red; }
 
 .top {
   margin-bottom: auto; }
@@ -5526,13 +5525,13 @@ body {
   .space polygon {
     fill: green; }
 
-.red {
-  background-color: red;
-  color: antiquewhite; }
+.dice.red {
+  color: antiquewhite;
+  background-color: red; }
 
-.white {
-  background-color: antiquewhite;
-  color: red; }
+.dice.white {
+  color: red;
+  background-color: antiquewhite; }
 
 .red-text {
   color: red; }

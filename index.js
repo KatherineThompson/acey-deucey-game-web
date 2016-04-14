@@ -1,5 +1,7 @@
 "use strict";
 
-alert("IT WORKS!");
+var angular = require("angular");
 
-alert(require("./second"));
+angular.module("acey-deucey", []).run(function() {
+    alert("angular is running");
+});

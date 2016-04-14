@@ -1,3 +1,3 @@
 "use strict";
 
-module.exports = "Cats!";
+module.exports = "Cats are the best!";

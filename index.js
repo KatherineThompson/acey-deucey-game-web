@@ -2,6 +2,9 @@
 
 var angular = require("angular");
 
-angular.module("acey-deucey", []).run(function() {
-    alert("angular is running");
+require("foundation-apps/dist/js/foundation-apps.js");
+require("foundation-apps/dist/js/foundation-apps-templates.js");
+
+angular.module("acey-deucey", ["foundation"]).run(function() {
+    // alert("angular is running");
 });

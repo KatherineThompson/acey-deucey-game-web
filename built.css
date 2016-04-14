@@ -5468,9 +5468,6 @@ blockquote p {
 body {
   background-color: lightgray; }
 
-.grid-frame {
-  min-height: 313px; }
-
 #board {
   border: 10px solid mediumseagreen; }
   #board #home {
@@ -5482,8 +5479,6 @@ body {
       margin-right: auto; }
     #board #home #top-home {
       border-bottom: 5px solid mediumseagreen; }
-    #board #home #message-area {
-      padding: .15em; }
     #board #home #bottom-home {
       border-top: 5px solid mediumseagreen; }
   #board #spaces {
@@ -5491,22 +5486,67 @@ body {
     #board #spaces #bar {
       background-color: mediumseagreen; }
 
+.grid-frame {
+  min-height: 313px; }
+
+.message-area {
+  padding: .15em; }
+  .message-area#left-message-area:not(.ng-hide) {
+    display: block !important;
+    display: none !important; }
+  .message-area#left-message-area:not(.ng-hide) {
+    display: none !important; }
+    @media only screen and (min-width: 64.0625em) {
+      .message-area#left-message-area:not(.ng-hide) {
+        display: block !important; } }
+  .message-area#right-message-area {
+    border: 2px solid mediumseagreen;
+    background-color: #a7e1c1; }
+    .message-area#right-message-area:not(.ng-hide) {
+      display: none !important;
+      display: block !important; }
+    .message-area#right-message-area:not(.ng-hide) {
+      display: block !important; }
+      @media only screen and (min-width: 64.0625em) {
+        .message-area#right-message-area:not(.ng-hide) {
+          display: none !important; } }
+
+.piece.white circle {
+  fill: ivory; }
+
+.piece.white text {
+  fill: red; }
+
+.piece.white:hover circle {
+  fill: #ffff71; }
+
+.dice.white {
+  color: red;
+  background-color: ivory; }
+
+p .white {
+  color: ivory; }
+
+.piece.red circle {
+  fill: red; }
+
+.piece.red text {
+  fill: ivory; }
+
+.piece.red:hover circle {
+  fill: maroon; }
+
+.dice.red {
+  color: ivory;
+  background-color: red; }
+
+p .red {
+  color: red; }
+
 .piece {
   width: 100%;
   height: 100%;
   cursor: pointer; }
-  .piece.white circle {
-    fill: ivory; }
-  .piece.white text {
-    fill: red; }
-  .piece.white:hover circle {
-    fill: #ffff71; }
-  .piece.red circle {
-    fill: red; }
-  .piece.red text {
-    fill: ivory; }
-  .piece.red:hover circle {
-    fill: maroon; }
 
 .top {
   margin-bottom: auto; }
@@ -5522,24 +5562,12 @@ body {
   color: #fff;
   border-radius: 0;
   cursor: default; }
-  .dice.red {
-    color: ivory;
-    background-color: red; }
-  .dice.white {
-    color: red;
-    background-color: ivory; }
 
 .space {
   width: 100%;
   height: 100%; }
   .space polygon {
     fill: green; }
-
-.red-text {
-  color: red; }
-
-.white-text {
-  color: ivory; }
 
 .grayed-out {
   opacity: .35;

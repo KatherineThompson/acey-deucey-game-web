@@ -1,16 +1,15 @@
 @import "foundation";
+$breakpoints: map-merge($breakpoints, (large: 1025px));
+
 $border-color: mediumseagreen;
 $inner-border: 5px solid $border-color;
 $red: red;
 $white: ivory;
 $space-color: green;
+$background-color: lightgray;
 
 body {
-    background-color: lightgray;
-}
-
-.grid-frame {
-    min-height: 313px;
+    background-color: $background-color;
 }
 
 #board {
@@ -30,10 +29,6 @@ body {
             border-bottom: $inner-border;
         }
         
-        #message-area {
-            padding: .15em;
-        }
-        
         #bottom-home {
             border-top: $inner-border;
         }
@@ -49,36 +44,87 @@ body {
 
 }
 
+.grid-frame {
+    min-height: 313px;
+}
+
+.message-area {
+    padding: .15em;
+    
+    &#left-message-area {
+        @include hide-for(small);
+        @include show-for(large);
+    }
+    
+    &#right-message-area {
+        @include show-for(small);
+        @include hide-for(large);
+        border: 2px solid $border-color;
+        background-color: lighten($border-color, 30%);
+    }
+}
+
+@mixin piece-classes($name, $primary-color, $secondary-color) {
+    .piece.#{$name} {
+        circle {
+            fill: $primary-color;
+        }
+        text {
+            fill: $secondary-color;
+        }
+        
+        &:hover {
+            circle {
+                fill: darken($primary-color, 25%);
+            }
+        }            
+    }
+    
+    .dice.#{$name} {
+        color: $secondary-color;
+        background-color: $primary-color;
+    }
+    
+    p .#{$name} {
+        color: $primary-color;
+    }
+}
+
+@include piece-classes("white", $white, $red);
+@include piece-classes("red", $red, $white);
+
+
 .piece {
     width: 100%;
     height: 100%;
     cursor: pointer;
-    &.white {
-        circle {
-            fill: $white;
-        }
-        text {
-            fill: $red;
-        }
-        &:hover {
-            circle {
-                fill: darken($white, 25%);
-            }
-        }    
-    }        
-    &.red {
-        circle {
-            fill: $red;
-        }
-        text {
-            fill: $white;
-        }
-        &:hover {
-            circle {
-                fill: darken($red, 25%);
-            }
-        }
-    }
+    
+    // &.white {
+    //     circle {
+    //         fill: $white;
+    //     }
+    //     text {
+    //         fill: $red;
+    //     }
+    //     &:hover {
+    //         circle {
+    //             fill: darken($white, 25%);
+    //         }
+    //     }    
+    // }        
+    // &.red {
+    //     circle {
+    //         fill: $red;
+    //     }
+    //     text {
+    //         fill: $white;
+    //     }
+    //     &:hover {
+    //         circle {
+    //             fill: darken($red, 25%);
+    //         }
+    //     }
+    // }
 }
 
 .top {
@@ -96,17 +142,6 @@ body {
     );
     border-radius: 0;
     cursor: default;
-    
-    &.red {
-        color: $white;
-        background-color: $red;
-    }
-    
-    &.white {
-        color: $red;
-        background-color: $white;
-        
-    }
 }
 
 .space {
@@ -115,14 +150,6 @@ body {
     polygon {
         fill: $space-color;         
     }
-}
-
-.red-text {
-    color: $red;
-}
-
-.white-text {
-    color: $white;
 }
 
 .grayed-out {

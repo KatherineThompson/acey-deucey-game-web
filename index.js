@@ -2,11 +2,11 @@
 
 const angular = require("angular");
 
-require("foundation-apps/dist/js/foundation-apps.js");
-require("foundation-apps/dist/js/foundation-apps-templates.js");
+require("foundation-apps/dist/js/foundation-apps");
+require("foundation-apps/dist/js/foundation-apps-templates");
 
-require("babel!./second.js");
+// require("babel!./second.js");
 
-angular.module("acey-deucey", ["foundation"]).run(function() {
-    alert("angular is running");
-});
+angular.module("acey-deucey", ["foundation"]);
+
+require("babel!./app/acey-deucey-controller");

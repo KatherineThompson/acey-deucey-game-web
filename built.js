@@ -46,13 +46,15 @@
 
 	"use strict";
 
-	var angular = __webpack_require__(1);
+	const angular = __webpack_require__(1);
 
 	__webpack_require__(3);
 	__webpack_require__(4);
 
+	__webpack_require__(5);
+
 	angular.module("acey-deucey", ["foundation"]).run(function() {
-	    // alert("angular is running");
+	    alert("angular is running");
 	});
 
 /***/ },
@@ -34630,6 +34632,14 @@
 	    '');
 	}]);
 
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "Cats are the " + (1 + 1) + "nd best!";
 
 /***/ }
 /******/ ]);

@@ -1,3 +1,3 @@
 "use strict";
 
-module.exports = "Cats are the best!";
+module.exports = `Cats are the ${1 + 1}nd best!`;

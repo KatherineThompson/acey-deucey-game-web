@@ -9,16 +9,21 @@ body {
     background-color: lightgray;
 }
 
+.grid-frame {
+    min-height: 313px;
+}
+
 #board {
     border: 10px solid $border-color;
     
     #home {
         border-right: $inner-border;
         
-        p {
+        @include grid-size(1.5);
+        
+        h4 {
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: auto;
         }
         
         #top-home {

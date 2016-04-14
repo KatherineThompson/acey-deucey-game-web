@@ -5468,14 +5468,18 @@ blockquote p {
 body {
   background-color: lightgray; }
 
+.grid-frame {
+  min-height: 313px; }
+
 #board {
   border: 10px solid mediumseagreen; }
   #board #home {
-    border-right: 5px solid mediumseagreen; }
-    #board #home p {
+    border-right: 5px solid mediumseagreen;
+    flex: 0 0 12.5%;
+    max-width: 12.5%; }
+    #board #home h4 {
       margin-left: auto;
-      margin-right: auto;
-      margin-bottom: auto; }
+      margin-right: auto; }
     #board #home #top-home {
       border-bottom: 5px solid mediumseagreen; }
     #board #home #message-area {

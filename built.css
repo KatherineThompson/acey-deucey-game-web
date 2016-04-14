@@ -5522,7 +5522,7 @@ body {
 .piece.white:hover circle {
   fill: #ffff71; }
 
-.dice.white {
+dice.white span.dice {
   color: red;
   background-color: ivory; }
 
@@ -5538,7 +5538,7 @@ p .white {
 .piece.red:hover circle {
   fill: maroon; }
 
-.dice.red {
+dice.red span.dice {
   color: ivory;
   background-color: red; }
 

@@ -10,3 +10,4 @@ require("foundation-apps/dist/js/foundation-apps-templates");
 angular.module("acey-deucey", ["foundation"]);
 
 require("babel!./app/acey-deucey-controller");
+require("babel!./app/dice");

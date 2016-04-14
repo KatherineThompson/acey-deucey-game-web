@@ -82,9 +82,11 @@ body {
         }            
     }
     
-    .dice.#{$name} {
-        color: $secondary-color;
-        background-color: $primary-color;
+    dice.#{$name} {
+        span.dice {
+            color: $secondary-color;
+            background-color: $primary-color;
+        }
     }
     
     p .#{$name} {

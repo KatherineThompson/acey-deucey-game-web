@@ -104,7 +104,6 @@ body {
 @include piece-classes("white", $white, $red);
 @include piece-classes("red", $red, $white);
 
-
 .piece {
     cursor: pointer;
     

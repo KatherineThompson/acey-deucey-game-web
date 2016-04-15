@@ -5,10 +5,8 @@ const angular = require("angular");
 require("foundation-apps/dist/js/foundation-apps");
 require("foundation-apps/dist/js/foundation-apps-templates");
 
-// require("babel!./second.js");
-
 angular.module("acey-deucey", ["foundation"]);
 
-require("babel!./app/acey-deucey-controller");
-require("babel!./app/dice");
-require("babel!./app/space");
+require("babel!./acey-deucey-controller");
+require("babel!./dice");
+require("babel!./space");

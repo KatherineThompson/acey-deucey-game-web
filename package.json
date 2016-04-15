@@ -2,10 +2,10 @@
   "name": "acey-deucey-game-web",
   "version": "1.0.0",
   "description": "A web app for the backgammon variant acey deucey",
-  "main": "index.js",
+  "main": "./app/index.js",
   "scripts": {
     "start": "static -a 0.0.0.0",
-    "test": "jshint -c .jshintrc index.js && npm run build",
+    "test": "jshint -c .jshintrc app && npm run build",
     "build": "node-sass --include-path node_modules/foundation-apps/scss index.scss built.css && webpack --progress --colors",
     "build-styles-watch": "node-sass -w --include-path node_modules/foundation-apps/scss index.scss built.css",
     "build-js-watch": "webpack-dev-server --progress --colors"

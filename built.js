@@ -51,8 +51,6 @@
 	__webpack_require__(3);
 	__webpack_require__(4);
 
-	// require("babel!./second.js");
-
 	angular.module("acey-deucey", ["foundation"]);
 
 	__webpack_require__(5);
@@ -34682,9 +34680,12 @@
 
 	angular.module("acey-deucey").directive("space", function () {
 	    return {
-	        template: "<svg class=\"space\" viewbox=\"0 0 100 350\">\n                        <polygon points=\"0,0 100,0 50,350\"/>\n                        <g class=\"white piece\" transform=\"scale(.75), translate(17, -105)\">\n                            <circle cx=\"50\" cy=\"175\" r=\"50\"/>\n                            <text font-size=\"40\" x=\"50%\" y=\"50%\" dy=\"0.3em\" text-anchor=\"middle\">5x</text>\n                        </g>\n                    </svg>",
-	        link: function link(scope) {},
-	        scope: {}
+	        template: "<svg class=\"space\" viewbox=\"0 0 100 350\">\n                        <polygon points=\"0,0 100,0 50,350\"/>\n                        <g class=\"white piece\" transform=\"scale(.75), translate(17, -105)\">\n                            <circle cx=\"50\" cy=\"175\" r=\"50\"/>\n                            <text font-size=\"40\" x=\"50%\" y=\"50%\" dy=\"0.3em\" text-anchor=\"middle\">5x</text>\n                        </g>\n                    </svg>"
+	        //    link: function(scope) {
+	        //    },
+	        //    scope: {
+
+	        //    }
 	    };
 	});
 

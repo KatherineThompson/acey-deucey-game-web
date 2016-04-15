@@ -72,6 +72,9 @@ body {
 
 @mixin piece-classes($name, $primary-color, $secondary-color) {
     .piece.#{$name} {
+        &.winning {
+            cursor: default;
+        }
         circle {
             fill: $primary-color;
         }

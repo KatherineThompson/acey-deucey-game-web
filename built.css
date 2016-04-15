@@ -5515,6 +5515,9 @@ body {
         .message-area#right-message-area:not(.ng-hide) {
           display: none !important; } }
 
+.piece.white.winning {
+  cursor: default; }
+
 .piece.white circle {
   fill: ivory; }
 
@@ -5530,6 +5533,9 @@ dice.white span.dice, div span.dice {
 
 p .white, p.white {
   color: ivory; }
+
+.piece.red.winning {
+  cursor: default; }
 
 .piece.red circle {
   fill: red; }

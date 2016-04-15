@@ -39,6 +39,18 @@
                         <button class="expand success button">Submit turn</button>
                         <button class=" expand alert button">Reset turn</button>
                         <button class="expand button" zf-open="panel">Panel</button>
+                        <a class="expand button" zf-open="winModal">Win modal</a>
+                        <div id="winModal" zf-modal="">
+                            <a class="close-button" zf-close="">×</a>
+                            <p class=" text-center red winner">Red, you've won!</p>
+                        </div>
+                        <a class="expand button" zf-open="dieModal">Die modal</a>
+                        <div id="dieModal" zf-modal="">
+                            <a class="close-button" zf-close="">×</a>
+                            <div class="shrink">
+                                <span class="red dice">1</span>
+                            </div>                                                        
+                        </div>
                     </div>                   
                 <div id="bottom-home" class="vertical grid-block">
                     <div id="white-initial" class="vertical grid-block">
@@ -247,10 +259,6 @@
                     <li></li>
                 </ul>
             </div>
-        </div>
-                
-        <div id="win-message">
-            <p class="hide red winner">Red, you've won!</p>
         </div>
     </div>
 </body>

@@ -86,14 +86,14 @@ body {
         }            
     }
     
-    dice.#{$name} {
+    dice.#{$name}, div {
         span.dice {
             color: $secondary-color;
             background-color: $primary-color;
         }
     }
     
-    p .#{$name} {
+    p .#{$name}, p.#{$name} {   
         color: $primary-color;
     }
 }
@@ -165,12 +165,4 @@ space {
 .winner {
     font-weight: bold;
     font-size: 4rem;
-}
-
-#win-message {
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }

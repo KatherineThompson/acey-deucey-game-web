@@ -5524,11 +5524,11 @@ body {
 .piece.white:hover:not(.winning) circle {
   fill: #ffff71; }
 
-dice.white span.dice {
+dice.white span.dice, div span.dice {
   color: red;
   background-color: ivory; }
 
-p .white {
+p .white, p.white {
   color: ivory; }
 
 .piece.red circle {
@@ -5540,11 +5540,11 @@ p .white {
 .piece.red:hover:not(.winning) circle {
   fill: maroon; }
 
-dice.red span.dice {
+dice.red span.dice, div span.dice {
   color: ivory;
   background-color: red; }
 
-p .red {
+p .red, p.red {
   color: red; }
 
 .piece {
@@ -5607,10 +5607,3 @@ space {
 .winner {
   font-weight: bold;
   font-size: 4rem; }
-
-#win-message {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }

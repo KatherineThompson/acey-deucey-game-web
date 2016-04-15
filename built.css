@@ -5521,7 +5521,7 @@ body {
 .piece.white text {
   fill: red; }
 
-.piece.white:hover circle {
+.piece.white:hover:not(.winning) circle {
   fill: #ffff71; }
 
 dice.white span.dice {
@@ -5537,7 +5537,7 @@ p .white {
 .piece.red text {
   fill: ivory; }
 
-.piece.red:hover circle {
+.piece.red:hover:not(.winning) circle {
   fill: maroon; }
 
 dice.red span.dice {

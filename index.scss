@@ -79,7 +79,7 @@ body {
             fill: $secondary-color;
         }
         
-        &:hover {
+        &:hover:not(.winning) {
             circle {
                 fill: darken($primary-color, 25%);
             }

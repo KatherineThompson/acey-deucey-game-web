@@ -11,3 +11,4 @@ angular.module("acey-deucey", ["foundation"]);
 
 require("babel!./app/acey-deucey-controller");
 require("babel!./app/dice");
+require("babel!./app/space");

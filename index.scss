@@ -102,34 +102,12 @@ body {
     width: 100%;
     height: 100%;
     cursor: pointer;
-    
-    // &.white {
-    //     circle {
-    //         fill: $white;
-    //     }
-    //     text {
-    //         fill: $red;
-    //     }
-    //     &:hover {
-    //         circle {
-    //             fill: darken($white, 25%);
-    //         }
-    //     }    
-    // }        
-    // &.red {
-    //     circle {
-    //         fill: $red;
-    //     }
-    //     text {
-    //         fill: $white;
-    //     }
-    //     &:hover {
-    //         circle {
-    //             fill: darken($red, 25%);
-    //         }
-    //     }
-    // }
 }
+
+space {
+    @include grid-block(2);
+}
+
 
 .top {
     margin-bottom: auto;

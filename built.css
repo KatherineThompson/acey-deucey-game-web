@@ -5550,6 +5550,23 @@ p .red {
   height: 100%;
   cursor: pointer; }
 
+space {
+  display: flex;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar; }
+
 .top {
   margin-bottom: auto; }
 

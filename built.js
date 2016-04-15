@@ -51,11 +51,13 @@
 	__webpack_require__(3);
 	__webpack_require__(4);
 
-	__webpack_require__(5);
+	// require("babel!./second.js");
 
-	angular.module("acey-deucey", ["foundation"]).run(function() {
-	    alert("angular is running");
-	});
+	angular.module("acey-deucey", ["foundation"]);
+
+	__webpack_require__(5);
+	__webpack_require__(6);
+	__webpack_require__(7);
 
 /***/ },
 /* 1 */
@@ -34635,11 +34637,56 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	module.exports = "Cats are the " + (1 + 1) + "nd best!";
+	var angular = __webpack_require__(1);
+
+	angular.module("acey-deucey").controller("AceyDeuceyCtrl", function ($scope) {
+	    $scope.buttonClick = { count: 0 };
+	    $scope.onButtonClick = function () {
+	        $scope.buttonClick.count++;
+	    };
+	});
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var angular = __webpack_require__(1);
+
+	angular.module("acey-deucey").directive("dice", function () {
+	    return {
+	        template: "<div class=\"align-center v-align grid-block\" ng-click=\"rollDice()\">\n                        <div class=\"shrink align-center grid-block\">\n                            <span class=\"dice\">{{rolls.first}}</span>\n                        </div>\n                        <div class=\"shrink align-center small-offset-1 grid-block\">\n                            <span class=\"dice\">{{rolls.second}}</span>\n                        </div>\n                    </div>",
+	        link: function link($scope) {
+	            $scope.rolls = { first: 1, second: 2 };
+	            $scope.rollDice = function () {
+	                $scope.rolls.first = Math.floor(Math.random() * 6 + 1);
+	                $scope.rolls.second = Math.floor(Math.random() * 6 + 1);
+	            };
+	        },
+	        scope: true
+	    };
+	});
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var angular = __webpack_require__(1);
+
+	angular.module("acey-deucey").directive("space", function () {
+	    return {
+	        template: "<svg class=\"space\" viewbox=\"0 0 100 350\">\n                            <polygon points=\"0,0 100,0 50,350\"/>\n                            <g class=\"white piece\" transform=\"scale(.75), translate(17, -105)\">\n                                <circle cx=\"50\" cy=\"175\" r=\"50\"/>\n                                <text font-size=\"40\" x=\"50%\" y=\"50%\" dy=\"0.3em\" text-anchor=\"middle\">5x</text>\n                            </g>\n                    </svg>",
+	        link: function link(scope) {},
+	        scope: {}
+	    };
+	});
 
 /***/ }
 /******/ ]);

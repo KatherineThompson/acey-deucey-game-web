@@ -41,6 +41,10 @@ body {
 
         #bar {
             background-color: $border-color;
+            
+            .button {
+                padding: .85em .5em;
+            }
         }
     }
 
@@ -99,12 +103,28 @@ body {
 
 
 .piece {
-    width: 80%;
-    height: 100%;
     cursor: pointer;
     
     #home & {
-        width: 55%;
+        @include breakpoint(small) {
+            height: 55%;
+            width: 55%;
+        }
+        @include breakpoint(large) {
+            height: 100%;
+            width: 50%;
+        }
+    }
+    
+    #bar & {
+        @include breakpoint(small) {
+            width: 80%;
+            height: 45%;
+        }
+        @include breakpoint(large) {
+            width: 80%;
+            height: 20%;
+        }
     }
 }
 

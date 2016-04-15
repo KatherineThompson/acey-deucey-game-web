@@ -5487,6 +5487,8 @@ body {
     border-left: 5px solid mediumseagreen; }
     #board #spaces #bar {
       background-color: mediumseagreen; }
+      #board #spaces #bar .button {
+        padding: .85em .5em; }
 
 .grid-frame {
   min-height: 313px; }
@@ -5546,11 +5548,21 @@ p .red {
   color: red; }
 
 .piece {
-  width: 80%;
-  height: 100%;
   cursor: pointer; }
   #home .piece {
+    height: 55%;
     width: 55%; }
+    @media only screen and (min-width: 64.0625em) {
+      #home .piece {
+        height: 100%;
+        width: 50%; } }
+  #bar .piece {
+    width: 80%;
+    height: 45%; }
+    @media only screen and (min-width: 64.0625em) {
+      #bar .piece {
+        width: 80%;
+        height: 20%; } }
 
 space {
   display: flex;

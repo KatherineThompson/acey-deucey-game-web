@@ -4,7 +4,7 @@ const angular = require("angular");
 
 angular.module("acey-deucey").directive("space", function() {
     return {
-        template:   `<svg class="top space" viewbox="0 0 100 350">
+        template:   `<svg class="space" viewbox="0 0 100 350">
                             <polygon points="0,0 100,0 50,350"/>
                             <g class="white piece" transform="scale(.75), translate(17, -105)">
                                 <circle cx="50" cy="175" r="50"/>
@@ -12,6 +12,9 @@ angular.module("acey-deucey").directive("space", function() {
                             </g>
                     </svg>`,
        link: function(scope) {
+       },
+       scope: {
+           
        } 
     };
 });

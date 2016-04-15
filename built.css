@@ -5546,9 +5546,11 @@ p .red {
   color: red; }
 
 .piece {
-  width: 100%;
+  width: 80%;
   height: 100%;
   cursor: pointer; }
+  #home .piece {
+    width: 55%; }
 
 space {
   display: flex;
@@ -5565,9 +5567,7 @@ space {
   order: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar; }
-
-.top {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
   margin-bottom: auto; }
 
 .bottom {

@@ -99,23 +99,26 @@ body {
 
 
 .piece {
-    width: 100%;
+    width: 80%;
     height: 100%;
     cursor: pointer;
+    
+    #home & {
+        width: 55%;
+    }
 }
 
 space {
     @include grid-block(2);
-}
-
-
-.top {
     margin-bottom: auto;
 }
+
+
 
 .bottom {
     margin-top: auto;
 }
+
 
 .dice {
     @include badge (

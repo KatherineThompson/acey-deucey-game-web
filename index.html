@@ -28,24 +28,10 @@
                         </div>                        
                     </div>
                 </div>
-                    <div id="left-message-area" class="message-area vertical shrink grid-block">
-                        <p class="text-center"><span class="red">Red</span>, it's your turn</p>
-                        <button class="expand success button">Submit turn</button>
-                        <button class=" expand alert button">Reset turn</button>
-                        <button class="expand button" zf-open="panel">Panel</button>
-                        <a class="expand button" zf-open="winModal">Win modal</a>
-                        <div id="winModal" zf-modal="">
-                            <a class="close-button" zf-close="">×</a>
-                            <p class=" text-center red winner">Red, you've won!</p>
-                        </div>
-                        <a class="expand button" zf-open="dieModal">Die modal</a>
-                        <div id="dieModal" zf-modal="">
-                            <a class="close-button" zf-close="">×</a>
-                            <div class="shrink">
-                                <span class="red dice">1</span>
-                            </div>                                                        
-                        </div>
-                    </div>                   
+                <ad-message-area id="left-message-area" active-player="gameState.isPlayerOne"></ad-message-area>
+                <!--<div>    
+                    <button class="expand button" zf-open="panel">Panel</button>
+                </div>                       -->
                 <div id="bottom-home" class="vertical grid-block">
                     <div id="white-initial" class="vertical grid-block">
                        <div class="grid-block v-align">

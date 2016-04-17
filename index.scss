@@ -54,20 +54,19 @@ body {
     min-height: 313px;
 }
 
+#left-message-area {
+    @include hide-for(small);
+    @include show-for(large);
+}
+
+#right-message-area {
+    @include show-for(small);
+    @include hide-for(large);
+    border: 2px solid $border-color;
+    background-color: lighten($border-color, 30%);
+}
 .message-area {
     padding: .15em;
-    
-    &#left-message-area {
-        @include hide-for(small);
-        @include show-for(large);
-    }
-    
-    &#right-message-area {
-        @include show-for(small);
-        @include hide-for(large);
-        border: 2px solid $border-color;
-        background-color: lighten($border-color, 30%);
-    }
 }
 
 @mixin piece-classes($name, $primary-color, $secondary-color) {

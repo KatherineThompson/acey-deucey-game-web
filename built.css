@@ -5493,27 +5493,30 @@ body {
 .grid-frame {
   min-height: 313px; }
 
+#left-message-area:not(.ng-hide) {
+  display: block !important;
+  display: none !important; }
+
+#left-message-area:not(.ng-hide) {
+  display: none !important; }
+  @media only screen and (min-width: 64.0625em) {
+    #left-message-area:not(.ng-hide) {
+      display: block !important; } }
+
+#right-message-area {
+  border: 2px solid mediumseagreen;
+  background-color: #a7e1c1; }
+  #right-message-area:not(.ng-hide) {
+    display: none !important;
+    display: block !important; }
+  #right-message-area:not(.ng-hide) {
+    display: block !important; }
+    @media only screen and (min-width: 64.0625em) {
+      #right-message-area:not(.ng-hide) {
+        display: none !important; } }
+
 .message-area {
   padding: .15em; }
-  .message-area#left-message-area:not(.ng-hide) {
-    display: block !important;
-    display: none !important; }
-  .message-area#left-message-area:not(.ng-hide) {
-    display: none !important; }
-    @media only screen and (min-width: 64.0625em) {
-      .message-area#left-message-area:not(.ng-hide) {
-        display: block !important; } }
-  .message-area#right-message-area {
-    border: 2px solid mediumseagreen;
-    background-color: #a7e1c1; }
-    .message-area#right-message-area:not(.ng-hide) {
-      display: none !important;
-      display: block !important; }
-    .message-area#right-message-area:not(.ng-hide) {
-      display: block !important; }
-      @media only screen and (min-width: 64.0625em) {
-        .message-area#right-message-area:not(.ng-hide) {
-          display: none !important; } }
 
 .piece.white.winning {
   cursor: default; }

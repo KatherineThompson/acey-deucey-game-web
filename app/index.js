@@ -11,3 +11,4 @@ require("./acey-deucey-controller");
 require("./dice");
 require("./space");
 require("./ad-circle");
+require("./ad-message-area");

@@ -4,7 +4,7 @@ const angular = require("angular");
 
 angular.module("acey-deucey").directive("space", function() {
     return {
-        template: `<svg ng-class="orientationParams.svgClass" viewbox="0 0 100 350">
+        template: `<svg class="space" viewbox="0 0 100 350">
                         <polygon ng-attr-points="{{orientationParams.polygonPoints}}"/>
                         <g class="white piece" ng-attr-transform="scale(.75), {{orientationParams.groupTransform}}">
                             <circle cx="50" cy="175" r="50"/>
@@ -15,15 +15,13 @@ angular.module("acey-deucey").directive("space", function() {
             if (scope.orientation === "bottom") {
                 scope.orientationParams = {
                     polygonPoints: "0,350 100,350 50,0",
-                    groupTransform: "translate(17, 220)",
-                    svgClass: "space"                    
+                    groupTransform: "translate(17, 220)"
                 };
                 element.addClass("bottom");
             } else {
                 scope.orientationParams = {
                     polygonPoints: "0,0 100,0 50,350",
-                    groupTransform: "translate(17, -105)",
-                    svgClass: "space"
+                    groupTransform: "translate(17, -105)"
                 };
                 element.addClass("top");
             }

@@ -56,7 +56,7 @@
                     <div id="spaces-18-23" class="grid-block">
                         <space ng-repeat="index in fourthQuadrantIndices" board-space="gameState.board[index]"></space>
                     </div>
-                    <dice class="red"></dice>
+                    <dice class="red" ng-if="gameState.isPlayerOne"></dice>
                     <div id="spaces-0-5" class="grid-block">
                         <space orientation="bottom"></space>
                         <space orientation="bottom"></space>
@@ -89,7 +89,7 @@
                         <space></space>
                         <space></space>
                     </div>
-                    <dice class="white"></dice>
+                    <dice class="white" ng-if="!gameState.isPlayerOne"></dice>
                     <div id="spaces-6-11" class="grid-block">
                         <space orientation="bottom"></space>
                         <space orientation="bottom"></space>

@@ -5,16 +5,19 @@ const _ = require("lodash");
 
 angular.module("acey-deucey").directive("dice", function() {
     return {
-        template: `<div class="align-center v-align grid-block" ng-click="rollDice()">
-                        <div class="shrink align-center grid-block">
+        template: `<div class="align-center v-align grid-block">
+                        <div class="align-center grid-block" ng-if="!rolls.first">
+                            <button class="button" ng-click="rollDice()">Roll dice!</button>
+                        </div>
+                        <div class="shrink align-center grid-block" ng-if="rolls.first">
                             <span class="dice">{{rolls.first}}</span>
                         </div>
-                        <div class="shrink align-center small-offset-1 grid-block">
+                        <div class="shrink align-center small-offset-1 grid-block" ng-if="rolls.first">
                             <span class="dice">{{rolls.second}}</span>
                         </div>
                     </div>`,
         link: function($scope) {
-            $scope.rolls = {first: 1, second: 2};
+            $scope.rolls = {first: null, second: null};
             $scope.rollDice = function() {
                 $scope.rolls = _.mapValues($scope.rolls,() => _.sample(_.range(1, 7)));
             };

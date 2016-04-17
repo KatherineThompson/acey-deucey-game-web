@@ -16,7 +16,7 @@
                             <h4 class="text-center align-bottom">Initial</h4>
                         </div>
                         <div class="align-center v-align grid-block">
-                            <ad-circle></ad-circle>
+                            <ad-circle num-pieces="gameState.playerOne.initialPieces"></ad-circle>
                         </div>
                     </div>
                     <div id="white-winning" class=" vertical grid-block">
@@ -24,7 +24,7 @@
                             <h4 class=" text-center align-bottom">Winning</h4>
                         </div>
                         <div class="align-center v-align grid-block">
-                            <ad-circle></ad-circle>
+                            <ad-circle num-pieces="gameState.playerTwo.winningPieces"></ad-circle>
                         </div>                        
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                             <h4 class="text-center align-bottom">Initial</h4>
                         </div>
                         <div class="grid-block v-align align-center">
-                            <ad-circle></ad-circle>
+                            <ad-circle num-pieces="gameState.playerTwo.initialPieces"></ad-circle>
                         </div>                        
                     </div>
                     <div id="red-winning" class="vertical grid-block">
@@ -60,7 +60,7 @@
                             <h4 class="text-center align-bottom">Winning</h4>
                         </div>
                         <div class="grid-block v-align align-center">
-                            <ad-circle></ad-circle>
+                            <ad-circle num-pieces="gameState.playerOne.winningPieces"></ad-circle>
                         </div>                            
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                 </div>
                 <div id="bar" class="small-1 vertical grid-block">
                     <div id="red-bar" class="grid-block align-center v-align">
-                        <ad-circle></ad-circle>
+                        <ad-circle num-pieces="gameState.playerOne.barPieces"></ad-circle>
                     </div>
                     <div id="right-message-area" class="message-area vertical shrink grid-block">
                         <p class="text-center"><span class="red">Red</span>, it's your turn</p>
@@ -96,7 +96,7 @@
                         <button class="expand button" zf-open="panel">Panel</button>
                     </div>
                     <div id="white-bar" class="grid-block align-center v-align">
-                        <ad-circle></ad-circle>           
+                        <ad-circle num-pieces="gameState.playerTwo.barPieces"></ad-circle>           
                     </div>
                 </div>
                 <div id="right-spaces" class="vertical grid-block">

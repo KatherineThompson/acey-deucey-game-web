@@ -132,15 +132,23 @@ body {
 
 space {
     @include grid-block(2);
-    margin-bottom: auto;
+    
+    &.top {
+        margin-bottom: auto;
+    }
+
+    &.bottom {
+        margin-top: auto;
+    }
+    
+    svg.space {
+        width: 100%;
+        height: 100%;
+        polygon {
+            fill: $space-color;         
+        }
+    }
 }
-
-
-
-.bottom {
-    margin-top: auto;
-}
-
 
 .dice {
     @include badge (
@@ -149,14 +157,6 @@ space {
     );
     border-radius: 0;
     cursor: default;
-}
-
-.space {
-    width: 100%;
-    height: 100%;
-    polygon {
-        fill: $space-color;         
-    }
 }
 
 .grayed-out {

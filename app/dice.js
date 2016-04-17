@@ -1,6 +1,7 @@
 "use strict";
 
 const angular = require("angular");
+const _ = require("lodash");
 
 angular.module("acey-deucey").directive("dice", function() {
     return {
@@ -15,8 +16,7 @@ angular.module("acey-deucey").directive("dice", function() {
         link: function($scope) {
             $scope.rolls = {first: 1, second: 2};
             $scope.rollDice = function() {
-                $scope.rolls.first = Math.floor(Math.random() * 6 + 1);
-                $scope.rolls.second = Math.floor(Math.random() * 6 + 1);
+                $scope.rolls = _.mapValues($scope.rolls,() => _.sample(_.range(1, 7)));
             };
         },
         scope: true

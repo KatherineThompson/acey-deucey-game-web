@@ -5586,9 +5586,9 @@ space {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
-  space .top {
+  space.top {
     margin-bottom: auto; }
-  space .bottom {
+  space.bottom {
     margin-top: auto; }
 
 .dice {

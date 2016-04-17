@@ -11,19 +11,21 @@ angular.module("acey-deucey").directive("space", function() {
                             <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">5x</text>
                         </g>
                     </svg>`,
-        link: function(scope) {
+        link: function(scope, element) {
             if (scope.orientation === "bottom") {
                 scope.orientationParams = {
                     polygonPoints: "0,350 100,350 50,0",
                     groupTransform: "translate(17, 220)",
-                    svgClass: "space bottom"                    
+                    svgClass: "space"                    
                 };
+                element.addClass("bottom");
             } else {
                 scope.orientationParams = {
                     polygonPoints: "0,0 100,0 50,350",
                     groupTransform: "translate(17, -105)",
-                    svgClass: "space top"
+                    svgClass: "space"
                 };
+                element.addClass("top");
             }
         },
         scope: {

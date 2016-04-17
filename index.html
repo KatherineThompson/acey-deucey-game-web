@@ -68,12 +68,7 @@
             <div id="spaces" class="grid-block">
                 <div id="left-spaces" class="vertical grid-block">
                     <div id="spaces-18-23" class="grid-block">
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
+                        <space ng-repeat="index in fourthQuadrantIndices" board-space="gameState.board[index]"></space>
                     </div>
                     <dice class="red"></dice>
                     <div id="spaces-0-5" class="grid-block">

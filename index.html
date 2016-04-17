@@ -57,7 +57,10 @@
             <div id="spaces" class="grid-block">
                 <div id="left-spaces" class="vertical grid-block">
                     <div class="grid-block">
-                        <space ng-repeat="index in firstQuadrantIndices" board-space="gameState.board[index]"></space>
+                        <space ng-repeat="index in firstQuadrantIndices"
+                            board-space="gameState.board[index]"
+                            is-disabled="isSpaceDisabled(index)">
+                        </space>
                     </div>
                     <dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls"></dice>
                     <div class="grid-block">

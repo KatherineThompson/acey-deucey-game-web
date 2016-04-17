@@ -12,9 +12,15 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.fourthQuadrantIndices = _.range(18, 24);
     $scope.turnState = {
         rolls: {first: null, second: null},
-        currentPiecePosition: null
+        currentPiecePosition: null,
+        availableSpaces: []
     };
     $scope.selectPiece = function() {
+        if (!$scope.turnState.rolls.first) {
+          return;
+        }
         $scope.turnState.currentPiecePosition = -1;
+        $scope.turnState.availableSpaces = [$scope.turnState.rolls.first - 1, $scope.turnState.rolls.second - 1]
     };
+    $scope.isSpaceDisabled = index => !_.includes($scope.turnState.availableSpaces, index);
 });

@@ -85,7 +85,13 @@ body {
             circle {
                 fill: darken($primary-color, 25%);
             }
-        }            
+        }
+        
+        &.selected {
+            circle {
+                fill: darken($primary-color, 25%);
+            }
+        }        
     }
     
     dice.#{$name}, div {

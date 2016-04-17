@@ -16,7 +16,10 @@
                             <h4 class="text-center align-bottom">Initial</h4>
                         </div>
                         <div class="align-center v-align grid-block">
-                            <ad-circle num-pieces="gameState.playerOne.initialPieces"></ad-circle>
+                            <ad-circle num-pieces="gameState.playerOne.initialPieces"
+                                ng-click="selectPiece()"
+                                is-selected="turnState.currentPiecePosition === -1">
+                            </ad-circle>
                         </div>
                     </div>
                     <div id="white-winning" class=" vertical grid-block">
@@ -53,11 +56,11 @@
             </div>
             <div id="spaces" class="grid-block">
                 <div id="left-spaces" class="vertical grid-block">
-                    <div id="spaces-18-23" class="grid-block">
-                        <space ng-repeat="index in fourthQuadrantIndices" board-space="gameState.board[index]"></space>
+                    <div class="grid-block">
+                        <space ng-repeat="index in firstQuadrantIndices" board-space="gameState.board[index]"></space>
                     </div>
-                    <dice class="red" ng-if="gameState.isPlayerOne"></dice>
-                    <div id="spaces-0-5" class="grid-block">
+                    <dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls"></dice>
+                    <div class="grid-block">
                         <space orientation="bottom"></space>
                         <space orientation="bottom"></space>
                         <space orientation="bottom"></space>
@@ -81,7 +84,7 @@
                     </div>
                 </div>
                 <div id="right-spaces" class="vertical grid-block">
-                    <div id="spaces-12-17" class="grid-block">
+                    <div class="grid-block">
                         <space></space>
                         <space></space>
                         <space></space>
@@ -89,8 +92,8 @@
                         <space></space>
                         <space></space>
                     </div>
-                    <dice class="white" ng-if="!gameState.isPlayerOne"></dice>
-                    <div id="spaces-6-11" class="grid-block">
+                    <dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls"></dice>
+                    <div class="grid-block">
                         <space orientation="bottom"></space>
                         <space orientation="bottom"></space>
                         <space orientation="bottom"></space>

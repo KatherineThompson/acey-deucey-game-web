@@ -17,11 +17,12 @@ angular.module("acey-deucey").directive("dice", function() {
                         </div>
                     </div>`,
         link: function($scope) {
-            $scope.rolls = {first: null, second: null};
             $scope.rollDice = function() {
                 $scope.rolls = _.mapValues($scope.rolls,() => _.sample(_.range(1, 7)));
             };
         },
-        scope: true
+        scope: {
+            rolls: "="
+        }
     };
 });

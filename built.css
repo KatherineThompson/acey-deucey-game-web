@@ -5530,6 +5530,9 @@ body {
 .piece.white:hover:not(.winning) circle {
   fill: #ffff71; }
 
+.piece.white.selected circle {
+  fill: #ffff71; }
+
 dice.white span.dice, div span.dice {
   color: red;
   background-color: ivory; }
@@ -5547,6 +5550,9 @@ p .white, p.white {
   fill: ivory; }
 
 .piece.red:hover:not(.winning) circle {
+  fill: maroon; }
+
+.piece.red.selected circle {
   fill: maroon; }
 
 dice.red span.dice, div span.dice {

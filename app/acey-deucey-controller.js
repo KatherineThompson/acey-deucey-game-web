@@ -10,4 +10,11 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(12, 18);
     $scope.fourthQuadrantIndices = _.range(18, 24);
+    $scope.turnState = {
+        rolls: {first: null, second: null},
+        currentPiecePosition: null
+    };
+    $scope.selectPiece = function() {
+        $scope.turnState.currentPiecePosition = -1;
+    };
 });

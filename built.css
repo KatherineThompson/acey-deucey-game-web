@@ -5616,7 +5616,7 @@ ad-space {
   border-radius: 15%;
   cursor: default; }
 
-.grayed-out {
+.disabled {
   opacity: .35;
   cursor: default; }
 

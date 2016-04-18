@@ -70,7 +70,7 @@ body {
 }
 
 @mixin piece-classes($name, $primary-color, $secondary-color) {
-    .piece.#{$name} {
+    .#{$name} .piece {
         &.winning {
             cursor: default;
         }

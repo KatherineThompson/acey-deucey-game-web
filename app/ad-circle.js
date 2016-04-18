@@ -4,7 +4,7 @@ const angular = require("angular");
 
 angular.module("acey-deucey").directive("adCircle", function(){
     return {
-        template: `<svg class="red piece" ng-class="selectedClass" viewbox="0 0 100 100">
+        template: `<svg class="piece" ng-class="selectedClass" viewbox="0 0 100 100">
                         <circle cx="50" cy="50" r="50"/>
                         <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">{{numPieces}}x</text>
                     </svg>`,

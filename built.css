@@ -5518,19 +5518,19 @@ body {
 .message-area {
   padding: .15em; }
 
-.piece.white.winning {
+.white .piece.winning {
   cursor: default; }
 
-.piece.white circle {
+.white .piece circle {
   fill: ivory; }
 
-.piece.white text {
+.white .piece text {
   fill: red; }
 
-.piece.white:hover:not(.winning) circle {
+.white .piece:hover:not(.winning) circle {
   fill: #ffff71; }
 
-.piece.white.selected circle {
+.white .piece.selected circle {
   fill: #ffff71; }
 
 ad-dice.white span.dice, div span.dice {
@@ -5540,19 +5540,19 @@ ad-dice.white span.dice, div span.dice {
 p .white, p.white {
   color: ivory; }
 
-.piece.red.winning {
+.red .piece.winning {
   cursor: default; }
 
-.piece.red circle {
+.red .piece circle {
   fill: red; }
 
-.piece.red text {
+.red .piece text {
   fill: ivory; }
 
-.piece.red:hover:not(.winning) circle {
+.red .piece:hover:not(.winning) circle {
   fill: maroon; }
 
-.piece.red.selected circle {
+.red .piece.selected circle {
   fill: maroon; }
 
 ad-dice.red span.dice, div span.dice {

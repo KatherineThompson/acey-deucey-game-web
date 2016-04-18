@@ -57,19 +57,19 @@
             <div id="spaces" class="grid-block">
                 <div id="left-spaces" class="vertical grid-block">
                     <div class="grid-block">
-                        <space ng-repeat="index in firstQuadrantIndices"
+                        <ad-space ng-repeat="index in firstQuadrantIndices"
                             board-space="gameState.board[index]"
                             is-disabled="isSpaceDisabled(index)">
-                        </space>
+                        </ad-space>
                     </div>
-                    <dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls"></dice>
+                    <ad-dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
                     <div class="grid-block">
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>                      
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>                      
                     </div>
                 </div>
                 <div id="bar" class="small-1 vertical grid-block">
@@ -88,21 +88,21 @@
                 </div>
                 <div id="right-spaces" class="vertical grid-block">
                     <div class="grid-block">
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
+                        <ad-space></ad-space>
+                        <ad-space></ad-space>
+                        <ad-space></ad-space>
+                        <ad-space></ad-space>
+                        <ad-space></ad-space>
+                        <ad-space></ad-space>
                     </div>
-                    <dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls"></dice>
+                    <ad-dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
                     <div class="grid-block">
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>                   
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>
+                        <ad-space orientation="bottom"></ad-space>                   
                     </div>                    
                 </div>
             </div>

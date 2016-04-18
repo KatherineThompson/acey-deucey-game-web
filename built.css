@@ -5533,7 +5533,7 @@ body {
 .piece.white.selected circle {
   fill: #ffff71; }
 
-dice.white span.dice, div span.dice {
+ad-dice.white span.dice, div span.dice {
   color: red;
   background-color: ivory; }
 
@@ -5555,7 +5555,7 @@ p .white, p.white {
 .piece.red.selected circle {
   fill: maroon; }
 
-dice.red span.dice, div span.dice {
+ad-dice.red span.dice, div span.dice {
   color: ivory;
   background-color: red; }
 
@@ -5579,7 +5579,7 @@ p .red, p.red {
         width: 80%;
         height: 20%; } }
 
-space {
+ad-space {
   display: flex;
   height: auto;
   position: relative;
@@ -5595,14 +5595,14 @@ space {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
-  space.top {
+  ad-space.top {
     margin-bottom: auto; }
-  space.bottom {
+  ad-space.bottom {
     margin-top: auto; }
-  space svg.space {
+  ad-space svg.space {
     width: 100%;
     height: 100%; }
-    space svg.space polygon {
+    ad-space svg.space polygon {
       fill: green; }
 
 .dice {

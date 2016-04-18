@@ -2,7 +2,7 @@
 
 const angular = require("angular");
 
-angular.module("acey-deucey").directive("space", function() {
+angular.module("acey-deucey").directive("adSpace", function() {
     return {
         template: `<svg class="space" ng-class="{'grayed-out': isDisabled}" viewbox="0 0 100 350">
                         <polygon ng-attr-points="{{orientationParams.polygonPoints}}"/>

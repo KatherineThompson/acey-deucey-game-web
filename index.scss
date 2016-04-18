@@ -94,7 +94,7 @@ body {
         }        
     }
     
-    dice.#{$name}, div {
+    ad-dice.#{$name}, div {
         span.dice {
             color: $secondary-color;
             background-color: $primary-color;
@@ -135,7 +135,7 @@ body {
     }
 }
 
-space {
+ad-space {
     @include grid-block(2);
     
     &.top {

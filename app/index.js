@@ -8,7 +8,7 @@ require("foundation-apps/dist/js/foundation-apps-templates");
 angular.module("acey-deucey", ["foundation"]);
 
 require("./acey-deucey-controller");
-require("./dice");
-require("./space");
+require("./ad-dice");
+require("./ad-space");
 require("./ad-circle");
 require("./ad-message-area");

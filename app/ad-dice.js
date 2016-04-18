@@ -3,7 +3,7 @@
 const angular = require("angular");
 const _ = require("lodash");
 
-angular.module("acey-deucey").directive("dice", function() {
+angular.module("acey-deucey").directive("adDice", function() {
     return {
         template: `<div class="align-center v-align grid-block">
                         <div class="align-center grid-block" ng-if="!rolls.first">

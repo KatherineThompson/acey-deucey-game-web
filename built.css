@@ -5518,17 +5518,17 @@ body {
 .message-area {
   padding: .15em; }
 
-.white .piece.winning {
-  cursor: default; }
-
 .white .piece circle {
   fill: ivory; }
 
 .white .piece text {
   fill: red; }
 
-.white .piece:hover:not(.winning) circle, .white .piece.selected circle {
+.white:hover:not(.winning) .piece circle {
   fill: #ffff71; }
+
+.white.winning .piece {
+  cursor: default; }
 
 ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
   color: red;
@@ -5541,17 +5541,17 @@ ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
 p .white, p.white {
   color: ivory; }
 
-.red .piece.winning {
-  cursor: default; }
-
 .red .piece circle {
   fill: red; }
 
 .red .piece text {
   fill: ivory; }
 
-.red .piece:hover:not(.winning) circle, .red .piece.selected circle {
+.red:hover:not(.winning) .piece circle {
   fill: maroon; }
+
+.red.winning .piece {
+  cursor: default; }
 
 ad-dice.red span.dice, ad-dice.red button, div span.dice, div button {
   color: ivory;

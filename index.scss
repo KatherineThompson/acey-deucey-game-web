@@ -72,21 +72,20 @@ body {
 @mixin piece-classes($name, $primary-color, $secondary-color) {
     $dark-primary-color: darken($primary-color, 25%);
     .#{$name} .piece {
-        &.winning {
-            cursor: default;
-        }
         circle {
             fill: $primary-color;
         }
         text {
             fill: $secondary-color;
         }
-        
-        &:hover:not(.winning), &.selected {
-            circle {
-                fill: $dark-primary-color;
-            }
+    }
+    .#{$name}:hover:not(.winning) .piece{
+        circle {
+            fill: $dark-primary-color;
         }
+    }
+    .#{$name}.winning .piece{
+        cursor: default;
     }
     
     ad-dice.#{$name}, div {

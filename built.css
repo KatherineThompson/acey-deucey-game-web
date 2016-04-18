@@ -5527,15 +5527,16 @@ body {
 .white .piece text {
   fill: red; }
 
-.white .piece:hover:not(.winning) circle {
+.white .piece:hover:not(.winning) circle, .white .piece.selected circle {
   fill: #ffff71; }
 
-.white .piece.selected circle {
-  fill: #ffff71; }
-
-ad-dice.white span.dice, div span.dice {
+ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
   color: red;
   background-color: ivory; }
+  ad-dice.white span.dice:hover:not(.dice), ad-dice.white span.dice:focus:not(.dice), ad-dice.white button:hover:not(.dice), ad-dice.white button:focus:not(.dice), div span.dice:hover:not(.dice), div span.dice:focus:not(.dice), div button:hover:not(.dice), div button:focus:not(.dice) {
+    color: red;
+    background-color: #ffff71;
+    outline-color: red; }
 
 p .white, p.white {
   color: ivory; }
@@ -5549,15 +5550,16 @@ p .white, p.white {
 .red .piece text {
   fill: ivory; }
 
-.red .piece:hover:not(.winning) circle {
+.red .piece:hover:not(.winning) circle, .red .piece.selected circle {
   fill: maroon; }
 
-.red .piece.selected circle {
-  fill: maroon; }
-
-ad-dice.red span.dice, div span.dice {
+ad-dice.red span.dice, ad-dice.red button, div span.dice, div button {
   color: ivory;
   background-color: red; }
+  ad-dice.red span.dice:hover:not(.dice), ad-dice.red span.dice:focus:not(.dice), ad-dice.red button:hover:not(.dice), ad-dice.red button:focus:not(.dice), div span.dice:hover:not(.dice), div span.dice:focus:not(.dice), div button:hover:not(.dice), div button:focus:not(.dice) {
+    color: ivory;
+    background-color: maroon;
+    outline-color: ivory; }
 
 p .red, p.red {
   color: red; }
@@ -5611,7 +5613,7 @@ ad-space {
   height: 3rem;
   background: #00558b;
   color: #fff;
-  border-radius: 0;
+  border-radius: 15%;
   cursor: default; }
 
 .grayed-out {

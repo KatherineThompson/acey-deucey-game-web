@@ -6,6 +6,7 @@ const _ = require("lodash");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState = gameEngine.getInitialGameState();
+    // $scope.gameState.isPlayerOne = false;
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(12, 18);

@@ -65,12 +65,11 @@
                     </div>
                     <ad-dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
                     <div class="grid-block">
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>                      
+                        <ad-space ng-repeat="index in secondQuadrantIndices"
+                            board-space="gameState.board[index]"
+                            is-disabled="isSpaceDisabled(index)"
+                            orientation="bottom">
+                        </ad-space>                   
                     </div>
                 </div>
                 <div id="bar" class="small-1 vertical grid-block">
@@ -89,21 +88,18 @@
                 </div>
                 <div id="right-spaces" class="vertical grid-block">
                     <div class="grid-block">
-                        <ad-space></ad-space>
-                        <ad-space></ad-space>
-                        <ad-space></ad-space>
-                        <ad-space></ad-space>
-                        <ad-space></ad-space>
-                        <ad-space></ad-space>
+                        <ad-space ng-repeat="index in thirdQuadrantIndices"
+                            board-space="gameState.board[index]"
+                            is-disabled="isSpaceDisabled(index)">
+                        </ad-space>                   
                     </div>
                     <ad-dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
                     <div class="grid-block">
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>
-                        <ad-space orientation="bottom"></ad-space>                   
+                        <ad-space ng-repeat="index in fourthQuadrantIndices"
+                            board-space="gameState.board[index]"
+                            is-disabled="isSpaceDisabled(index)"
+                            orientation="bottom">
+                        </ad-space>                                
                     </div>                    
                 </div>
             </div>

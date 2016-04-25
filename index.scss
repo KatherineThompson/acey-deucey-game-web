@@ -79,13 +79,11 @@ body {
             fill: $secondary-color;
         }
     }
-    .#{$name}:hover:not(.winning) .piece{
+    .#{$name}:hover:not(.winning) .piece.selectable {
+        cursor: pointer;
         circle {
             fill: $dark-primary-color;
         }
-    }
-    .#{$name}.winning .piece{
-        cursor: default;
     }
     
     ad-dice.#{$name}, div {
@@ -110,7 +108,7 @@ body {
 @include piece-classes("red", $red, $white);
 
 .piece {
-    cursor: pointer;
+    cursor: default;
     
     #home & {
         @include breakpoint(small) {

@@ -5524,11 +5524,10 @@ body {
 .white .piece text {
   fill: red; }
 
-.white:hover:not(.winning) .piece circle {
-  fill: #ffff71; }
-
-.white.winning .piece {
-  cursor: default; }
+.white:hover:not(.winning) .piece.selectable {
+  cursor: pointer; }
+  .white:hover:not(.winning) .piece.selectable circle {
+    fill: #ffff71; }
 
 ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
   color: red;
@@ -5547,11 +5546,10 @@ p .white, p.white {
 .red .piece text {
   fill: ivory; }
 
-.red:hover:not(.winning) .piece circle {
-  fill: maroon; }
-
-.red.winning .piece {
-  cursor: default; }
+.red:hover:not(.winning) .piece.selectable {
+  cursor: pointer; }
+  .red:hover:not(.winning) .piece.selectable circle {
+    fill: maroon; }
 
 ad-dice.red span.dice, ad-dice.red button, div span.dice, div button {
   color: ivory;
@@ -5565,7 +5563,7 @@ p .red, p.red {
   color: red; }
 
 .piece {
-  cursor: pointer; }
+  cursor: default; }
   #home .piece {
     height: 55%;
     width: 55%; }

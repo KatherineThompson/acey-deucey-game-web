@@ -19,6 +19,7 @@
                             <ad-circle num-pieces="gameState.playerOne.initialPieces"
                                 ng-click="selectPiece()"
                                 is-selected="turnState.currentPiecePosition === -1"
+                                is-selectable="isPieceSelectable(true)"
                                 class="red">
                             </ad-circle>
                         </div>

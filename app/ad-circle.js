@@ -11,16 +11,21 @@ angular.module("acey-deucey").directive("adCircle", function(){
         link: (scope, element) => {
             element.addClass("align-center grid-block");
             
+            scope.selectedClass = {};
+            
             scope.$watch("isSelected", () => {
-                scope.selectedClass = {
-                    selected: scope.isSelected
-                };
+                scope.selectedClass.selected = scope.isSelected;
+            });
+            
+            scope.$watch("isSelectable", () => {
+                scope.selectedClass.selectable = scope.isSelectable;
             });
             
         },
         scope: {
             numPieces: "=",
-            isSelected: "="
+            isSelected: "=",
+            isSelectable: "="
         }
     };    
 });

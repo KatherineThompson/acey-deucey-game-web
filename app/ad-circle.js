@@ -8,10 +8,10 @@ angular.module("acey-deucey").directive("adCircle", function(){
                         <circle cx="50" cy="50" r="50"/>
                         <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">{{numPieces}}x</text>
                     </svg>`,
-        link: function(scope, element) {
+        link: (scope, element) => {
             element.addClass("align-center grid-block");
             
-            scope.$watch("isSelected", function() {
+            scope.$watch("isSelected", () => {
                 scope.selectedClass = {
                     selected: scope.isSelected
                 };

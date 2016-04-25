@@ -9,11 +9,13 @@ angular.module("acey-deucey").directive("adDice", function() {
                         <div class="align-center grid-block" ng-if="!rolls.first">
                             <button class="button" ng-click="rollDice()">Roll dice!</button>
                         </div>
-                        <div class="shrink align-center grid-block" ng-if="rolls.first">
-                            <span class="dice">{{rolls.first}}</span>
-                        </div>
-                        <div class="shrink align-center small-offset-1 grid-block" ng-if="rolls.first">
-                            <span class="dice">{{rolls.second}}</span>
+                        <div class="grid-block align-center" ng-if="rolls.first">
+                            <div class="shrink align-center grid-block">
+                                <span class="dice">{{rolls.first}}</span>
+                            </div>
+                            <div class="shrink align-center small-offset-1 grid-block">
+                                <span class="dice">{{rolls.second}}</span>
+                            </div>
                         </div>
                     </div>`,
         link: function($scope) {

@@ -9,8 +9,8 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState.isPlayerOne = false;
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
-    $scope.thirdQuadrantIndices = _.range(12, 18);
-    $scope.fourthQuadrantIndices = _.range(18, 24);
+    $scope.thirdQuadrantIndices = _.range(17, 11);
+    $scope.fourthQuadrantIndices = _.range(23, 17);
     $scope.turnState = {
         rolls: {first: null, second: null},
         currentPiecePosition: null,
@@ -27,6 +27,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
             false,
             $scope.turnState.currentPiecePosition
         );
+        debugger;
     };
     $scope.isSpaceDisabled = index => !_.includes($scope.turnState.availableSpaces, index);
     $scope.isPieceSelectable = (indexOrPlayerName, numPieces) => {

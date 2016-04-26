@@ -19,7 +19,7 @@
                             <ad-circle num-pieces="gameState.playerOne.initialPieces"
                                 ng-click="selectPiece(-1)"
                                 is-selected="turnState.currentPiecePosition === -1 && turnState.availableSpaces"
-                                is-selectable="isPieceSelectable(true, gameState.playerOne.initialPieces)"
+                                is-selectable="isPieceSelectable(true, false)"
                                 class="red">
                             </ad-circle>
                         </div>
@@ -46,7 +46,7 @@
                             <ad-circle num-pieces="gameState.playerTwo.initialPieces"
                                 ng-click="selectPiece(24)"
                                 is-selected="turnState.currentPiecePosition === 24 && turnState.availableSpaces"
-                                is-selectable="isPieceSelectable(false, gameState.playerTwo.initialPieces)"
+                                is-selectable="isPieceSelectable(false, false)"
                                 class="white">
                             </ad-circle>
                         </div>                        
@@ -83,7 +83,7 @@
                         <ad-circle num-pieces="gameState.playerOne.barPieces"
                             ng-click="selectPiece(-2)"
                             is-selected="turnState.currentPiecePosition === -2 && turnState.availableSpaces"
-                            is-selectable="isPieceSelectable(true)"                        
+                            is-selectable="isPieceSelectable(true, true)"                        
                             class="red">
                         </ad-circle>
                     </div>
@@ -97,7 +97,7 @@
                         <ad-circle num-pieces="gameState.playerTwo.barPieces"
                             ng-click="selectPiece(25)"
                             is-selected="turnState.currentPiecePosition === 25 && turnState.availableSpaces"
-                            is-selectable="isPieceSelectable(false)"
+                            is-selectable="isPieceSelectable(false, true)"
                             class="white">
                         </ad-circle>           
                     </div>

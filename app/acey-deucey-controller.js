@@ -6,7 +6,7 @@ const _ = require("lodash");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState = gameEngine.getInitialGameState();
-    // $scope.gameState.isPlayerOne = false;
+    $scope.gameState.isPlayerOne = false;
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(12, 18);
@@ -16,11 +16,11 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         currentPiecePosition: null,
         availableSpaces: []
     };
-    $scope.selectPiece = function() {
+    $scope.selectPiece = function(index) {
         if (!$scope.turnState.rolls.first) {
           return;
         }
-        $scope.turnState.currentPiecePosition = -1;
+        $scope.turnState.currentPiecePosition = index;
         $scope.turnState.availableSpaces = gameEngine.findPossibleMoves(
             $scope.gameState,
             _.values($scope.turnState.rolls),
@@ -29,7 +29,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         );
     };
     $scope.isSpaceDisabled = index => !_.includes($scope.turnState.availableSpaces, index);
-    $scope.isPieceSelectable = (indexOrPlayerName) => {
+    $scope.isPieceSelectable = (indexOrPlayerName, numPieces) => {
         let isCorrectPlayer = null;
         if (_.isBoolean(indexOrPlayerName)) {
             isCorrectPlayer = indexOrPlayerName === $scope.gameState.isPlayerOne;
@@ -37,6 +37,6 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
             isCorrectPlayer = $scope.gameState.board[indexOrPlayerName].isPlayerOne === $scope.gameState.isPlayerOne;
         }
         
-        return $scope.turnState.rolls.first && isCorrectPlayer;
+        return $scope.turnState.rolls.first && numPieces && isCorrectPlayer;
     };
 });

@@ -17,9 +17,9 @@
                         </div>
                         <div class="align-center v-align grid-block">
                             <ad-circle num-pieces="gameState.playerOne.initialPieces"
-                                ng-click="selectPiece()"
+                                ng-click="selectPiece(-1)"
                                 is-selected="turnState.currentPiecePosition === -1"
-                                is-selectable="isPieceSelectable(true)"
+                                is-selectable="isPieceSelectable(true, gameState.playerOne.initialPieces)"
                                 class="red">
                             </ad-circle>
                         </div>
@@ -43,7 +43,12 @@
                             <h4 class="text-center align-bottom">Initial</h4>
                         </div>
                         <div class="grid-block v-align align-center">
-                            <ad-circle num-pieces="gameState.playerTwo.initialPieces" class="white"></ad-circle>
+                            <ad-circle num-pieces="gameState.playerTwo.initialPieces"
+                                ng-click="selectPiece(24)"
+                                is-selected="turnState.currentPiecePosition === 24"
+                                is-selectable="isPieceSelectable(false, gameState.playerTwo.initialPieces)"
+                                class="white">
+                            </ad-circle>
                         </div>                        
                     </div>
                     <div id="red-winning" class="vertical grid-block">
@@ -75,7 +80,12 @@
                 </div>
                 <div id="bar" class="small-1 vertical grid-block">
                     <div id="red-bar" class="grid-block align-center v-align">
-                        <ad-circle num-pieces="gameState.playerOne.barPieces" class="red"></ad-circle>
+                        <ad-circle num-pieces="gameState.playerOne.barPieces"
+                            ng-click="selectPiece(-2)"
+                            is-selected="turnState.currentPiecePosition === -2"
+                            is-selectable="isPieceSelectable(true)"                        
+                            class="red">
+                        </ad-circle>
                     </div>
                     <div id="right-message-area" class="message-area vertical shrink grid-block">
                         <p class="text-center"><span class="red">Red</span>, it's your turn</p>
@@ -84,7 +94,12 @@
                         <button class="expand button" zf-open="panel">Panel</button>
                     </div>
                     <div id="white-bar" class="grid-block align-center v-align">
-                        <ad-circle num-pieces="gameState.playerTwo.barPieces" class="white"></ad-circle>           
+                        <ad-circle num-pieces="gameState.playerTwo.barPieces"
+                            ng-click="selectPiece(25)"
+                            is-selected="turnState.currentPiecePosition === 25"
+                            is-selectable="isPieceSelectable(false)"
+                            class="white">
+                        </ad-circle>           
                     </div>
                 </div>
                 <div id="right-spaces" class="vertical grid-block">

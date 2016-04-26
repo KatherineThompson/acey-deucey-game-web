@@ -18,7 +18,7 @@
                         <div class="align-center v-align grid-block">
                             <ad-circle num-pieces="gameState.playerOne.initialPieces"
                                 ng-click="selectPiece(-1)"
-                                is-selected="turnState.currentPiecePosition === -1"
+                                is-selected="turnState.currentPiecePosition === -1 && turnState.availableSpaces"
                                 is-selectable="isPieceSelectable(true, gameState.playerOne.initialPieces)"
                                 class="red">
                             </ad-circle>
@@ -45,7 +45,7 @@
                         <div class="grid-block v-align align-center">
                             <ad-circle num-pieces="gameState.playerTwo.initialPieces"
                                 ng-click="selectPiece(24)"
-                                is-selected="turnState.currentPiecePosition === 24"
+                                is-selected="turnState.currentPiecePosition === 24 && turnState.availableSpaces"
                                 is-selectable="isPieceSelectable(false, gameState.playerTwo.initialPieces)"
                                 class="white">
                             </ad-circle>
@@ -82,7 +82,7 @@
                     <div id="red-bar" class="grid-block align-center v-align">
                         <ad-circle num-pieces="gameState.playerOne.barPieces"
                             ng-click="selectPiece(-2)"
-                            is-selected="turnState.currentPiecePosition === -2"
+                            is-selected="turnState.currentPiecePosition === -2 && turnState.availableSpaces"
                             is-selectable="isPieceSelectable(true)"                        
                             class="red">
                         </ad-circle>
@@ -96,7 +96,7 @@
                     <div id="white-bar" class="grid-block align-center v-align">
                         <ad-circle num-pieces="gameState.playerTwo.barPieces"
                             ng-click="selectPiece(25)"
-                            is-selected="turnState.currentPiecePosition === 25"
+                            is-selected="turnState.currentPiecePosition === 25 && turnState.availableSpaces"
                             is-selectable="isPieceSelectable(false)"
                             class="white">
                         </ad-circle>           

@@ -81,7 +81,7 @@ body {
     .#{$name} .piece {
         @include fill-object("circle", $primary-color);
         @include fill-object("text", $secondary-color);
-        &.selected {
+        &.selectable.selected {
             @include fill-object("circle", $dark-primary-color);
         }
     }

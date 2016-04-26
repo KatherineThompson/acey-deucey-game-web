@@ -5523,7 +5523,7 @@ body {
 .white .piece text {
   fill: red; }
 
-.white .piece.selected circle {
+.white .piece.selectable.selected circle {
   fill: #ffff71; }
 
 .white:hover:not(.winning) .piece.selectable {
@@ -5548,7 +5548,7 @@ p .white, p.white {
 .red .piece text {
   fill: ivory; }
 
-.red .piece.selected circle {
+.red .piece.selectable.selected circle {
   fill: maroon; }
 
 .red:hover:not(.winning) .piece.selectable {

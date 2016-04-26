@@ -21,7 +21,12 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
           return;
         }
         $scope.turnState.currentPiecePosition = -1;
-        $scope.turnState.availableSpaces = [$scope.turnState.rolls.first - 1, $scope.turnState.rolls.second - 1];
+        $scope.turnState.availableSpaces = gameEngine.findPossibleMoves(
+            $scope.gameState,
+            _.values($scope.turnState.rolls),
+            false,
+            $scope.turnState.currentPiecePosition
+        );
     };
     $scope.isSpaceDisabled = index => !_.includes($scope.turnState.availableSpaces, index);
     $scope.isPieceSelectable = (indexOrPlayerName) => {

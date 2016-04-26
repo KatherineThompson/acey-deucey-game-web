@@ -3774,8 +3774,7 @@ meter {
     z-index: 1001; }
 
 .modal {
-  max-width: 600px;
-  border-radius: 0px; }
+  max-width: 600px; }
   .tiny > .modal {
     max-width: 300px; }
   .small > .modal {
@@ -5524,6 +5523,9 @@ body {
 .white .piece text {
   fill: red; }
 
+.white .piece.selected circle {
+  fill: #ffff71; }
+
 .white:hover:not(.winning) .piece.selectable {
   cursor: pointer; }
   .white:hover:not(.winning) .piece.selectable circle {
@@ -5545,6 +5547,9 @@ p .white, p.white {
 
 .red .piece text {
   fill: ivory; }
+
+.red .piece.selected circle {
+  fill: maroon; }
 
 .red:hover:not(.winning) .piece.selectable {
   cursor: pointer; }

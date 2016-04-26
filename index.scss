@@ -69,21 +69,25 @@ body {
     padding: .15em;
 }
 
+@mixin fill-object($object, $color) {
+    #{$object} {
+        fill: $color;
+    }
+}
+
 @mixin piece-classes($name, $primary-color, $secondary-color) {
     $dark-primary-color: darken($primary-color, 25%);
+    
     .#{$name} .piece {
-        circle {
-            fill: $primary-color;
-        }
-        text {
-            fill: $secondary-color;
+        @include fill-object("circle", $primary-color);
+        @include fill-object("text", $secondary-color);
+        &.selected {
+            @include fill-object("circle", $dark-primary-color);
         }
     }
     .#{$name}:hover:not(.winning) .piece.selectable {
         cursor: pointer;
-        circle {
-            fill: $dark-primary-color;
-        }
+        @include fill-object("circle", $dark-primary-color);
     }
     
     ad-dice.#{$name}, div {

@@ -79,7 +79,7 @@ body {
 @mixin piece-classes($name, $primary-color, $secondary-color) {
     $dark-primary-color: darken($primary-color, 25%);
 
-    @keyframes unavailable-piece {
+    @keyframes unavailable-#{$name}-piece {
         0% {
             fill: $dark-primary-color;
         }
@@ -100,7 +100,7 @@ body {
     
     .#{$name}.unavailable .piece circle{
         animation-duration: .6s;
-        animation-name: unavailable-piece;
+        animation-name: unavailable-#{$name}-piece;
         animation-timing-function: step-end;
     }
     

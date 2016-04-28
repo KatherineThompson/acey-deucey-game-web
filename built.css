@@ -5517,7 +5517,7 @@ body {
 .message-area {
   padding: .15em; }
 
-@keyframes unavailable-piece {
+@keyframes unavailable-white-piece {
   0% {
     fill: #ffff71; }
   100% {
@@ -5534,7 +5534,7 @@ body {
 
 .white.unavailable .piece circle {
   animation-duration: .6s;
-  animation-name: unavailable-piece;
+  animation-name: unavailable-white-piece;
   animation-timing-function: step-end; }
 
 .white:hover:not(.winning) .piece.selectable {
@@ -5553,7 +5553,7 @@ ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
 p .white, p.white {
   color: ivory; }
 
-@keyframes unavailable-piece {
+@keyframes unavailable-red-piece {
   0% {
     fill: maroon; }
   100% {
@@ -5570,7 +5570,7 @@ p .white, p.white {
 
 .red.unavailable .piece circle {
   animation-duration: .6s;
-  animation-name: unavailable-piece;
+  animation-name: unavailable-red-piece;
   animation-timing-function: step-end; }
 
 .red:hover:not(.winning) .piece.selectable {

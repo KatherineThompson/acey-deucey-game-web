@@ -75,9 +75,20 @@ body {
     }
 }
 
+
 @mixin piece-classes($name, $primary-color, $secondary-color) {
     $dark-primary-color: darken($primary-color, 25%);
-    $light-primary-color: lighten($primary-color, 25%);
+
+    @keyframes unavailable-piece {
+        0% {
+            fill: $dark-primary-color;
+        }
+        
+        100% {
+            fill: $primary-color;
+        }
+    }
+    
     
     .#{$name} .piece {
         @include fill-object("circle", $primary-color);
@@ -87,8 +98,10 @@ body {
         }
     }
     
-    .#{$name}.unavailable .piece {
-            @include fill-object("circle", $dark-primary-color);
+    .#{$name}.unavailable .piece circle{
+        animation-duration: .6s;
+        animation-name: unavailable-piece;
+        animation-timing-function: step-end;
     }
     
     .#{$name}:hover:not(.winning) .piece.selectable {

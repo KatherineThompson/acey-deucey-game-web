@@ -5517,6 +5517,12 @@ body {
 .message-area {
   padding: .15em; }
 
+@keyframes unavailable-piece {
+  0% {
+    fill: #ffff71; }
+  100% {
+    fill: ivory; } }
+
 .white .piece circle {
   fill: ivory; }
 
@@ -5527,7 +5533,9 @@ body {
   fill: #ffff71; }
 
 .white.unavailable .piece circle {
-  fill: #ffff71; }
+  animation-duration: .6s;
+  animation-name: unavailable-piece;
+  animation-timing-function: step-end; }
 
 .white:hover:not(.winning) .piece.selectable {
   cursor: pointer; }
@@ -5545,6 +5553,12 @@ ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
 p .white, p.white {
   color: ivory; }
 
+@keyframes unavailable-piece {
+  0% {
+    fill: maroon; }
+  100% {
+    fill: red; } }
+
 .red .piece circle {
   fill: red; }
 
@@ -5555,7 +5569,9 @@ p .white, p.white {
   fill: maroon; }
 
 .red.unavailable .piece circle {
-  fill: maroon; }
+  animation-duration: .6s;
+  animation-name: unavailable-piece;
+  animation-timing-function: step-end; }
 
 .red:hover:not(.winning) .piece.selectable {
   cursor: pointer; }

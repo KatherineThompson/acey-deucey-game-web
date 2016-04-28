@@ -21,6 +21,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         availableSpaces: [],
         isBar: null
     };
+    
     $scope.selectPiece = function(index) {
         if (!$scope.turnState.rolls.first) {
             return;
@@ -28,7 +29,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         
         $scope.turnState.currentPiecePosition = index;
         
-        $scope.turnState.isBar = index < -1 || index > 24 ? true : false;
+        $scope.turnState.isBar = !_.inRange(index, -1, 25);
         
         const clampedIndex = _.clamp($scope.turnState.currentPiecePosition, -1, 24);
         
@@ -39,7 +40,9 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
             clampedIndex
         );
     };
+    
     $scope.isSpaceDisabled = index => !_.includes($scope.turnState.availableSpaces, index);
+    
     $scope.isPieceSelectable = (indexOrPlayerName, isBar) => {
         let isCorrectPlayer = null;
         let pieceExists = null;

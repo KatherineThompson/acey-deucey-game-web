@@ -21,6 +21,10 @@ angular.module("acey-deucey").directive("adCircle", function(){
                 scope.selectedClass.selectable = scope.isSelectable;
             });
             
+            scope.$watch("numPieces", () => {
+                scope.selectedClass.disabled = !scope.numPieces;
+            });
+            
         },
         scope: {
             numPieces: "=",

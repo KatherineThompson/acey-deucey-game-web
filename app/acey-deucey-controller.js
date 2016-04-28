@@ -23,8 +23,9 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     };
     $scope.selectPiece = function(index) {
         if (!$scope.turnState.rolls.first) {
-          return;
+            return;
         }
+        
         $scope.turnState.currentPiecePosition = index;
         
         $scope.turnState.isBar = index < -1 || index > 24 ? true : false;

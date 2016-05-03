@@ -17,10 +17,12 @@
                         </div>
                         <div class="align-center v-align grid-block">
                             <ad-circle num-pieces="gameState.playerOne.initialPieces"
-                                ng-click="selectPiece(-1)"
-                                is-selected="turnState.currentPiecePosition === -1 && turnState.availableSpaces"
-                                is-selectable="isPieceSelectable(true, false)"
-                                class="red unavailable">
+                                index="-1"
+                                game-state="gameState"
+                                turn-state="turnState"
+                                piece-is-player-one="true"
+                                is-bar="false"
+                                class="red">
                             </ad-circle>
                         </div>
                     </div>

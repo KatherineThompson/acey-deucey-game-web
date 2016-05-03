@@ -27,7 +27,7 @@ angular.module("acey-deucey").directive("adCircle", function(){
                 true
             );
             
-            scope.$watch("[gameState, turnState]", () => {
+            scope.$watch("[gameState.isPlayerOne, gameState.playerOne, gameState.playerTwo, turnState.rolls]", () => {
                 scope.selectedClass.selectable = scope.isPieceSelectable();
             }, true);
             
@@ -36,7 +36,10 @@ angular.module("acey-deucey").directive("adCircle", function(){
             });
             
             scope.selectPiece = function() {
-                if (!_.get(scope, ["turnState", "rolls", "first"])) {
+                if (
+                    !_.get(scope, ["turnState", "rolls", "first"]) ||
+                    scope.pieceIsPlayerOne !== scope.gameState.isPlayerOne
+                ) {
                     return;
                 }
                 

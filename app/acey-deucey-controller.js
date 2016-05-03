@@ -24,21 +24,4 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     
     $scope.isSpaceDisabled = index => !_.includes($scope.turnState.availableSpaces, index);
     
-    // $scope.isPieceSelectable = (indexOrPlayerName, isBar) => {
-    //     let isCorrectPlayer = null;
-    //     let pieceExists = null;
-    //     if (_.isBoolean(indexOrPlayerName)) {
-    //         isCorrectPlayer = indexOrPlayerName === $scope.gameState.isPlayerOne;
-    //         const activePlayer = $scope.gameState.isPlayerOne ? "playerOne" : "playerTwo";
-    //         if (isBar) {
-    //             pieceExists = $scope.gameState[activePlayer].barPieces;
-    //         } else {
-    //             pieceExists = $scope.gameState[activePlayer].initialPieces;
-    //         }
-    //     } else if (_.isNumber(indexOrPlayerName)) {
-    //         isCorrectPlayer = $scope.gameState.board[indexOrPlayerName].isPlayerOne === $scope.gameState.isPlayerOne;
-    //     }
-        
-    //     return $scope.turnState.rolls.first && isCorrectPlayer && pieceExists;
-    // };
 });

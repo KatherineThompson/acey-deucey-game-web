@@ -3,6 +3,7 @@
 const angular = require("angular");
 const _ = require("lodash");
 const gameEngine = require("acey-deucey-game-engine");
+const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").directive("adCircle", function(){
     return {
@@ -12,14 +13,19 @@ angular.module("acey-deucey").directive("adCircle", function(){
                     </svg>`,
         link: (scope, element) => {
             element.addClass("align-center grid-block");
+            element.addClass(getPlayerParams(scope.pieceIsPlayerOne).spanClass);
             
             scope.selectedClass = {};
             
-            scope.$watch("[turnState.currentPiecePosition, turnState.availableSpaces]", () => {
-                scope.selectedClass.selected = scope.turnState &&
-                    scope.turnState.currentPiecePosition === scope.index &&
-                    scope.turnState.availableSpaces;
-            }, true);
+            scope.$watch(
+                "[turnState.currentPiecePosition, turnState.availableSpaces]", 
+                ([currentPiecePosition, availableSpaces]) => {
+                    scope.selectedClass.selected = 
+                        currentPiecePosition === scope.index &&
+                        availableSpaces;
+                }, 
+                true
+            );
             
             scope.$watch("[gameState, turnState]", () => {
                 scope.selectedClass.selectable = scope.isPieceSelectable();

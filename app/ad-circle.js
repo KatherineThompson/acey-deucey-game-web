@@ -38,7 +38,7 @@ angular.module("acey-deucey").directive("adCircle", function(){
             scope.selectPiece = function() {
                 if (
                     !_.get(scope, ["turnState", "rolls", "first"]) ||
-                    scope.pieceIsPlayerOne !== scope.gameState.isPlayerOne
+                    !scope.isPieceSelectable()
                 ) {
                     return;
                 }
@@ -55,6 +55,14 @@ angular.module("acey-deucey").directive("adCircle", function(){
                     scope.turnState.isBar,
                     clampedIndex
                 );
+                debugger;
+                
+                if (!scope.turnState.availableSpaces.length) {
+                    element.addClass("unavailable");
+                    scope.turnState.currentPiecePosition = null;
+                    scope.turnState.isBar = null;
+                    setTimeout(() => element.removeClass("unavailable"), 1000);
+                }
             };
             
             scope.isPieceSelectable = () => {

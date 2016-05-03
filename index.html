@@ -68,6 +68,7 @@
                     <div class="grid-block">
                         <ad-space ng-repeat="index in firstQuadrantIndices"
                             index="index"
+                            game-state="gameState"
                             board-space="gameState.board[index]"
                             turn-state="turnState">
                         </ad-space>
@@ -77,6 +78,7 @@
                         <ad-space ng-repeat="index in fourthQuadrantIndices"
                             index="index"
                             turn-state="turnState"
+                            game-state="gameState"
                             board-space="gameState.board[index]"
                             orientation="bottom">
                         </ad-space>                   
@@ -114,6 +116,7 @@
                     <div class="grid-block">
                         <ad-space ng-repeat="index in secondQuadrantIndices"
                             index="index"
+                            game-state="gameState"
                             turn-state="turnState"
                             board-space="gameState.board[index]"
                             is-disabled="isSpaceDisabled(index)">
@@ -123,6 +126,7 @@
                     <div class="grid-block">
                         <ad-space ng-repeat="index in thirdQuadrantIndices"
                             index="index"
+                            game-state="gameState"
                             turn-state="turnState"
                             board-space="gameState.board[index]"
                             is-disabled="isSpaceDisabled(index)"

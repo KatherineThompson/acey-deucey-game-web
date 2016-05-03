@@ -2,12 +2,15 @@
 
 const angular = require("angular");
 const _ = require("lodash");
+const gameEngine = require("acey-deucey-game-engine");
+const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").directive("adSpace", function() {
     return {
-        template: `<svg class="space" ng-class="disabledClass" viewbox="0 0 100 350">
+        template: `<svg class="space" ng-class="disabledClass" ng-click="placePiece()" viewbox="0 0 100 350">
                         <polygon ng-attr-points="{{orientationParams.polygonPoints}}"/>
-                        <g class="white piece"
+                        <g class="piece"
+                            ng-class="playerClass"
                             ng-attr-transform="scale(.75), {{orientationParams.groupTransform}}"
                             ng-if="boardSpace.numPieces"
                         >
@@ -18,6 +21,25 @@ angular.module("acey-deucey").directive("adSpace", function() {
                         </g>
                     </svg>`,
         link: function(scope, element) {
+            scope.playerClass = {};
+            
+            scope.placePiece = function() {
+                if (scope.disabledClass.disabled || scope.turnState.currentPiecePosition === null) {
+                    return;
+                }
+                const proposedMove = {
+                    currentPosition: scope.turnState.currentPiecePosition,
+                    isBar: scope.turnState.isBar,
+                    numberOfSpaces: scope.index + (scope.turnState.currentPiecePosition * scope.gameState.isPlayerOne ? 1 : -1)
+                };
+                // check is valid move and add unavailable class?
+                // need to deal with bar piece indices
+                // need to update actual game state
+                scope.gameState = gameEngine.makeMove(scope.gameState, proposedMove);
+                scope.playerClass.red = true;
+                debugger;
+            };
+            
             scope.disabledClass = {};
             
             scope.$watch(
@@ -49,7 +71,8 @@ angular.module("acey-deucey").directive("adSpace", function() {
             orientation: "@",
             boardSpace: "=",
             index: "=",
-            turnState: "="
+            turnState: "=",
+            gameState: "="
         }
     };
 });

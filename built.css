@@ -5523,13 +5523,13 @@ body {
   100% {
     fill: ivory; } }
 
-.white .piece circle {
+.white .piece circle, .white.piece circle {
   fill: ivory; }
 
-.white .piece text {
+.white .piece text, .white.piece text {
   fill: red; }
 
-.white .piece.selectable.selected circle {
+.white .piece.selectable.selected circle, .white.piece.selectable.selected circle {
   fill: #ffff71; }
 
 .white.unavailable .piece circle {
@@ -5559,13 +5559,13 @@ p .white, p.white {
   100% {
     fill: red; } }
 
-.red .piece circle {
+.red .piece circle, .red.piece circle {
   fill: red; }
 
-.red .piece text {
+.red .piece text, .red.piece text {
   fill: ivory; }
 
-.red .piece.selectable.selected circle {
+.red .piece.selectable.selected circle, .red.piece.selectable.selected circle {
   fill: maroon; }
 
 .red.unavailable .piece circle {

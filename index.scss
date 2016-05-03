@@ -90,7 +90,7 @@ body {
     }
     
     
-    .#{$name} .piece {
+    .#{$name} .piece, .#{$name}.piece {
         @include fill-object("circle", $primary-color);
         @include fill-object("text", $secondary-color);
         &.selectable.selected {

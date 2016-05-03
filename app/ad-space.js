@@ -35,9 +35,10 @@ angular.module("acey-deucey").directive("adSpace", function() {
                 // check is valid move and add unavailable class?
                 // need to deal with bar piece indices
                 // need to update actual game state
+                // update available rolls
+                // change space coloring?
                 scope.gameState = gameEngine.makeMove(scope.gameState, proposedMove);
-                scope.playerClass.red = true;
-                debugger;
+                scope.playerClass[getPlayerParams(scope.gameState.isPlayerOne).spanClass] = true;
             };
             
             scope.disabledClass = {};

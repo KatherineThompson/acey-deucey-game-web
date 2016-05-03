@@ -30,7 +30,8 @@ angular.module("acey-deucey").directive("adSpace", function() {
                 const proposedMove = {
                     currentPosition: scope.turnState.currentPiecePosition,
                     isBar: scope.turnState.isBar,
-                    numberOfSpaces: scope.index + (scope.turnState.currentPiecePosition * scope.gameState.isPlayerOne ? 1 : -1)
+                    numberOfSpaces:
+                        scope.index + (scope.turnState.currentPiecePosition * scope.gameState.isPlayerOne ? 1 : -1)
                 };
                 // check is valid move and add unavailable class?
                 // need to deal with bar piece indices

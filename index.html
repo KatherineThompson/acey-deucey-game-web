@@ -67,15 +67,17 @@
                 <div id="left-spaces" class="vertical grid-block">
                     <div class="grid-block">
                         <ad-space ng-repeat="index in firstQuadrantIndices"
+                            index="index"
                             board-space="gameState.board[index]"
-                            is-disabled="isSpaceDisabled(index)">
+                            turn-state="turnState">
                         </ad-space>
                     </div>
                     <ad-dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
                     <div class="grid-block">
                         <ad-space ng-repeat="index in fourthQuadrantIndices"
+                            index="index"
+                            turn-state="turnState"
                             board-space="gameState.board[index]"
-                            is-disabled="isSpaceDisabled(index)"
                             orientation="bottom">
                         </ad-space>                   
                     </div>
@@ -111,6 +113,8 @@
                 <div id="right-spaces" class="vertical grid-block">
                     <div class="grid-block">
                         <ad-space ng-repeat="index in secondQuadrantIndices"
+                            index="index"
+                            turn-state="turnState"
                             board-space="gameState.board[index]"
                             is-disabled="isSpaceDisabled(index)">
                         </ad-space>                   
@@ -118,6 +122,8 @@
                     <ad-dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
                     <div class="grid-block">
                         <ad-space ng-repeat="index in thirdQuadrantIndices"
+                            index="index"
+                            turn-state="turnState"
                             board-space="gameState.board[index]"
                             is-disabled="isSpaceDisabled(index)"
                             orientation="bottom">

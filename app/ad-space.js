@@ -1,10 +1,11 @@
 "use strict";
 
 const angular = require("angular");
+const _ = require("lodash");
 
 angular.module("acey-deucey").directive("adSpace", function() {
     return {
-        template: `<svg class="space" ng-class="{'disabled': isDisabled}" viewbox="0 0 100 350">
+        template: `<svg class="space" ng-class="disabledClass" viewbox="0 0 100 350">
                         <polygon ng-attr-points="{{orientationParams.polygonPoints}}"/>
                         <g class="white piece"
                             ng-attr-transform="scale(.75), {{orientationParams.groupTransform}}"
@@ -17,6 +18,19 @@ angular.module("acey-deucey").directive("adSpace", function() {
                         </g>
                     </svg>`,
         link: function(scope, element) {
+            scope.disabledClass = {};
+            
+            scope.$watch(
+                "turnState.currentPiecePosition",
+                () => {
+                    if (scope.turnState.availableSpaces) {
+                        scope.disabledClass.disabled = !_.includes(scope.turnState.availableSpaces, scope.index);
+                    }
+                },
+                true
+            );
+            
+            
             if (scope.orientation === "bottom") {
                 scope.orientationParams = {
                     polygonPoints: "0,350 100,350 50,0",
@@ -34,7 +48,10 @@ angular.module("acey-deucey").directive("adSpace", function() {
         scope: {
             orientation: "@",
             boardSpace: "=",
-            isDisabled: "="
+            index: "=",
+            turnState: "="
         }
     };
 });
+
+    // $scope.isSpaceDisabled = index => !_.includes($scope.turnState.availableSpaces, index);

@@ -21,7 +21,4 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         availableSpaces: [],
         isBar: null
     };
-    
-    $scope.isSpaceDisabled = index => !_.includes($scope.turnState.availableSpaces, index);
-    
 });

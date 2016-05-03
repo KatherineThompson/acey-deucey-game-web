@@ -55,7 +55,6 @@ angular.module("acey-deucey").directive("adCircle", function(){
                     scope.turnState.isBar,
                     clampedIndex
                 );
-                debugger;
                 
                 if (!scope.turnState.availableSpaces.length) {
                     element.addClass("unavailable");

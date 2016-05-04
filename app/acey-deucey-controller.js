@@ -30,7 +30,10 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         $scope.turnState.isBar = null;
         $scope.turnState.availableSpaces = [];
         for (let roll in $scope.turnState.rolls) {
-            if ($scope.turnState.rolls[roll].num === proposedMove.numberOfSpaces) {
+            if (
+                !$scope.turnState.rolls[roll].used &&
+                $scope.turnState.rolls[roll].num === proposedMove.numberOfSpaces
+            ) {
                 $scope.turnState.rolls[roll].used = true;
                 break;
             }

@@ -2,7 +2,7 @@
 
 const angular = require("angular");
 const _ = require("lodash");
-// const gameEngine = require("acey-deucey-game-engine");
+const gameEngine = require("acey-deucey-game-engine");
 const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").directive("adSpace", function() {
@@ -37,14 +37,12 @@ angular.module("acey-deucey").directive("adSpace", function() {
                     numberOfSpaces:
                         scope.index + (scope.turnState.currentPiecePosition * scope.gameState.isPlayerOne ? 1 : -1)
                 };
-                // check is valid move and add unavailable class?
-                // need to deal with bar piece indices
-                // update available rolls
-                // change space coloring?
-                // un color original piece
-                scope.$emit("make-move", proposedMove);
                 
-                // scope.gameState = gameEngine.makeMove(scope.gameState, proposedMove);
+                // need to deal with bar piece indices
+                if (gameEngine.isValidMove(scope.gameState, proposedMove)) {
+                    scope.$emit("make-move", proposedMove);
+                }
+                
             };
             
             scope.$watch("boardSpace.isPlayerOne", () =>{

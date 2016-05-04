@@ -2,10 +2,9 @@
 
 const angular = require("angular");
 const _ = require("lodash");
-const gameEngine = require("acey-deucey-game-engine");
 const getPlayerParams = require("./get-player-params");
 
-angular.module("acey-deucey").directive("adCircle", function($timeout) {
+angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $timeout) {
     return {
         template: `<svg class="piece" ng-class="selectedClass" ng-click="selectPiece()" viewbox="0 0 100 100">
                         <circle cx="50" cy="50" r="50"/>
@@ -36,50 +35,26 @@ angular.module("acey-deucey").directive("adCircle", function($timeout) {
             });
             
             scope.selectPiece = function() {
-                if (
-                    !_.get(scope, ["turnState", "rolls", "first"]) ||
-                    !isPieceSelectable()
-                ) {
-                    return;
-                }
-                
-                scope.turnState.currentPiecePosition = scope.index;
-                
-                scope.turnState.isBar = !_.inRange(scope.index, -1, 25);
-                
-                const clampedIndex = _.clamp(scope.turnState.currentPiecePosition, -1, 24);
-                
-                scope.turnState.availableSpaces = gameEngine.findPossibleMoves(
-                    scope.gameState,
-                    _.values(scope.turnState.rolls),
-                    scope.turnState.isBar,
-                    clampedIndex
-                );
-                
+                adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable);
                 if (!scope.turnState.availableSpaces.length) {
                     element.addClass("unavailable");
-                    scope.turnState.currentPiecePosition = null;
-                    scope.turnState.isBar = null;
                     $timeout(() => element.removeClass("unavailable"), 1000);
                 }
             };
             
             function isPieceSelectable() {
-                let isCorrectPlayer = null;
-                let pieceExists = null;
-                if (_.isBoolean(scope.pieceIsPlayerOne)) {
-                    isCorrectPlayer = scope.pieceIsPlayerOne === scope.gameState.isPlayerOne;
-                    const activePlayer = scope.gameState.isPlayerOne ? "playerOne" : "playerTwo";
-                    if (scope.isBar) {
-                        pieceExists = scope.gameState[activePlayer].barPieces;
-                    } else {
-                        pieceExists = scope.gameState[activePlayer].initialPieces;
-                    }
+                if (!scope.gameState) {
+                    return false;
+                }  
+                const isCorrectPlayer = scope.pieceIsPlayerOne === scope.gameState.isPlayerOne;
+                const activePlayer = scope.gameState.isPlayerOne ? "playerOne" : "playerTwo";
+                let pieceExists;
+                if (scope.isBar) {
+                    pieceExists = scope.gameState[activePlayer].barPieces;
+                } else {
+                    pieceExists = scope.gameState[activePlayer].initialPieces;
                 }
-        // } else if (_.isNumber(indexOrPlayerName)) {
-        //     isCorrectPlayer = scope.gameState.board[indexOrPlayerName].isPlayerOne === scope.gameState.isPlayerOne;
-        // }
-                return _.get(scope, ["turnState", "rolls", "first"]) && isCorrectPlayer && pieceExists;
+                return _.get(scope, ["turnState", "rolls", "first", "num"]) && isCorrectPlayer && pieceExists;
             }            
             
         },

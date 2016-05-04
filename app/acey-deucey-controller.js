@@ -19,11 +19,9 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         rolls: {first: {num: null, used: null}, second: {num: null, used: null}},
         currentPiecePosition: null,
         availableSpaces: [],
-        isBar: null
+        isBar: null,
+        gameState: null
     };
-    $scope.turnGameState = null;
-    
-    // maybe keep original gameState and array or prosed moves
     
     function resetPieces() {
         $scope.turnState.currentPiecePosition = null;
@@ -31,10 +29,8 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         $scope.turnState.availableSpaces = [];
     }
     
-    function resetDiceCount() {
-        for (let roll in $scope.turnState.rolls) {
-            $scope.turnState.rolls[roll].used = null;
-        }
+    function resetDiceUsed() {
+        _.forEach($scope.turnState.rolls, roll => roll.used = null);
     }
     
     $scope.$on("submit-turn", () => {
@@ -42,18 +38,18 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     });
     
     $scope.$on("reset-turn", () => {
-        if (!$scope.turnGameState) {
+        if (!$scope.turnState.gameState) {
             return;
         }
-        $scope.gameState = $scope.turnGameState;    
+        $scope.gameState = $scope.turnState.gameState;    
         resetPieces();
-        resetDiceCount();
-        $scope.turnGameState = null;
+        resetDiceUsed();
+        $scope.turnState.gameState = null;
     }); 
     
     $scope.$on("make-move", (event, proposedMove) => {
-        if (!$scope.turnGameState) {
-            $scope.turnGameState = $scope.gameState;
+        if (!$scope.turnState.gameState) {
+            $scope.turnState.gameState = $scope.gameState;
         }
         $scope.gameState = gameEngine.makeMove($scope.gameState, proposedMove);
         resetPieces();

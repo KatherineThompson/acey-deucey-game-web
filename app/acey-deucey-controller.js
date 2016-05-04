@@ -3,6 +3,7 @@
 const angular = require("angular");
 const gameEngine = require("acey-deucey-game-engine");
 const _ = require("lodash");
+const assert = require("assert");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState = gameEngine.getInitialGameState();
@@ -20,7 +21,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         currentPiecePosition: null,
         availableSpaces: [],
         isBar: null,
-        gameState: null
+        initialGameState: null
     };
     
     function resetPieces() {
@@ -38,30 +39,25 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     });
     
     $scope.$on("reset-turn", () => {
-        if (!$scope.turnState.gameState) {
+        if (!$scope.turnState.initialGameState) {
             return;
         }
-        $scope.gameState = $scope.turnState.gameState;    
+        $scope.gameState = $scope.turnState.initialGameState;    
         resetPieces();
         resetDiceUsed();
-        $scope.turnState.gameState = null;
+        $scope.turnState.initialGameState = null;
     }); 
     
     $scope.$on("make-move", (event, proposedMove) => {
-        if (!$scope.turnState.gameState) {
-            $scope.turnState.gameState = $scope.gameState;
+        if (!$scope.turnState.initialGameState) {
+            $scope.turnState.initialGameState = $scope.gameState;
         }
         $scope.gameState = gameEngine.makeMove($scope.gameState, proposedMove);
         resetPieces();
-        for (let roll in $scope.turnState.rolls) {
-            if (
-                !$scope.turnState.rolls[roll].used &&
-                $scope.turnState.rolls[roll].num === proposedMove.numberOfSpaces
-            ) {
-                $scope.turnState.rolls[roll].used = true;
-                break;
-            }
-        }
+        const matchingRoll = _.find($scope.turnState.rolls, {used: null, num: proposedMove.numberOfSpaces});
+        assert(matchingRoll, `could not find matching roll for num = ${proposedMove.numberOfSpaces}`);
+        matchingRoll.used = true;
     });
     
 });
+

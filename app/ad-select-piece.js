@@ -3,8 +3,8 @@ const angular = require("angular");
 const _ = require("lodash");
 const gameEngine = require("acey-deucey-game-engine");
 
-angular.module("acey-deucey").factory("adSelectPiece", function($timeout) {
-    return function(index, turnState, gameState, isPieceSelectable, element) {
+angular.module("acey-deucey").factory("adSelectPiece", function() {
+    return function(index, turnState, gameState, isPieceSelectable) {
         if (
             !_.get(turnState, ["rolls", "first", "num"]) ||
             !isPieceSelectable()
@@ -34,10 +34,8 @@ angular.module("acey-deucey").factory("adSelectPiece", function($timeout) {
         );
         
         if (!turnState.availableSpaces.length) {
-            element.addClass("unavailable");
             turnState.currentPiecePosition = null;
             turnState.isBar = null;
-            $timeout(() => element.removeClass("unavailable"), 1000);
         }            
     };
 });

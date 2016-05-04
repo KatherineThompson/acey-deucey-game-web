@@ -4,7 +4,7 @@ const angular = require("angular");
 const _ = require("lodash");
 const getPlayerParams = require("./get-player-params");
 
-angular.module("acey-deucey").directive("adCircle", function(adSelectPiece) {
+angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $timeout) {
     return {
         template: `<svg class="piece" ng-class="selectedClass" ng-click="selectPiece()" viewbox="0 0 100 100">
                         <circle cx="50" cy="50" r="50"/>
@@ -35,10 +35,14 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece) {
             });
             
             scope.selectPiece = function() {
-                adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable, element);
+                adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable);
+                if (!scope.turnState.availableSpaces.length) {
+                    element.addClass("unavailable");
+                    $timeout(() => element.removeClass("unavailable"), 1000);
+                }
             };
             
-            function isPieceSelectable() {
+            function isPieceSelectable() {  
                 let isCorrectPlayer = null;
                 let pieceExists = null;
                 if (_.isBoolean(scope.pieceIsPlayerOne)) {

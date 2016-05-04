@@ -5,7 +5,7 @@ const _ = require("lodash");
 const gameEngine = require("acey-deucey-game-engine");
 const getPlayerParams = require("./get-player-params");
 
-angular.module("acey-deucey").directive("adSpace", function() {
+angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $timeout) {
     return {
         template: `<svg class="space"
                         ng-class="{disabled: state.disabled}"
@@ -16,7 +16,8 @@ angular.module("acey-deucey").directive("adSpace", function() {
                         <g class="piece"
                             ng-class="playerClass"
                             ng-attr-transform="scale(.75), {{orientationParams.groupTransform}}"
-                            ng-if="boardSpace.numPieces">
+                            ng-if="boardSpace.numPieces"
+                            ng-click="selectPiece()">
                             
                             <circle cx="50" cy="175" r="50"/>
                             <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">
@@ -26,6 +27,18 @@ angular.module("acey-deucey").directive("adSpace", function() {
                     </svg>`,
         link: function(scope, element) {
             scope.playerClass = {};
+            
+            scope.selectPiece = function() {
+                adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable);
+                if (!scope.turnState.availableSpaces.length) {
+                    scope.playerClass.unavailable = true;
+                    $timeout(() => scope.playerClass.unavailable = false, 1000);
+                }
+            };
+            
+            function isPieceSelectable() {
+                return true;
+            }
             
             scope.placePiece = function() {
                 if (scope.state.disabled || scope.turnState.currentPiecePosition === null) {
@@ -38,7 +51,7 @@ angular.module("acey-deucey").directive("adSpace", function() {
                     currentPosition: clampedIndex,
                     isBar: scope.turnState.isBar,
                     numberOfSpaces:
-                        scope.index + (clampedIndex * scope.gameState.isPlayerOne ? 1 : -1)
+                        Math.abs(scope.index - clampedIndex)
                 };
                 
                 if (gameEngine.isValidMove(scope.gameState, proposedMove)) {

@@ -37,6 +37,10 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         }
     }
     
+    $scope.$on("submit-turn", () => {
+        
+    });
+    
     $scope.$on("reset-turn", () => {
         if (!$scope.turnGameState) {
             return;
@@ -44,6 +48,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         $scope.gameState = $scope.turnGameState;    
         resetPieces();
         resetDiceCount();
+        $scope.turnGameState = null;
     }); 
     
     $scope.$on("make-move", (event, proposedMove) => {

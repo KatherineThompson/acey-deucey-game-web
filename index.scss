@@ -211,13 +211,14 @@ ad-space {
 }
 
 .disabled {
-    opacity: .35;
+    $opacity: .35;
+    opacity: $opacity;
     cursor: default;
     
     &.space {
         opacity: 1;
         polygon {
-            fill: transparentize($space-color, .65);
+            fill: transparentize($space-color, 1 - $opacity);
         }
     }
 }

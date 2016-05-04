@@ -16,7 +16,13 @@
                             <h4 class="text-center align-bottom">Initial</h4>
                         </div>
                         <div class="align-center v-align grid-block">
-                            <ad-circle></ad-circle>
+                            <ad-circle num-pieces="gameState.playerOne.initialPieces"
+                                index="-1"
+                                game-state="gameState"
+                                turn-state="turnState"
+                                piece-is-player-one="true"
+                                is-bar="false">
+                            </ad-circle>
                         </div>
                     </div>
                     <div id="white-winning" class=" vertical grid-block">
@@ -24,35 +30,27 @@
                             <h4 class=" text-center align-bottom">Winning</h4>
                         </div>
                         <div class="align-center v-align grid-block">
-                            <ad-circle></ad-circle>
+                            <ad-circle num-pieces="gameState.playerTwo.winningPieces" class="white winning"></ad-circle>
                         </div>                        
                     </div>
                 </div>
-                    <div id="left-message-area" class="message-area vertical shrink grid-block">
-                        <p class="text-center"><span class="red">Red</span>, it's your turn</p>
-                        <button class="expand success button">Submit turn</button>
-                        <button class=" expand alert button">Reset turn</button>
-                        <button class="expand button" zf-open="panel">Panel</button>
-                        <a class="expand button" zf-open="winModal">Win modal</a>
-                        <div id="winModal" zf-modal="">
-                            <a class="close-button" zf-close="">×</a>
-                            <p class=" text-center red winner">Red, you've won!</p>
-                        </div>
-                        <a class="expand button" zf-open="dieModal">Die modal</a>
-                        <div id="dieModal" zf-modal="">
-                            <a class="close-button" zf-close="">×</a>
-                            <div class="shrink">
-                                <span class="red dice">1</span>
-                            </div>                                                        
-                        </div>
-                    </div>                   
+                <ad-message-area id="left-message-area" active-player="gameState.isPlayerOne"></ad-message-area>
+                <!--<div>    
+                    <button class="expand button" zf-open="panel">Panel</button>
+                </div>                       -->
                 <div id="bottom-home" class="vertical grid-block">
                     <div id="white-initial" class="vertical grid-block">
                        <div class="grid-block v-align">
                             <h4 class="text-center align-bottom">Initial</h4>
                         </div>
                         <div class="grid-block v-align align-center">
-                            <ad-circle></ad-circle>
+                            <ad-circle num-pieces="gameState.playerTwo.initialPieces"
+                                index="24"
+                                game-state="gameState"
+                                turn-state="turnState"
+                                piece-is-player-one="false""
+                                is-bar="false">
+                            </ad-circle>
                         </div>                        
                     </div>
                     <div id="red-winning" class="vertical grid-block">
@@ -60,34 +58,42 @@
                             <h4 class="text-center align-bottom">Winning</h4>
                         </div>
                         <div class="grid-block v-align align-center">
-                            <ad-circle></ad-circle>
+                            <ad-circle num-pieces="gameState.playerOne.winningPieces" class="red winning"></ad-circle>
                         </div>                            
                     </div>
                 </div>
             </div>
             <div id="spaces" class="grid-block">
                 <div id="left-spaces" class="vertical grid-block">
-                    <div id="spaces-18-23" class="grid-block">
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
+                    <div class="grid-block">
+                        <ad-space ng-repeat="index in firstQuadrantIndices"
+                            index="index"
+                            game-state="gameState"
+                            board-space="gameState.board[index]"
+                            turn-state="turnState">
+                        </ad-space>
                     </div>
-                    <dice class="red"></dice>
-                    <div id="spaces-0-5" class="grid-block">
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>                      
+                    <ad-dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
+                    <div class="grid-block">
+                        <ad-space ng-repeat="index in fourthQuadrantIndices"
+                            index="index"
+                            turn-state="turnState"
+                            game-state="gameState"
+                            board-space="gameState.board[index]"
+                            orientation="bottom">
+                        </ad-space>                   
                     </div>
                 </div>
                 <div id="bar" class="small-1 vertical grid-block">
                     <div id="red-bar" class="grid-block align-center v-align">
-                        <ad-circle></ad-circle>
+                        <ad-circle num-pieces="gameState.playerOne.barPieces"
+                            ng-if="gameState.playerOne.barPieces"
+                            index="-2"
+                            game-state="gameState"
+                            turn-state="turnState"
+                            piece-is-player-one="true"
+                            is-bar="true">
+                        </ad-circle>
                     </div>
                     <div id="right-message-area" class="message-area vertical shrink grid-block">
                         <p class="text-center"><span class="red">Red</span>, it's your turn</p>
@@ -96,26 +102,36 @@
                         <button class="expand button" zf-open="panel">Panel</button>
                     </div>
                     <div id="white-bar" class="grid-block align-center v-align">
-                        <ad-circle></ad-circle>           
+                        <ad-circle num-pieces="gameState.playerTwo.barPieces"
+                            ng-if="gameState.playerTwo.barPieces"
+                            index="25"
+                            game-state="gameState"
+                            turn-state="turnState"
+                            piece-is-player-one="false"
+                            is-bar="true">
+                        </ad-circle>           
                     </div>
                 </div>
                 <div id="right-spaces" class="vertical grid-block">
-                    <div id="spaces-12-17" class="grid-block">
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
-                        <space></space>
+                    <div class="grid-block">
+                        <ad-space ng-repeat="index in secondQuadrantIndices"
+                            index="index"
+                            game-state="gameState"
+                            turn-state="turnState"
+                            board-space="gameState.board[index]"
+                            is-disabled="isSpaceDisabled(index)">
+                        </ad-space>                   
                     </div>
-                    <dice class="white"></dice>
-                    <div id="spaces-6-11" class="grid-block">
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>
-                        <space orientation="bottom"></space>                   
+                    <ad-dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
+                    <div class="grid-block">
+                        <ad-space ng-repeat="index in thirdQuadrantIndices"
+                            index="index"
+                            game-state="gameState"
+                            turn-state="turnState"
+                            board-space="gameState.board[index]"
+                            is-disabled="isSpaceDisabled(index)"
+                            orientation="bottom">
+                        </ad-space>                                
                     </div>                    
                 </div>
             </div>

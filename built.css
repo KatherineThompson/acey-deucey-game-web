@@ -3774,8 +3774,7 @@ meter {
     z-index: 1001; }
 
 .modal {
-  max-width: 600px;
-  border-radius: 0px; }
+  max-width: 600px; }
   .tiny > .modal {
     max-width: 300px; }
   .small > .modal {
@@ -5493,68 +5492,121 @@ body {
 .grid-frame {
   min-height: 313px; }
 
+#left-message-area:not(.ng-hide) {
+  display: block !important;
+  display: none !important; }
+
+#left-message-area:not(.ng-hide) {
+  display: none !important; }
+  @media only screen and (min-width: 64.0625em) {
+    #left-message-area:not(.ng-hide) {
+      display: block !important; } }
+
+#right-message-area {
+  border: 2px solid mediumseagreen;
+  background-color: #a7e1c1; }
+  #right-message-area:not(.ng-hide) {
+    display: none !important;
+    display: block !important; }
+  #right-message-area:not(.ng-hide) {
+    display: block !important; }
+    @media only screen and (min-width: 64.0625em) {
+      #right-message-area:not(.ng-hide) {
+        display: none !important; } }
+
 .message-area {
   padding: .15em; }
-  .message-area#left-message-area:not(.ng-hide) {
-    display: block !important;
-    display: none !important; }
-  .message-area#left-message-area:not(.ng-hide) {
-    display: none !important; }
-    @media only screen and (min-width: 64.0625em) {
-      .message-area#left-message-area:not(.ng-hide) {
-        display: block !important; } }
-  .message-area#right-message-area {
-    border: 2px solid mediumseagreen;
-    background-color: #a7e1c1; }
-    .message-area#right-message-area:not(.ng-hide) {
-      display: none !important;
-      display: block !important; }
-    .message-area#right-message-area:not(.ng-hide) {
-      display: block !important; }
-      @media only screen and (min-width: 64.0625em) {
-        .message-area#right-message-area:not(.ng-hide) {
-          display: none !important; } }
 
-.piece.white.winning {
-  cursor: default; }
+@keyframes unavailable-white-piece {
+  0% {
+    fill: #ffff71; }
+  100% {
+    fill: ivory; } }
 
-.piece.white circle {
+.white .piece circle, .white.piece circle {
   fill: ivory; }
 
-.piece.white text {
+.white .piece text, .white.piece text {
   fill: red; }
 
-.piece.white:hover:not(.winning) circle {
+.white .piece.selectable.selected circle, .white.piece.selectable.selected circle {
   fill: #ffff71; }
 
-dice.white span.dice, div span.dice {
+.white.unavailable .piece circle {
+  animation-duration: .6s;
+  animation-name: unavailable-white-piece;
+  animation-timing-function: step-end; }
+
+.white:hover:not(.winning) .piece.selectable {
+  cursor: pointer; }
+  .white:hover:not(.winning) .piece.selectable circle {
+    fill: #ffff71; }
+
+ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
   color: red;
   background-color: ivory; }
+  ad-dice.white span.dice:hover:not(.dice), ad-dice.white span.dice:focus:not(.dice), ad-dice.white button:hover:not(.dice), ad-dice.white button:focus:not(.dice), div span.dice:hover:not(.dice), div span.dice:focus:not(.dice), div button:hover:not(.dice), div button:focus:not(.dice) {
+    color: red;
+    background-color: #ffff71;
+    outline-color: red; }
 
 p .white, p.white {
   color: ivory; }
 
-.piece.red.winning {
-  cursor: default; }
+@keyframes unavailable-red-piece {
+  0% {
+    fill: maroon; }
+  100% {
+    fill: red; } }
 
-.piece.red circle {
+.red .piece circle, .red.piece circle {
   fill: red; }
 
-.piece.red text {
+.red .piece text, .red.piece text {
   fill: ivory; }
 
-.piece.red:hover:not(.winning) circle {
+.red .piece.selectable.selected circle, .red.piece.selectable.selected circle {
   fill: maroon; }
 
-dice.red span.dice, div span.dice {
+.red.unavailable .piece circle {
+  animation-duration: .6s;
+  animation-name: unavailable-red-piece;
+  animation-timing-function: step-end; }
+
+.red:hover:not(.winning) .piece.selectable {
+  cursor: pointer; }
+  .red:hover:not(.winning) .piece.selectable circle {
+    fill: maroon; }
+
+ad-dice.red span.dice, ad-dice.red button, div span.dice, div button {
   color: ivory;
   background-color: red; }
+  ad-dice.red span.dice:hover:not(.dice), ad-dice.red span.dice:focus:not(.dice), ad-dice.red button:hover:not(.dice), ad-dice.red button:focus:not(.dice), div span.dice:hover:not(.dice), div span.dice:focus:not(.dice), div button:hover:not(.dice), div button:focus:not(.dice) {
+    color: ivory;
+    background-color: maroon;
+    outline-color: ivory; }
 
 p .red, p.red {
   color: red; }
 
+@keyframes unavailable-ad-circle {
+  25% {
+    margin-left: 2%; }
+  50% {
+    margin-left: 0; }
+  75% {
+    margin-right: 2%; }
+  100% {
+    margin-right: 0; } }
+
+ad-circle.unavailable {
+  animation-duration: .1s;
+  animation-name: unavailable-ad-circle;
+  animation-iteration-count: 6;
+  animation-timing-function: linear; }
+
 .piece {
-  cursor: pointer; }
+  cursor: default; }
   #home .piece {
     height: 55%;
     width: 55%; }
@@ -5570,7 +5622,7 @@ p .red, p.red {
         width: 80%;
         height: 20%; } }
 
-space {
+ad-space {
   display: flex;
   height: auto;
   position: relative;
@@ -5586,14 +5638,14 @@ space {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
-  space.top {
+  ad-space.top {
     margin-bottom: auto; }
-  space.bottom {
+  ad-space.bottom {
     margin-top: auto; }
-  space svg.space {
+  ad-space svg.space {
     width: 100%;
     height: 100%; }
-    space svg.space polygon {
+    ad-space svg.space polygon {
       fill: green; }
 
 .dice {
@@ -5602,10 +5654,10 @@ space {
   height: 3rem;
   background: #00558b;
   color: #fff;
-  border-radius: 0;
+  border-radius: 15%;
   cursor: default; }
 
-.grayed-out {
+.disabled {
   opacity: .35;
   cursor: default; }
 

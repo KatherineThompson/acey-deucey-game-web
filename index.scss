@@ -54,45 +54,71 @@ body {
     min-height: 313px;
 }
 
+#left-message-area {
+    @include hide-for(small);
+    @include show-for(large);
+}
+
+#right-message-area {
+    @include show-for(small);
+    @include hide-for(large);
+    border: 2px solid $border-color;
+    background-color: lighten($border-color, 30%);
+}
 .message-area {
     padding: .15em;
-    
-    &#left-message-area {
-        @include hide-for(small);
-        @include show-for(large);
-    }
-    
-    &#right-message-area {
-        @include show-for(small);
-        @include hide-for(large);
-        border: 2px solid $border-color;
-        background-color: lighten($border-color, 30%);
+}
+
+@mixin fill-object($object, $color) {
+    #{$object} {
+        fill: $color;
     }
 }
 
+
 @mixin piece-classes($name, $primary-color, $secondary-color) {
-    .piece.#{$name} {
-        &.winning {
-            cursor: default;
-        }
-        circle {
-            fill: $primary-color;
-        }
-        text {
-            fill: $secondary-color;
+    $dark-primary-color: darken($primary-color, 25%);
+
+    @keyframes unavailable-#{$name}-piece {
+        0% {
+            fill: $dark-primary-color;
         }
         
-        &:hover:not(.winning) {
-            circle {
-                fill: darken($primary-color, 25%);
-            }
-        }            
+        100% {
+            fill: $primary-color;
+        }
     }
     
-    dice.#{$name}, div {
-        span.dice {
+    
+    .#{$name} .piece, .#{$name}.piece {
+        @include fill-object("circle", $primary-color);
+        @include fill-object("text", $secondary-color);
+        &.selectable.selected {
+            @include fill-object("circle", $dark-primary-color);
+        }
+    }
+    
+    .#{$name}.unavailable .piece circle{
+        animation-duration: .6s;
+        animation-name: unavailable-#{$name}-piece;
+        animation-timing-function: step-end;
+    }
+    
+    .#{$name}:hover:not(.winning) .piece.selectable {
+        cursor: pointer;
+        @include fill-object("circle", $dark-primary-color);
+    }
+    
+    ad-dice.#{$name}, div {
+        span.dice, button {
             color: $secondary-color;
             background-color: $primary-color;
+            
+            &:hover:not(.dice), &:focus:not(.dice) {
+                color: $secondary-color;
+                background-color: $dark-primary-color;
+                outline-color: $secondary-color;
+            }
         }
     }
     
@@ -104,8 +130,33 @@ body {
 @include piece-classes("white", $white, $red);
 @include piece-classes("red", $red, $white);
 
+@keyframes unavailable-ad-circle {
+    25% {
+        margin-left: 2%;
+    }
+    
+    50% {
+        margin-left: 0;
+    }
+    
+    75% {
+        margin-right: 2%;
+    }
+    
+    100% {
+        margin-right: 0;
+    }
+}
+
+ad-circle.unavailable {
+    animation-duration: .1s;
+    animation-name: unavailable-ad-circle;
+    animation-iteration-count: 6;
+    animation-timing-function: linear;
+}
+
 .piece {
-    cursor: pointer;
+    cursor: default;
     
     #home & {
         @include breakpoint(small) {
@@ -130,7 +181,7 @@ body {
     }
 }
 
-space {
+ad-space {
     @include grid-block(2);
     
     &.top {
@@ -155,11 +206,11 @@ space {
         $diameter: 3rem,
         $fontsize: 1.5rem
     );
-    border-radius: 0;
+    border-radius: 15%;
     cursor: default;
 }
 
-.grayed-out {
+.disabled {
     opacity: .35;
     cursor: default;
 }

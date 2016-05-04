@@ -5,7 +5,7 @@ const _ = require("lodash");
 const gameEngine = require("acey-deucey-game-engine");
 const getPlayerParams = require("./get-player-params");
 
-angular.module("acey-deucey").directive("adCircle", function(){
+angular.module("acey-deucey").directive("adCircle", function($timeout) {
     return {
         template: `<svg class="piece" ng-class="selectedClass" ng-click="selectPiece()" viewbox="0 0 100 100">
                         <circle cx="50" cy="50" r="50"/>
@@ -28,7 +28,7 @@ angular.module("acey-deucey").directive("adCircle", function(){
             );
             
             scope.$watch("[gameState.isPlayerOne, gameState.playerOne, gameState.playerTwo, turnState.rolls]", () => {
-                scope.selectedClass.selectable = scope.isPieceSelectable();
+                scope.selectedClass.selectable = isPieceSelectable();
             }, true);
             
             scope.$watch("numPieces", () => {
@@ -38,7 +38,7 @@ angular.module("acey-deucey").directive("adCircle", function(){
             scope.selectPiece = function() {
                 if (
                     !_.get(scope, ["turnState", "rolls", "first"]) ||
-                    !scope.isPieceSelectable()
+                    !isPieceSelectable()
                 ) {
                     return;
                 }
@@ -60,11 +60,11 @@ angular.module("acey-deucey").directive("adCircle", function(){
                     element.addClass("unavailable");
                     scope.turnState.currentPiecePosition = null;
                     scope.turnState.isBar = null;
-                    setTimeout(() => element.removeClass("unavailable"), 1000);
+                    $timeout(() => element.removeClass("unavailable"), 1000);
                 }
             };
             
-            scope.isPieceSelectable = () => {
+            function isPieceSelectable() {
                 let isCorrectPlayer = null;
                 let pieceExists = null;
                 if (_.isBoolean(scope.pieceIsPlayerOne)) {

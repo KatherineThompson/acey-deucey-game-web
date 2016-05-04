@@ -80,7 +80,7 @@ angular.module("acey-deucey").directive("adCircle", function($timeout) {
         //     isCorrectPlayer = scope.gameState.board[indexOrPlayerName].isPlayerOne === scope.gameState.isPlayerOne;
         // }
                 return _.get(scope, ["turnState", "rolls", "first"]) && isCorrectPlayer && pieceExists;
-            };            
+            }            
             
         },
         

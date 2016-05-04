@@ -7,13 +7,17 @@ const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").directive("adSpace", function() {
     return {
-        template: `<svg class="space" ng-class="{disabled: state.disabled}" ng-click="placePiece()" viewbox="0 0 100 350">
+        template: `<svg class="space"
+                        ng-class="{disabled: state.disabled}"
+                        ng-click="placePiece()"
+                        viewbox="0 0 100 350">
+                        
                         <polygon ng-attr-points="{{orientationParams.polygonPoints}}"/>
                         <g class="piece"
                             ng-class="playerClass"
                             ng-attr-transform="scale(.75), {{orientationParams.groupTransform}}"
-                            ng-if="boardSpace.numPieces"
-                        >
+                            ng-if="boardSpace.numPieces">
+                            
                             <circle cx="50" cy="175" r="50"/>
                             <text font-size="40" x="50%" y="50%" dy="0.3em" text-anchor="middle">
                                 {{boardSpace.numPieces}}x

@@ -2,7 +2,7 @@
 
 const angular = require("angular");
 const _ = require("lodash");
-const gameEngine = require("acey-deucey-game-engine");
+// const gameEngine = require("acey-deucey-game-engine");
 const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").directive("adSpace", function() {
@@ -42,9 +42,16 @@ angular.module("acey-deucey").directive("adSpace", function() {
                 // need to update actual game state
                 // update available rolls
                 // change space coloring?
-                scope.gameState = gameEngine.makeMove(scope.gameState, proposedMove);
-                scope.playerClass[getPlayerParams(scope.gameState.isPlayerOne).spanClass] = true;
+                // watcher for playerClass
+                scope.$emit("make-move", proposedMove);
+                
+                // scope.gameState = gameEngine.makeMove(scope.gameState, proposedMove);
             };
+            
+            scope.$watch("boardSpace.isPlayerOne", () =>{
+                scope.playerClass[getPlayerParams(scope.boardSpace.isPlayerOne).spanClass] = true;
+                scope.playerClass[getPlayerParams(!scope.boardSpace.isPlayerOne).spanClass] = false;
+            });
             
             scope.state = {disabled: false};
             

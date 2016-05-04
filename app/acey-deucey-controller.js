@@ -21,4 +21,9 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         availableSpaces: [],
         isBar: null
     };
+    
+    $scope.$on("make-move", (event, proposedMove) => {
+        $scope.gameState = gameEngine.makeMove($scope.gameState, proposedMove);
+    });
+    
 });

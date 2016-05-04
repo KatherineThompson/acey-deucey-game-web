@@ -7,7 +7,7 @@ const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").directive("adSpace", function() {
     return {
-        template: `<svg class="space" ng-class="disabledClass" ng-click="placePiece()" viewbox="0 0 100 350">
+        template: `<svg class="space" ng-class="{disabled: state.disabled}" ng-click="placePiece()" viewbox="0 0 100 350">
                         <polygon ng-attr-points="{{orientationParams.polygonPoints}}"/>
                         <g class="piece"
                             ng-class="playerClass"
@@ -24,7 +24,7 @@ angular.module("acey-deucey").directive("adSpace", function() {
             scope.playerClass = {};
             
             scope.placePiece = function() {
-                if (scope.disabledClass.disabled || scope.turnState.currentPiecePosition === null) {
+                if (scope.state.disabled || scope.turnState.currentPiecePosition === null) {
                     return;
                 }
                 const proposedMove = {
@@ -42,18 +42,17 @@ angular.module("acey-deucey").directive("adSpace", function() {
                 scope.playerClass[getPlayerParams(scope.gameState.isPlayerOne).spanClass] = true;
             };
             
-            scope.disabledClass = {};
+            scope.state = {disabled: false};
             
             scope.$watch(
-                "turnState.currentPiecePosition",
+                "turnState.availableSpaces",
                 () => {
                     if (scope.turnState.availableSpaces) {
-                        scope.disabledClass.disabled = !_.includes(scope.turnState.availableSpaces, scope.index);
+                        scope.state.disabled = !_.includes(scope.turnState.availableSpaces, scope.index);
                     }
                 },
                 true
             );
-            
             
             if (scope.orientation === "bottom") {
                 scope.orientationParams = {
@@ -78,5 +77,3 @@ angular.module("acey-deucey").directive("adSpace", function() {
         }
     };
 });
-
-    // $scope.isSpaceDisabled = index => !_.includes($scope.turnState.availableSpaces, index);

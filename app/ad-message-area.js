@@ -11,7 +11,7 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
                             it's your turn
                         </p>
                         <button class="expand success button">Submit turn</button>
-                        <button class=" expand alert button">Reset turn</button>
+                        <button class="expand alert button">Reset turn</button>
                     </div>`,
         link: function(scope, element) {
             scope.activePlayerParams = getPlayerParams(scope.activePlayer);

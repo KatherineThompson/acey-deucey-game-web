@@ -2,10 +2,9 @@
 
 const angular = require("angular");
 const _ = require("lodash");
-const gameEngine = require("acey-deucey-game-engine");
 const getPlayerParams = require("./get-player-params");
 
-angular.module("acey-deucey").directive("adCircle", function($timeout) {
+angular.module("acey-deucey").directive("adCircle", function(adSelectPiece) {
     return {
         template: `<svg class="piece" ng-class="selectedClass" ng-click="selectPiece()" viewbox="0 0 100 100">
                         <circle cx="50" cy="50" r="50"/>
@@ -36,40 +35,7 @@ angular.module("acey-deucey").directive("adCircle", function($timeout) {
             });
             
             scope.selectPiece = function() {
-                if (
-                    !_.get(scope, ["turnState", "rolls", "first", "num"]) ||
-                    !isPieceSelectable()
-                ) {
-                    return;
-                }
-                
-                scope.turnState.currentPiecePosition = scope.index;
-                
-                scope.turnState.isBar = !_.inRange(scope.index, -1, 25);
-                
-                const clampedIndex = _.clamp(scope.turnState.currentPiecePosition, -1, 24);
-                
-                const rolls = [];
-                
-                for (let roll in scope.turnState.rolls) {
-                    if (!scope.turnState.rolls[roll].used) {
-                        rolls.push(scope.turnState.rolls[roll].num);
-                    }
-                }
-                
-                scope.turnState.availableSpaces = gameEngine.findPossibleMoves(
-                    scope.gameState,
-                    rolls,
-                    scope.turnState.isBar,
-                    clampedIndex
-                );
-                
-                if (!scope.turnState.availableSpaces.length) {
-                    element.addClass("unavailable");
-                    scope.turnState.currentPiecePosition = null;
-                    scope.turnState.isBar = null;
-                    $timeout(() => element.removeClass("unavailable"), 1000);
-                }
+                adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable, element);
             };
             
             function isPieceSelectable() {
@@ -84,9 +50,6 @@ angular.module("acey-deucey").directive("adCircle", function($timeout) {
                         pieceExists = scope.gameState[activePlayer].initialPieces;
                     }
                 }
-        // } else if (_.isNumber(indexOrPlayerName)) {
-        //     isCorrectPlayer = scope.gameState.board[indexOrPlayerName].isPlayerOne === scope.gameState.isPlayerOne;
-        // }
                 return _.get(scope, ["turnState", "rolls", "first", "num"]) && isCorrectPlayer && pieceExists;
             }            
             

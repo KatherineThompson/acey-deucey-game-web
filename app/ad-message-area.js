@@ -19,11 +19,11 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
             
             scope.resetTurn = function() {
                 scope.$emit("reset-turn", "reset");
-            }
+            };
             
             scope.submitTurn = function() {
                 scope.$emit("submit-turn", "submit");
-            }
+            };
         },
         scope: {
             activePlayer: "="

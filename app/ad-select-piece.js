@@ -17,18 +17,12 @@ angular.module("acey-deucey").factory("adSelectPiece", function() {
         turnState.isBar = !_.inRange(index, -1, 25);
         
         const clampedIndex = _.clamp(turnState.currentPiecePosition, -1, 24);
-        
-        const rolls = [];
-        
-        for (let roll in turnState.rolls) {
-            if (!turnState.rolls[roll].used) {
-                rolls.push(turnState.rolls[roll].num);
-            }
-        }
-        
+
+        const unusedRolls = _(turnState.rolls).reject("used").map("num").value();
+
         turnState.availableSpaces = gameEngine.findPossibleMoves(
             gameState,
-            rolls,
+            unusedRolls,
             turnState.isBar,
             clampedIndex
         );

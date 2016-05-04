@@ -10,26 +10,25 @@ angular.module("acey-deucey").directive("adDice", function() {
                             <button class="button" ng-click="rollDice()">Roll dice!</button>
                         </div>
                         <div class="grid-block align-center" ng-if="rolls.first.num">
-                            <div class="shrink align-center grid-block" ng-class="firstClass">
+                            <div class="shrink align-center grid-block" ng-class="firstDieClass">
                                 <span class="dice">{{rolls.first.num}}</span>
                             </div>
-                            <div class="shrink align-center small-offset-1 grid-block" ng-class="secondClass">
+                            <div class="shrink align-center small-offset-1 grid-block" ng-class="secondDieClass">
                                 <span class="dice">{{rolls.second.num}}</span>
                             </div>
                         </div>
                     </div>`,
         link: function(scope) {
-            scope.rollDice = function() {
-                // $scope.rolls = _.mapValues($scope.rolls,() => _.sample(_.range(1, 7)));
-                _.forEach(scope.rolls, roll => roll.num = _.sample(_.range(1, 7)));
-            };
+            scope.rollDice = () => _.forEach(scope.rolls, roll => roll.num = _.sample(_.range(1, 7)));
             
-            scope.firstClass = {};
-            scope.secondClass = {};
+            scope.firstDieClass = {};
+            scope.secondDieClass = {};
             
-            scope.$watch("[rolls.first.used, rolls.second.used]", () => {
-                scope.firstClass.disabled = scope.rolls.first.used;
-                scope.secondClass.disabled = scope.rolls.second.used;
+            scope.$watch("rolls.first.used", () => {
+                scope.firstDieClass.disabled = scope.rolls.first.used;
+            });
+            scope.$watch("rolls.second.used", () => {
+                scope.secondDieClass.disabled = scope.rolls.second.used;
             });
         },
         scope: {

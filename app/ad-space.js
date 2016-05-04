@@ -2,7 +2,6 @@
 
 const angular = require("angular");
 const _ = require("lodash");
-const gameEngine = require("acey-deucey-game-engine");
 const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $timeout) {
@@ -54,13 +53,11 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
                         Math.abs(scope.index - clampedIndex)
                 };
                 
-                if (gameEngine.isValidMove(scope.gameState, proposedMove)) {
-                    scope.$emit("make-move", proposedMove);
-                }
+                scope.$emit("make-move", proposedMove);
                 
             };
             
-            scope.$watch("boardSpace.isPlayerOne", () =>{
+            scope.$watch("boardSpace.isPlayerOne", () => {
                 scope.playerClass[getPlayerParams(scope.boardSpace.isPlayerOne).spanClass] = true;
                 scope.playerClass[getPlayerParams(!scope.boardSpace.isPlayerOne).spanClass] = false;
             });

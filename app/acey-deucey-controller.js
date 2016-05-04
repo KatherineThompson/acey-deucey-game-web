@@ -7,7 +7,7 @@ const _ = require("lodash");
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState = gameEngine.getInitialGameState();
     // $scope.gameState.isPlayerOne = false;
-    // $scope.gameState.playerOne.barPieces = 1;
+    $scope.gameState.playerOne.barPieces = 1;
     // $scope.gameState.playerOne.initialPieces = 0;
     // $scope.gameState.playerTwo.barPieces = 1;
     // $scope.gameState.playerTwo.initialPieces = 0;

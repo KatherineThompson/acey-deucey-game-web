@@ -37,7 +37,7 @@ angular.module("acey-deucey").directive("adCircle", function($timeout) {
             
             scope.selectPiece = function() {
                 if (
-                    !_.get(scope, ["turnState", "rolls", "first"]) ||
+                    !_.get(scope, ["turnState", "rolls", "first", "num"]) ||
                     !isPieceSelectable()
                 ) {
                     return;
@@ -56,7 +56,6 @@ angular.module("acey-deucey").directive("adCircle", function($timeout) {
                         rolls.push(scope.turnState.rolls[roll].num);
                     }
                 }
-                // const rolls = _.values(scope.turnState.rolls);
                 
                 scope.turnState.availableSpaces = gameEngine.findPossibleMoves(
                     scope.gameState,
@@ -88,7 +87,7 @@ angular.module("acey-deucey").directive("adCircle", function($timeout) {
         // } else if (_.isNumber(indexOrPlayerName)) {
         //     isCorrectPlayer = scope.gameState.board[indexOrPlayerName].isPlayerOne === scope.gameState.isPlayerOne;
         // }
-                return _.get(scope, ["turnState", "rolls", "first"]) && isCorrectPlayer && pieceExists;
+                return _.get(scope, ["turnState", "rolls", "first", "num"]) && isCorrectPlayer && pieceExists;
             }            
             
         },

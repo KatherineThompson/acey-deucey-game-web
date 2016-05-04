@@ -31,14 +31,16 @@ angular.module("acey-deucey").directive("adSpace", function() {
                 if (scope.state.disabled || scope.turnState.currentPiecePosition === null) {
                     return;
                 }
+                
+                const clampedIndex = _.clamp(scope.turnState.currentPiecePosition, -1, 24);
+                
                 const proposedMove = {
-                    currentPosition: scope.turnState.currentPiecePosition,
+                    currentPosition: clampedIndex,
                     isBar: scope.turnState.isBar,
                     numberOfSpaces:
-                        scope.index + (scope.turnState.currentPiecePosition * scope.gameState.isPlayerOne ? 1 : -1)
+                        scope.index + (clampedIndex * scope.gameState.isPlayerOne ? 1 : -1)
                 };
                 
-                // need to deal with bar piece indices
                 if (gameEngine.isValidMove(scope.gameState, proposedMove)) {
                     scope.$emit("make-move", proposedMove);
                 }

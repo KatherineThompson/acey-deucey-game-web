@@ -95,12 +95,7 @@
                             is-bar="true">
                         </ad-circle>
                     </div>
-                    <div id="right-message-area" class="message-area vertical shrink grid-block">
-                        <p class="text-center"><span class="red">Red</span>, it's your turn</p>
-                        <button class="expand success button">Submit turn</button>
-                        <button class=" expand alert button">Reset turn</button>
-                        <button class="expand button" zf-open="panel">Panel</button>
-                    </div>
+                    <ad-message-area id="right-message-area" active-player="gameState.isPlayerOne"></ad-message-area>
                     <div id="white-bar" class="grid-block align-center v-align">
                         <ad-circle num-pieces="gameState.playerTwo.barPieces"
                             ng-if="gameState.playerTwo.barPieces"

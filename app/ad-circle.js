@@ -42,17 +42,17 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 }
             };
             
-            function isPieceSelectable() {  
-                let isCorrectPlayer = null;
-                let pieceExists = null;
-                if (_.isBoolean(scope.pieceIsPlayerOne)) {
-                    isCorrectPlayer = scope.pieceIsPlayerOne === scope.gameState.isPlayerOne;
-                    const activePlayer = scope.gameState.isPlayerOne ? "playerOne" : "playerTwo";
-                    if (scope.isBar) {
-                        pieceExists = scope.gameState[activePlayer].barPieces;
-                    } else {
-                        pieceExists = scope.gameState[activePlayer].initialPieces;
-                    }
+            function isPieceSelectable() {
+                if (!scope.gameState) {
+                    return false;
+                }  
+                const isCorrectPlayer = scope.pieceIsPlayerOne === scope.gameState.isPlayerOne;
+                const activePlayer = scope.gameState.isPlayerOne ? "playerOne" : "playerTwo";
+                let pieceExists;
+                if (scope.isBar) {
+                    pieceExists = scope.gameState[activePlayer].barPieces;
+                } else {
+                    pieceExists = scope.gameState[activePlayer].initialPieces;
                 }
                 return _.get(scope, ["turnState", "rolls", "first", "num"]) && isCorrectPlayer && pieceExists;
             }            

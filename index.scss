@@ -213,6 +213,13 @@ ad-space {
 .disabled {
     opacity: .35;
     cursor: default;
+    
+    &.space {
+        opacity: 1;
+        polygon {
+            fill: transparentize($space-color, .65);
+        }
+    }
 }
 
 .winner {

@@ -49,9 +49,18 @@ angular.module("acey-deucey").directive("adCircle", function($timeout) {
                 
                 const clampedIndex = _.clamp(scope.turnState.currentPiecePosition, -1, 24);
                 
+                const rolls = [];
+                
+                for (let roll in scope.turnState.rolls) {
+                    if (!scope.turnState.rolls[roll].used) {
+                        rolls.push(scope.turnState.rolls[roll].num);
+                    }
+                }
+                // const rolls = _.values(scope.turnState.rolls);
+                
                 scope.turnState.availableSpaces = gameEngine.findPossibleMoves(
                     scope.gameState,
-                    _.values(scope.turnState.rolls),
+                    rolls,
                     scope.turnState.isBar,
                     clampedIndex
                 );

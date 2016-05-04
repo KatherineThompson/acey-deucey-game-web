@@ -16,14 +16,25 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.thirdQuadrantIndices = _.range(17, 11);
     $scope.fourthQuadrantIndices = _.range(23, 17);
     $scope.turnState = {
-        rolls: {first: null, second: null},
+        rolls: {first: {num: null, used: null}, second: {num: null, used: null}},
         currentPiecePosition: null,
         availableSpaces: [],
         isBar: null
     };
     
+    // maybe keep original gameState and array or prosed moves
+    
     $scope.$on("make-move", (event, proposedMove) => {
         $scope.gameState = gameEngine.makeMove($scope.gameState, proposedMove);
+        $scope.turnState.currentPiecePosition = null;
+        $scope.turnState.isBar = null;
+        $scope.turnState.availableSpaces = [];
+        for (let roll in $scope.turnState.rolls) {
+            if ($scope.turnState.rolls[roll].num === proposedMove.numberOfSpaces) {
+                $scope.turnState.rolls[roll].used = true;
+                break;
+            }
+        }
     });
     
 });

@@ -5660,6 +5660,10 @@ ad-space {
 .disabled {
   opacity: .35;
   cursor: default; }
+  .disabled.space {
+    opacity: 1; }
+    .disabled.space polygon {
+      fill: rgba(0, 128, 0, 0.35); }
 
 .winner {
   font-weight: bold;

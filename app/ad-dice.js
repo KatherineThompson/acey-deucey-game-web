@@ -28,12 +28,8 @@ angular.module("acey-deucey").directive("adDice", function() {
             scope.secondClass = {};
             
             scope.$watch("[rolls.first.used, rolls.second.used]", () => {
-                if (scope.rolls.first.used) {
-                   scope.firstClass.disabled = true;
-                }
-                if (scope.rolls.second.used) {
-                    scope.secondClass.disabled = true;
-                }
+                scope.firstClass.disabled = scope.rolls.first.used;
+                scope.secondClass.disabled = scope.rolls.second.used;
             });
         },
         scope: {

@@ -10,10 +10,31 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
                             <span ng-class="activePlayerParams.spanClass">{{activePlayerParams.playerName}}</span>,
                             it's your turn
                         </p>
-                        <button class="expand success button">Submit turn</button>
-                        <button class="expand alert button" ng-click="resetTurn()">Reset turn</button>
+                        <button class="expand success button"
+                            ng-class="{disabled: submitStatus}">
+                            Submit turn
+                        </button>
+                        <button class="expand alert button"
+                            ng-class="{disabled: resetStatus}"
+                            ng-click="resetTurn()">
+                            Reset turn
+                        </button>
                     </div>`,
         link: function(scope, element) {
+            scope.resetStatus; 
+            
+            scope.$watch("[turnState.rolls.first.used, turnState.rolls.second.used]", () => {
+                debugger;
+                scope.resetStatus = !(scope.turnState.rolls.first.used || scope.turnState.rolls.second.used);
+            }, true);
+            
+            scope.submitStatus;
+            
+            scope.$watch("[turnState.rolls.first.used, turnState.rolls.second.used]", () => {
+                debugger;
+                scope.submitStatus = !(scope.turnState.rolls.first.used && scope.turnState.rolls.second.used);
+            }, true);
+            
             scope.activePlayerParams = getPlayerParams(scope.activePlayer);
             element.addClass("shrink grid-block");
             
@@ -26,7 +47,8 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
             };
         },
         scope: {
-            activePlayer: "="
+            activePlayer: "=",
+            turnState: "="
         }
     };
 });

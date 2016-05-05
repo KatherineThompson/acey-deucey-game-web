@@ -5532,7 +5532,7 @@ body {
 .white .piece.selectable.selected circle, .white.piece.selectable.selected circle {
   fill: #ffff71; }
 
-.white.unavailable .piece circle {
+.white.unavailable .piece.selectable circle {
   animation-duration: .6s;
   animation-name: unavailable-white-piece;
   animation-timing-function: step-end; }
@@ -5568,7 +5568,7 @@ p .white, p.white {
 .red .piece.selectable.selected circle, .red.piece.selectable.selected circle {
   fill: maroon; }
 
-.red.unavailable .piece circle {
+.red.unavailable .piece.selectable circle {
   animation-duration: .6s;
   animation-name: unavailable-red-piece;
   animation-timing-function: step-end; }
@@ -5599,7 +5599,7 @@ p .red, p.red {
   100% {
     margin-right: 0; } }
 
-ad-circle.unavailable {
+ad-circle.unavailable .piece.selectable {
   animation-duration: .1s;
   animation-name: unavailable-ad-circle;
   animation-iteration-count: 6;

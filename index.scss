@@ -98,7 +98,7 @@ body {
         }
     }
     
-    .#{$name}.unavailable .piece circle {
+    .#{$name}.unavailable .piece.selectable circle {
         animation-duration: .6s;
         animation-name: unavailable-#{$name}-piece;
         animation-timing-function: step-end;
@@ -148,7 +148,7 @@ body {
     }
 }
 
-ad-circle.unavailable {
+ad-circle.unavailable .piece.selectable {
     animation-duration: .1s;
     animation-name: unavailable-ad-circle;
     animation-iteration-count: 6;

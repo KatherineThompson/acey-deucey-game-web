@@ -7,7 +7,7 @@ const getPlayerParams = require("./get-player-params");
 angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $timeout) {
     return {
         template: `<svg class="space"
-                        ng-class="{disabled: state.disabled}"
+                        ng-class="{unusable: state.unusable}"
                         ng-click="placePiece()"
                         viewbox="0 0 100 350">
                         
@@ -40,7 +40,7 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
             }
             
             scope.placePiece = function() {
-                if (scope.state.disabled || scope.turnState.currentPiecePosition === null) {
+                if (scope.state.unusable || scope.turnState.currentPiecePosition === null) {
                     return;
                 }
                 
@@ -62,13 +62,13 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
                 scope.playerClass[getPlayerParams(!scope.boardSpace.isPlayerOne).spanClass] = false;
             });
             
-            scope.state = {disabled: false};
+            scope.state = {unusable: false};
             
             scope.$watch(
                 "turnState.availableSpaces",
                 () => {
                     if (scope.turnState.availableSpaces) {
-                        scope.state.disabled = !_.includes(scope.turnState.availableSpaces, scope.index);
+                        scope.state.unusable = !_.includes(scope.turnState.availableSpaces, scope.index);
                     }
                 },
                 true

@@ -34,10 +34,10 @@
                         </div>                        
                     </div>
                 </div>
-                <ad-message-area id="left-message-area" active-player="gameState.isPlayerOne"></ad-message-area>
-                <!--<div>    
-                    <button class="expand button" zf-open="panel">Panel</button>
-                </div>                       -->
+                <ad-message-area id="left-message-area"
+                    active-player="gameState.isPlayerOne"
+                    turn-state="turnState"> 
+                </ad-message-area>                 
                 <div id="bottom-home" class="vertical grid-block">
                     <div id="white-initial" class="vertical grid-block">
                        <div class="grid-block v-align">
@@ -95,7 +95,10 @@
                             is-bar="true">
                         </ad-circle>
                     </div>
-                    <ad-message-area id="right-message-area" active-player="gameState.isPlayerOne"></ad-message-area>
+                    <ad-message-area id="right-message-area"
+                        turn-state="turnState"
+                        active-player="gameState.isPlayerOne">
+                    </ad-message-area>
                     <div id="white-bar" class="grid-block align-center v-align">
                         <ad-circle num-pieces="gameState.playerTwo.barPieces"
                             ng-if="gameState.playerTwo.barPieces"
@@ -113,8 +116,7 @@
                             index="index"
                             game-state="gameState"
                             turn-state="turnState"
-                            board-space="gameState.board[index]"
-                            is-disabled="isSpaceDisabled(index)">
+                            board-space="gameState.board[index]">
                         </ad-space>                   
                     </div>
                     <ad-dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
@@ -124,7 +126,6 @@
                             game-state="gameState"
                             turn-state="turnState"
                             board-space="gameState.board[index]"
-                            is-disabled="isSpaceDisabled(index)"
                             orientation="bottom">
                         </ad-space>                                
                     </div>                    

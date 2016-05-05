@@ -25,10 +25,10 @@ angular.module("acey-deucey").directive("adDice", function() {
             scope.secondDieClass = {};
             
             scope.$watch("rolls.first.used", () => {
-                scope.firstDieClass.disabled = scope.rolls.first.used;
+                scope.firstDieClass.unusable = scope.rolls.first.used;
             });
             scope.$watch("rolls.second.used", () => {
-                scope.secondDieClass.disabled = scope.rolls.second.used;
+                scope.secondDieClass.unusable = scope.rolls.second.used;
             });
         },
         scope: {

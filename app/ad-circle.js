@@ -31,7 +31,7 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
             }, true);
             
             scope.$watch("numPieces", () => {
-                scope.selectedClass.disabled = !scope.numPieces;
+                scope.selectedClass.unusable = !scope.numPieces;
             });
             
             scope.selectPiece = function() {

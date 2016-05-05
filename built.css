@@ -5657,12 +5657,12 @@ ad-space {
   border-radius: 15%;
   cursor: default; }
 
-.disabled {
+.unusable {
   opacity: 0.35;
   cursor: default; }
-  .disabled.space {
+  .unusable.space {
     opacity: 1; }
-    .disabled.space polygon {
+    .unusable.space polygon {
       fill: rgba(0, 128, 0, 0.35); }
 
 .winner {

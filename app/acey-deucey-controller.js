@@ -21,7 +21,8 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         currentPiecePosition: null,
         availableSpaces: [],
         isBar: null,
-        initialGameState: null
+        initialGameState: null,
+        proposedMoves: []
     };
     
     function resetPieces() {
@@ -34,8 +35,29 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         _.forEach($scope.turnState.rolls, roll => roll.used = null);
     }
     
+    function resetRolls() {
+        _.forEach($scope.turnState.rolls, roll => {
+            roll.used = null;
+            roll.num = null;
+        });
+    }
+    function resetTurnState() {
+        resetRolls();
+        resetPieces();
+        $scope.turnState.initialGameState = null;
+        $scope.proposedMoves = [];
+    }
+    
     $scope.$on("submit-turn", () => {
-        
+        const diceRoll = [$scope.turnState.rolls.first.num, $scope.turnState.rolls.second.num]
+        $scope.gameState = gameEngine.makeTurn(
+            $scope.turnState.initialGameState,
+            diceRoll,
+            $scope.turnState.proposedMoves
+        );
+        debugger;
+        $scope.gameState.isPlayerOne = !$scope.gameState.isPlayerOne;
+        resetTurnState();
     });
     
     $scope.$on("reset-turn", () => {
@@ -53,6 +75,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
             $scope.turnState.initialGameState = $scope.gameState;
         }
         $scope.gameState = gameEngine.makeMove($scope.gameState, proposedMove);
+        $scope.turnState.proposedMoves.push(proposedMove);
         resetPieces();
         const matchingRoll = _.find($scope.turnState.rolls, {used: null, num: proposedMove.numberOfSpaces});
         assert(matchingRoll, `could not find matching roll for num = ${proposedMove.numberOfSpaces}`);

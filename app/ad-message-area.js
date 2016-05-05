@@ -11,6 +11,7 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
                             it's your turn
                         </p>
                         <button class="expand success button"
+                            ng-click="submitTurn()"
                             ng-class="{disabled: submitStatus}">
                             Submit turn
                         </button>
@@ -24,14 +25,12 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
             scope.resetStatus; 
             
             scope.$watch("[turnState.rolls.first.used, turnState.rolls.second.used]", () => {
-                debugger;
                 scope.resetStatus = !(scope.turnState.rolls.first.used || scope.turnState.rolls.second.used);
             }, true);
             
             scope.submitStatus;
             
             scope.$watch("[turnState.rolls.first.used, turnState.rolls.second.used]", () => {
-                debugger;
                 scope.submitStatus = !(scope.turnState.rolls.first.used && scope.turnState.rolls.second.used);
             }, true);
             

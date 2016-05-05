@@ -5537,9 +5537,9 @@ body {
   animation-name: unavailable-white-piece;
   animation-timing-function: step-end; }
 
-.white:hover:not(.winning) .piece.selectable {
+.white:hover:not(.winning) .piece.selectable, .white.piece.selectable:hover {
   cursor: pointer; }
-  .white:hover:not(.winning) .piece.selectable circle {
+  .white:hover:not(.winning) .piece.selectable circle, .white.piece.selectable:hover circle {
     fill: #ffff71; }
 
 ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
@@ -5573,9 +5573,9 @@ p .white, p.white {
   animation-name: unavailable-red-piece;
   animation-timing-function: step-end; }
 
-.red:hover:not(.winning) .piece.selectable {
+.red:hover:not(.winning) .piece.selectable, .red.piece.selectable:hover {
   cursor: pointer; }
-  .red:hover:not(.winning) .piece.selectable circle {
+  .red:hover:not(.winning) .piece.selectable circle, .red.piece.selectable:hover circle {
     fill: maroon; }
 
 ad-dice.red span.dice, ad-dice.red button, div span.dice, div button {

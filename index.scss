@@ -98,13 +98,13 @@ body {
         }
     }
     
-    .#{$name}.unavailable .piece circle{
+    .#{$name}.unavailable .piece circle {
         animation-duration: .6s;
         animation-name: unavailable-#{$name}-piece;
         animation-timing-function: step-end;
     }
     
-    .#{$name}:hover:not(.winning) .piece.selectable {
+    .#{$name}:hover:not(.winning) .piece.selectable, .#{$name}.piece.selectable:hover {
         cursor: pointer;
         @include fill-object("circle", $dark-primary-color);
     }

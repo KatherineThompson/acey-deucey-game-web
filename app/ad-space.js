@@ -13,7 +13,7 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
                         
                         <polygon ng-attr-points="{{orientationParams.polygonPoints}}"/>
                         <g class="piece"
-                            ng-class="playerClass"
+                            ng-class="pieceClass"
                             ng-attr-transform="scale(.75), {{orientationParams.groupTransform}}"
                             ng-if="boardSpace.numPieces"
                             ng-click="selectPiece()">
@@ -25,13 +25,16 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
                         </g>
                     </svg>`,
         link: function(scope, element) {
-            scope.playerClass = {};
+            scope.pieceClass = {};
+            
+            // actually watch this
+            scope.pieceClass.selectable = true;
             
             scope.selectPiece = function() {
                 adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable);
                 if (!scope.turnState.availableSpaces.length) {
-                    scope.playerClass.unavailable = true;
-                    $timeout(() => scope.playerClass.unavailable = false, 1000);
+                    scope.pieceClass.unavailable = true;
+                    $timeout(() => scope.pieceClass.unavailable = false, 1000);
                 }
             };
             
@@ -58,8 +61,8 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
             };
             
             scope.$watch("boardSpace.isPlayerOne", () => {
-                scope.playerClass[getPlayerParams(scope.boardSpace.isPlayerOne).spanClass] = true;
-                scope.playerClass[getPlayerParams(!scope.boardSpace.isPlayerOne).spanClass] = false;
+                scope.pieceClass[getPlayerParams(scope.boardSpace.isPlayerOne).spanClass] = true;
+                scope.pieceClass[getPlayerParams(!scope.boardSpace.isPlayerOne).spanClass] = false;
             });
             
             scope.state = {unusable: false};

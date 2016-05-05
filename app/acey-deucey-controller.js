@@ -49,13 +49,12 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     }
     
     $scope.$on("submit-turn", () => {
-        const diceRoll = [$scope.turnState.rolls.first.num, $scope.turnState.rolls.second.num]
+        const diceRoll = [$scope.turnState.rolls.first.num, $scope.turnState.rolls.second.num];
         $scope.gameState = gameEngine.makeTurn(
             $scope.turnState.initialGameState,
             diceRoll,
             $scope.turnState.proposedMoves
         );
-        debugger;
         $scope.gameState.isPlayerOne = !$scope.gameState.isPlayerOne;
         resetTurnState();
     });

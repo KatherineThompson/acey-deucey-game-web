@@ -1,6 +1,7 @@
 "use strict";
 
 const angular = require("angular");
+const _ = require("lodash");
 const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").directive("adMessageArea", function() {
@@ -12,27 +13,19 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
                         </p>
                         <button class="expand success button"
                             ng-click="submitTurn()"
-                            ng-class="{disabled: submitStatus}">
+                            ng-class="{disabled: submitDisabled}">
                             Submit turn
                         </button>
                         <button class="expand alert button"
-                            ng-class="{disabled: resetStatus}"
+                            ng-class="{disabled: resetDisabled}"
                             ng-click="resetTurn()">
                             Reset turn
                         </button>
                     </div>`,
         link: function(scope, element) {
-            scope.resetStatus; 
+            scope.$watch("turnState.rolls", newRolls => scope.resetDisabled = !_.some(newRolls, "used"), true);
             
-            scope.$watch("[turnState.rolls.first.used, turnState.rolls.second.used]", () => {
-                scope.resetStatus = !(scope.turnState.rolls.first.used || scope.turnState.rolls.second.used);
-            }, true);
-            
-            scope.submitStatus;
-            
-            scope.$watch("[turnState.rolls.first.used, turnState.rolls.second.used]", () => {
-                scope.submitStatus = !(scope.turnState.rolls.first.used && scope.turnState.rolls.second.used);
-            }, true);
+            scope.$watch("turnState.rolls", newRolls => scope.submitDisabled = !_.every(newRolls, "used"), true);
             
             scope.activePlayerParams = getPlayerParams(scope.activePlayer);
             element.addClass("shrink grid-block");

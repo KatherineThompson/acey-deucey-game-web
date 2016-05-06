@@ -3,6 +3,7 @@
 const angular = require("angular");
 const _ = require("lodash");
 const getPlayerParams = require("./get-player-params");
+const hasPlayerRolled = require("./has-player-rolled");
 
 angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $timeout) {
     return {
@@ -32,7 +33,7 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
             function isPieceSelectable() {
                 const isCorrectPlayer = scope.boardSpace.isPlayerOne === scope.gameState.isPlayerOne;
                 const pieceExists = scope.boardSpace.numPieces;
-                return _.get(scope, ["turnState", "rolls", "first", "num"]) && isCorrectPlayer && pieceExists;
+                return hasPlayerRolled(scope.turnState) && isCorrectPlayer && pieceExists;
             }
             
             scope.selectPiece = function() {

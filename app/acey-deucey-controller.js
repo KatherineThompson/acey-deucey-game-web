@@ -17,7 +17,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.thirdQuadrantIndices = _.range(17, 11);
     $scope.fourthQuadrantIndices = _.range(23, 17);
     $scope.turnState = {
-        rolls: {first: {num: null, used: null}, second: {num: null, used: null}},
+        rolls: [{num: null, used: null}, {num: null, used: null}],
         currentPiecePosition: null,
         availableSpaces: [],
         isBar: null,
@@ -36,10 +36,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     }
     
     function resetRolls() {
-        _.forEach($scope.turnState.rolls, roll => {
-            roll.used = null;
-            roll.num = null;
-        });
+        $scope.turnState.rolls = _($scope.turnState.rolls).take(2).map(() => ({num: null, used: null})).value();
     }
     function resetWholeTurnState() {
         resetRolls();
@@ -49,7 +46,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     }
     
     $scope.$on("submit-turn", () => {
-        const diceRoll = [$scope.turnState.rolls.first.num, $scope.turnState.rolls.second.num];
+        const diceRoll = _($scope.turnState.rolls).map("num").take(2).value();
         $scope.gameState = gameEngine.makeTurn(
             $scope.turnState.initialGameState,
             diceRoll,

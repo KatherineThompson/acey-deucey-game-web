@@ -2,13 +2,11 @@
 const angular = require("angular");
 const _ = require("lodash");
 const gameEngine = require("acey-deucey-game-engine");
+const hasPlayerRolled = require("./has-player-rolled");
 
 angular.module("acey-deucey").factory("adSelectPiece", function() {
     return function(index, turnState, gameState, isPieceSelectable) {
-        if (
-            !_.get(turnState, ["rolls", "first", "num"]) ||
-            !isPieceSelectable()
-        ) {
+        if (!hasPlayerRolled(turnState) || !isPieceSelectable()) {
             return;
         }
         

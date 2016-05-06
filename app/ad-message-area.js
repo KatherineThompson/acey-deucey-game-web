@@ -1,6 +1,7 @@
 "use strict";
 
 const angular = require("angular");
+const _ = require("lodash");
 const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").directive("adMessageArea", function() {
@@ -22,17 +23,9 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
                         </button>
                     </div>`,
         link: function(scope, element) {
-            scope.resetStatus; 
+            scope.$watch("turnState.rolls", newRolls => scope.resetStatus = _.some(newRolls, "used"));
             
-            scope.$watch("[turnState.rolls.first.used, turnState.rolls.second.used]", () => {
-                scope.resetStatus = !(scope.turnState.rolls.first.used || scope.turnState.rolls.second.used);
-            }, true);
-            
-            scope.submitStatus;
-            
-            scope.$watch("[turnState.rolls.first.used, turnState.rolls.second.used]", () => {
-                scope.submitStatus = !(scope.turnState.rolls.first.used && scope.turnState.rolls.second.used);
-            }, true);
+            scope.$watch("turnState.rolls", newRolls => scope.submitStatus = _.every(newRolls, "used"));
             
             scope.activePlayerParams = getPlayerParams(scope.activePlayer);
             element.addClass("shrink grid-block");

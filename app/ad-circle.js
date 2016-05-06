@@ -1,8 +1,8 @@
 "use strict";
 
 const angular = require("angular");
-const _ = require("lodash");
 const getPlayerParams = require("./get-player-params");
+const hasPlayerRolled = require("./has-player-rolled");
 
 angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $timeout) {
     return {
@@ -54,7 +54,7 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 } else {
                     pieceExists = scope.gameState[activePlayer].initialPieces;
                 }
-                return _.get(scope, ["turnState", "rolls", "first", "num"]) && isCorrectPlayer && pieceExists;
+                return hasPlayerRolled(scope.turnState) && isCorrectPlayer && pieceExists;
             }            
             
         },

@@ -41,11 +41,11 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
             roll.num = null;
         });
     }
-    function resetTurnState() {
+    function resetWholeTurnState() {
         resetRolls();
         resetPieces();
         $scope.turnState.initialGameState = null;
-        $scope.proposedMoves = [];
+        $scope.turnState.proposedMoves = [];
     }
     
     $scope.$on("submit-turn", () => {
@@ -55,8 +55,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
             diceRoll,
             $scope.turnState.proposedMoves
         );
-        $scope.gameState.isPlayerOne = !$scope.gameState.isPlayerOne;
-        resetTurnState();
+        resetWholeTurnState();
     });
     
     $scope.$on("reset-turn", () => {
@@ -66,6 +65,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         $scope.gameState = $scope.turnState.initialGameState;    
         resetPieces();
         resetDiceUsed();
+        $scope.turnState.proposedMoves = [];
         $scope.turnState.initialGameState = null;
     }); 
     

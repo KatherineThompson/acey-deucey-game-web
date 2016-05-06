@@ -5532,7 +5532,7 @@ body {
 .white .piece.selectable.selected circle, .white.piece.selectable.selected circle {
   fill: #ffff71; }
 
-.white.unavailable .piece.selectable circle {
+.white.unavailable .piece.selectable circle, .white.unavailable.piece.selectable circle {
   animation-duration: .6s;
   animation-name: unavailable-white-piece;
   animation-timing-function: step-end; }
@@ -5568,7 +5568,7 @@ p .white, p.white {
 .red .piece.selectable.selected circle, .red.piece.selectable.selected circle {
   fill: maroon; }
 
-.red.unavailable .piece.selectable circle {
+.red.unavailable .piece.selectable circle, .red.unavailable.piece.selectable circle {
   animation-duration: .6s;
   animation-name: unavailable-red-piece;
   animation-timing-function: step-end; }
@@ -5601,9 +5601,43 @@ p .red, p.red {
 
 ad-circle.unavailable .piece.selectable {
   animation-duration: .1s;
-  animation-name: unavailable-ad-circle;
   animation-iteration-count: 6;
-  animation-timing-function: linear; }
+  animation-timing-function: linear;
+  animation-name: unavailable-ad-circle; }
+
+ad-space.top g.unavailable.piece.selectable {
+  transform: scale(0.75) translate(17px, -105px);
+  animation-duration: .1s;
+  animation-iteration-count: 6;
+  animation-timing-function: linear;
+  animation-name: unavailable-top-g-piece; }
+
+@keyframes unavailable-top-g-piece {
+  25% {
+    transform: scale(0.75) translate(15px, -105px); }
+  50% {
+    transform: scale(0.75) translate(17px, -105px); }
+  75% {
+    transform: scale(0.75) translate(19px, -105px); }
+  100% {
+    transform: scale(0.75) translate(17px, -105px); } }
+
+ad-space.bottom g.unavailable.piece.selectable {
+  transform: scale(0.75) translate(17px, 220px);
+  animation-duration: .1s;
+  animation-iteration-count: 6;
+  animation-timing-function: linear;
+  animation-name: unavailable-bottom-g-piece; }
+
+@keyframes unavailable-bottom-g-piece {
+  25% {
+    transform: scale(0.75) translate(15px, 220px); }
+  50% {
+    transform: scale(0.75) translate(17px, 220px); }
+  75% {
+    transform: scale(0.75) translate(19px, 220px); }
+  100% {
+    transform: scale(0.75) translate(17px, 220px); } }
 
 .piece {
   cursor: default; }

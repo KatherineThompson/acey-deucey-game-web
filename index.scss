@@ -98,7 +98,7 @@ body {
         }
     }
     
-    .#{$name}.unavailable .piece.selectable circle {
+    .#{$name}.unavailable .piece.selectable circle, .#{$name}.unavailable.piece.selectable circle {
         animation-duration: .6s;
         animation-name: unavailable-#{$name}-piece;
         animation-timing-function: step-end;
@@ -148,11 +148,56 @@ body {
     }
 }
 
-ad-circle.unavailable .piece.selectable {
+@mixin unavailable-animation-details {
     animation-duration: .1s;
-    animation-name: unavailable-ad-circle;
     animation-iteration-count: 6;
     animation-timing-function: linear;
+}
+
+ad-circle.unavailable .piece.selectable {
+    @include unavailable-animation-details;
+    animation-name: unavailable-ad-circle;
+}
+
+@mixin transform-g-piece($x-transform, $y-transform) {
+    transform: scale(.75) translate($x-transform, $y-transform);
+}
+
+@mixin unavailable-animation($y-transform, $name) {
+    $animation-name: unavailable-#{$name}-g-piece;
+    $x-middle: 17px;
+    
+    @keyframes #{$animation-name} {
+        25% {
+            @include transform-g-piece(15px, $y-transform);
+        }
+        
+        50% {
+            @include transform-g-piece($x-middle, $y-transform);
+        }
+        
+        75% {
+            @include transform-g-piece(19px, $y-transform);
+        }
+        
+        100% {
+            @include transform-g-piece($x-middle, $y-transform);
+        }
+    }
+    
+    @include transform-g-piece($x-middle, $y-transform);
+    @include unavailable-animation-details;
+    animation-name: $animation-name;
+}
+
+g.unavailable.piece.selectable {
+    ad-space.top & {
+        @include unavailable-animation(-105px, "top");
+    }
+    
+    ad-space.bottom & {
+        @include unavailable-animation(220px, "bottom");
+    }
 }
 
 .piece {

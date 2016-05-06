@@ -5601,11 +5601,18 @@ p .red, p.red {
 
 ad-circle.unavailable .piece.selectable {
   animation-duration: .1s;
-  animation-name: unavailable-ad-circle;
   animation-iteration-count: 6;
-  animation-timing-function: linear; }
+  animation-timing-function: linear;
+  animation-name: unavailable-ad-circle; }
 
-@keyframes unavailable-g-piece-top {
+ad-space.top g.unavailable.piece.selectable {
+  transform: scale(0.75) translate(17px, -105px);
+  animation-duration: .1s;
+  animation-iteration-count: 6;
+  animation-timing-function: linear;
+  animation-name: unavailable-top-g-piece; }
+
+@keyframes unavailable-top-g-piece {
   25% {
     transform: scale(0.75) translate(15px, -105px); }
   50% {
@@ -5615,7 +5622,14 @@ ad-circle.unavailable .piece.selectable {
   100% {
     transform: scale(0.75) translate(17px, -105px); } }
 
-@keyframes unavailable-g-piece-bottom {
+ad-space.bottom g.unavailable.piece.selectable {
+  transform: scale(0.75) translate(17px, 220px);
+  animation-duration: .1s;
+  animation-iteration-count: 6;
+  animation-timing-function: linear;
+  animation-name: unavailable-bottom-g-piece; }
+
+@keyframes unavailable-bottom-g-piece {
   25% {
     transform: scale(0.75) translate(15px, 220px); }
   50% {
@@ -5624,17 +5638,6 @@ ad-circle.unavailable .piece.selectable {
     transform: scale(0.75) translate(19px, 220px); }
   100% {
     transform: scale(0.75) translate(17px, 220px); } }
-
-g.unavailable.piece.selectable {
-  animation-duration: .1s;
-  animation-iteration-count: 6;
-  animation-timing-function: linear; }
-  ad-space.top g.unavailable.piece.selectable {
-    transform: scale(0.75) translate(17px, -105px);
-    animation-name: unavailable-g-piece-top; }
-  ad-space.bottom g.unavailable.piece.selectable {
-    transform: scale(0.75) translate(17px, 220px);
-    animation-name: unavailable-g-piece-bottom; }
 
 .piece {
   cursor: default; }

@@ -27,9 +27,7 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
         link: function(scope, element) {
             scope.pieceClass = {};
             
-            scope.$watch("boardSpace", () => {
-                scope.pieceClass.selectable = isPieceSelectable();
-            } ,true);
+            scope.$watch("boardSpace", () => scope.pieceClass.selectable = isPieceSelectable(), true);
             
             function isPieceSelectable() {
                 const isCorrectPlayer = scope.boardSpace.isPlayerOne === scope.gameState.isPlayerOne;
@@ -44,7 +42,7 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
                     $timeout(() => scope.pieceClass.unavailable = false, 1000);
                 }
             };
-                      
+                    
             scope.placePiece = function() {
                 if (scope.state.unusable || scope.turnState.currentPiecePosition === null) {
                     return;

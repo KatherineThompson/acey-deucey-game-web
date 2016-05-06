@@ -13,19 +13,19 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
                         </p>
                         <button class="expand success button"
                             ng-click="submitTurn()"
-                            ng-class="{disabled: submitStatus}">
+                            ng-class="{disabled: submitDisabled}">
                             Submit turn
                         </button>
                         <button class="expand alert button"
-                            ng-class="{disabled: resetStatus}"
+                            ng-class="{disabled: resetDisabled}"
                             ng-click="resetTurn()">
                             Reset turn
                         </button>
                     </div>`,
         link: function(scope, element) {
-            scope.$watch("turnState.rolls", newRolls => scope.resetStatus = _.some(newRolls, "used"));
+            scope.$watch("turnState.rolls", newRolls => scope.resetDisabled = !_.some(newRolls, "used"), true);
             
-            scope.$watch("turnState.rolls", newRolls => scope.submitStatus = _.every(newRolls, "used"));
+            scope.$watch("turnState.rolls", newRolls => scope.submitDisabled = !_.every(newRolls, "used"), true);
             
             scope.activePlayerParams = getPlayerParams(scope.activePlayer);
             element.addClass("shrink grid-block");

@@ -37,10 +37,6 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     
     function resetRolls() {
         $scope.turnState.rolls = _($scope.turnState.rolls).take(2).map(() => ({num: null, used: null})).value();
-        // _.forEach($scope.turnState.rolls, roll => {
-        //     roll.used = null;
-        //     roll.num = null;
-        // });
     }
     function resetWholeTurnState() {
         resetRolls();

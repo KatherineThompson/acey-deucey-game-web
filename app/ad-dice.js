@@ -2,6 +2,7 @@
 
 const angular = require("angular");
 const _ = require("lodash");
+const isAceyDeucey = require("./is-acey-deucey");
 
 angular.module("acey-deucey").directive("adDice", function() {
     return {
@@ -16,7 +17,7 @@ angular.module("acey-deucey").directive("adDice", function() {
                                 <span class="dice">{{roll.num}}</span>
                             </div>
                         </div>
-                        <div class="align-center shrink grid-block small-offset-1" ng-if="isAceyDeucey()">
+                        <div class="align-center shrink grid-block small-offset-1" ng-if="isAceyDeucey(rolls)">
                             <button class="centered button"
                             zf-open="doublesModal"
                             ng-class="{disabled: doublesDisabled}">
@@ -55,19 +56,17 @@ angular.module("acey-deucey").directive("adDice", function() {
                 );
             };
             
+            scope.isAceyDeucey = isAceyDeucey;
+            
             scope.rollDice = () => {
-                // _.forEach(scope.rolls, roll => roll.num = _.sample(_.range(1, 7)));
-                scope.rolls[0].num = 1;
-                scope.rolls[1].num = 2;
+                _.forEach(scope.rolls, roll => roll.num = _.sample(_.range(1, 7)));
+                // scope.rolls[0].num = 1;
+                // scope.rolls[1].num = 2;
                 
                 if (scope.rolls[0].num === scope.rolls[1].num) {
                     scope.rolls.push(_.cloneDeep(scope.rolls[0]), _.cloneDeep(scope.rolls[0]));
                 }
                 
-            };
-            
-            scope.isAceyDeucey = function() {
-                return _.some(scope.rolls, {num: 2}) && _.some(scope.rolls, {num: 1}) && scope.rolls.length === 2;
             };
             
             scope.$watch("rolls", newRolls => scope.doublesDisabled = !_.every(newRolls, "used"), true);

@@ -120,6 +120,13 @@ body {
                 outline-color: $secondary-color;
             }
         }
+        
+        #doublesModal .dice {
+            &:hover {
+                color: $secondary-color;
+                background-color: $dark-primary-color;
+            }
+        }
     }
     
     p .#{$name}, p.#{$name} {   

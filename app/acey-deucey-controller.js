@@ -28,6 +28,9 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     
     function resetDiceUsed() {
         _.forEach($scope.turnState.rolls, roll => roll.used = null);
+        if ($scope.turnState.rolls.length > 4) {
+            $scope.turnState.rolls = _.take($scope.turnState.rolls, 2);
+        }
     }
     
     function resetRolls() {

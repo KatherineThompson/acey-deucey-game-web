@@ -32,13 +32,29 @@ angular.module("acey-deucey").directive("adDice", function() {
                                         <h4>Choose your doubles:</h4>
                                     </div>
                                     <div class="small-12 align-spaced grid-block">
-                                        <span ng-repeat="num in [1, 2, 3, 4, 5, 6]">{{num}}</span>
+                                        <span class="dice"
+                                            ng-click="chooseDoubles(diceNum)"
+                                            ng-repeat="diceNum in diceNums"
+                                            zf-close="">
+                                            {{diceNum}}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>`,
         link: function(scope) {
+            scope.diceNums = [1, 2, 3, 4, 5, 6];
+            
+            scope.chooseDoubles = (diceNum) => {
+                scope.rolls.push(
+                    {num: diceNum, used:null},
+                    {num: diceNum, used:null},
+                    {num: diceNum, used:null},
+                    {num: diceNum, used:null}
+                );
+            };
+            
             scope.rollDice = () => {
                 // _.forEach(scope.rolls, roll => roll.num = _.sample(_.range(1, 7)));
                 scope.rolls[0].num = 1;
@@ -51,8 +67,8 @@ angular.module("acey-deucey").directive("adDice", function() {
             };
             
             scope.isAceyDeucey = function() {
-                return _.some(scope.rolls, {num: 2}) && _.some(scope.rolls, {num: 1});
-            }
+                return _.some(scope.rolls, {num: 2}) && _.some(scope.rolls, {num: 1}) && scope.rolls.length === 2;
+            };
             
             scope.$watch("rolls", newRolls => scope.doublesDisabled = !_.every(newRolls, "used"), true);
         },

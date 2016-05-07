@@ -45,11 +45,13 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
             function isPieceSelectable() {
                 if (!scope.gameState) {
                     return false;
-                }  
+                }
+                const isBar = (scope.index === -2 && scope.isPlayerOne) ||
+                    (scope.index === 25 && !scope.isPlayerOne);
                 const isCorrectPlayer = scope.pieceIsPlayerOne === scope.gameState.isPlayerOne;
                 const activePlayer = scope.gameState.isPlayerOne ? "playerOne" : "playerTwo";
                 let pieceExists;
-                if (scope.isBar) {
+                if (isBar) {
                     pieceExists = scope.gameState[activePlayer].barPieces;
                 } else {
                     pieceExists = scope.gameState[activePlayer].initialPieces;
@@ -65,8 +67,7 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
             index: "=",
             gameState: "=",
             turnState: "=",
-            pieceIsPlayerOne: "=",
-            isBar: "="
+            pieceIsPlayerOne: "="
         }
     };    
 });

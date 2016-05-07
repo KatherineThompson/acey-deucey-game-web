@@ -7,11 +7,6 @@ const assert = require("assert");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState = gameEngine.getInitialGameState();
-    // $scope.gameState.isPlayerOne = false;
-    // $scope.gameState.playerOne.barPieces = 1;
-    // $scope.gameState.playerOne.initialPieces = 0;
-    // $scope.gameState.playerTwo.barPieces = 1;
-    // $scope.gameState.playerTwo.initialPieces = 0;
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(17, 11);

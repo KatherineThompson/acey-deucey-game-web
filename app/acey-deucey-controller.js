@@ -41,7 +41,12 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     }
     
     $scope.$on("submit-turn", () => {
-        const diceRoll = _($scope.turnState.rolls).map("num").take(2).value();
+        let diceRoll = _($scope.turnState.rolls).map("num").take(3).value();
+        
+        if (!gameEngine.getAceyDeucey(diceRoll).isAceyDeucey) {
+            diceRoll = _($scope.turnState.rolls).map("num").take(2).value();
+        }
+        
         $scope.gameState = gameEngine.makeTurn(
             $scope.turnState.initialGameState,
             diceRoll,

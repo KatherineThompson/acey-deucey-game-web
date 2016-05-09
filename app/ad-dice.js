@@ -19,11 +19,11 @@ angular.module("acey-deucey").directive("adDice", function() {
                         </div>
                         <div class="align-center shrink grid-block small-offset-1" ng-if="isAceyDeucey(rolls)">
                             <button class="centered button"
-                            zf-open="doublesModal"
-                            ng-class="{disabled: doublesDisabled}">
+                            zf-open="doubles-modal"
+                            ng-class="{disabled: isDoublesButtonDisabled()}">
                                 Choose doubles
                             </button>
-                            <div id="doublesModal" zf-modal="">
+                            <div id="doubles-modal" zf-modal="">
                                 <div class="grid-block small-up-1">
                                     <a class="close-button" zf-close="">×</a>
                                     <div class="small-12 align-center grid-block">
@@ -45,21 +45,14 @@ angular.module("acey-deucey").directive("adDice", function() {
                         </div>
                     </div>`,
         link: function(scope) {
-            scope.diceNums = [1, 2, 3, 4, 5, 6];
+            scope.diceNums = _.range(1, 7);
             
-            scope.chooseDoubles = (diceNum) => {
-                scope.rolls.push(
-                    {num: diceNum, used:null},
-                    {num: diceNum, used:null},
-                    {num: diceNum, used:null},
-                    {num: diceNum, used:null}
-                );
-            };
+            scope.chooseDoubles = diceNum =>  _(4).range().forEach(() => scope.rolls.push({num: diceNum, used: null}));
             
             scope.isAceyDeucey = isAceyDeucey;
             
             scope.rollDice = () => {
-                _.forEach(scope.rolls, roll => roll.num = _.sample(_.range(1, 7)));
+                _.forEach(scope.rolls, roll => roll.num = _.sample(scope.diceNums));
                 // scope.rolls[0].num = 1;
                 // scope.rolls[1].num = 2;
                 
@@ -69,7 +62,8 @@ angular.module("acey-deucey").directive("adDice", function() {
                 
             };
             
-            scope.$watch("rolls", newRolls => scope.doublesDisabled = !_.every(newRolls, "used"), true);
+            scope.isDoublesButtonDisabled = () => !_.every(scope.rolls, "used");    
+            
         },
         scope: {
             rolls: "="

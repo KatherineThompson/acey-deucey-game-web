@@ -5550,7 +5550,7 @@ ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
     background-color: #ffff71;
     outline-color: red; }
 
-ad-dice.white #doublesModal .dice:hover, div #doublesModal .dice:hover {
+ad-dice.white #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
   color: red;
   background-color: #ffff71; }
 
@@ -5590,7 +5590,7 @@ ad-dice.red span.dice, ad-dice.red button, div span.dice, div button {
     background-color: maroon;
     outline-color: ivory; }
 
-ad-dice.red #doublesModal .dice:hover, div #doublesModal .dice:hover {
+ad-dice.red #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
   color: ivory;
   background-color: maroon; }
 

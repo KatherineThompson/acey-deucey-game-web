@@ -3,32 +3,38 @@
 const angular = require("angular");
 const _ = require("lodash");
 const getPlayerParams = require("./get-player-params");
+const isAceyDeucey = require("./is-acey-deucey");
 
 angular.module("acey-deucey").directive("adMessageArea", function() {
     return {
         template: `<div class="message-area vertical grid-block">
                         <p class="text-center">
-                            <span ng-class="activePlayerParams.spanClass">{{activePlayerParams.playerName}}</span>,
+                            <span ng-class="getPlayerParams(activePlayer).spanClass">
+                                {{getPlayerParams(activePlayer).playerName}}
+                            </span>,
                             it's your turn
                         </p>
                         <button class="expand success button"
                             ng-click="submitTurn()"
-                            ng-class="{disabled: submitDisabled}">
+                            ng-class="{disabled: !submitEnabled}">
                             Submit turn
                         </button>
                         <button class="expand alert button"
-                            ng-class="{disabled: resetDisabled}"
+                            ng-class="{disabled: !resetEnabled}"
                             ng-click="resetTurn()">
                             Reset turn
                         </button>
                     </div>`,
         link: function(scope, element) {
-            scope.$watch("turnState.rolls", newRolls => scope.resetDisabled = !_.some(newRolls, "used"), true);
+            scope.$watch("turnState.rolls", newRolls => scope.resetEnabled = _.some(newRolls, "used"), true);
             
-            scope.$watch("turnState.rolls", newRolls => scope.submitDisabled = !_.every(newRolls, "used"), true);
+            scope.$watch("turnState.rolls", newRolls => {
+                scope.submitEnabled = _.every(newRolls, "used") && !isAceyDeucey(newRolls);
+            }, true);
             
-            scope.activePlayerParams = getPlayerParams(scope.activePlayer);
             element.addClass("shrink grid-block");
+
+            scope.getPlayerParams = getPlayerParams;
             
             scope.resetTurn = function() {
                 scope.$emit("reset-turn", "reset");

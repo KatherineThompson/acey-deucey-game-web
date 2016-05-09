@@ -120,6 +120,13 @@ body {
                 outline-color: $secondary-color;
             }
         }
+        
+        #doubles-modal .dice {
+            &:hover {
+                color: $secondary-color;
+                background-color: $dark-primary-color;
+            }
+        }
     }
     
     p .#{$name}, p.#{$name} {   
@@ -271,4 +278,9 @@ ad-space {
 .winner {
     font-weight: bold;
     font-size: 4rem;
+}
+
+button.centered {
+    margin-bottom: auto;
+    margin-top: auto;
 }

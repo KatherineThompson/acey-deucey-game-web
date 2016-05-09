@@ -7,11 +7,6 @@ const assert = require("assert");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState = gameEngine.getInitialGameState();
-    // $scope.gameState.isPlayerOne = false;
-    // $scope.gameState.playerOne.barPieces = 1;
-    // $scope.gameState.playerOne.initialPieces = 0;
-    // $scope.gameState.playerTwo.barPieces = 1;
-    // $scope.gameState.playerTwo.initialPieces = 0;
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(17, 11);
@@ -33,6 +28,9 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     
     function resetDiceUsed() {
         _.forEach($scope.turnState.rolls, roll => roll.used = null);
+        if ($scope.turnState.rolls.length > 4) {
+            $scope.turnState.rolls = _.take($scope.turnState.rolls, 2);
+        }
     }
     
     function resetRolls() {
@@ -46,7 +44,12 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     }
     
     $scope.$on("submit-turn", () => {
-        const diceRoll = _($scope.turnState.rolls).map("num").take(2).value();
+        let diceRoll = _($scope.turnState.rolls).map("num").take(3).value();
+        
+        if (!gameEngine.getAceyDeucey(diceRoll).isAceyDeucey) {
+            diceRoll = _($scope.turnState.rolls).map("num").take(2).value();
+        }
+        
         $scope.gameState = gameEngine.makeTurn(
             $scope.turnState.initialGameState,
             diceRoll,

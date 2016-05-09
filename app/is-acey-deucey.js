@@ -3,7 +3,7 @@
 const _ = require("lodash");
 
 function isAceyDeucey(rolls) {
-     return _.some(rolls, {num: 2}) && _.some(rolls, {num: 1}) && rolls.length === 2;
+    return _(rolls).map("num").sortBy().isEqual([1, 2]);
 }
 
 module.exports = isAceyDeucey;

@@ -104,7 +104,7 @@ body {
         animation-timing-function: step-end;
     }
     
-    .#{$name}:hover:not(.winning) .piece.selectable, .#{$name}.piece.selectable:hover {
+    .#{$name}:hover .piece.selectable, .#{$name}.piece.selectable:hover {
         cursor: pointer;
         @include fill-object("circle", $dark-primary-color);
     }

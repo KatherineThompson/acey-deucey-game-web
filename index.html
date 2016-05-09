@@ -29,7 +29,13 @@
                             <h4 class=" text-center align-bottom">Winning</h4>
                         </div>
                         <div class="align-center v-align grid-block">
-                            <ad-circle num-pieces="gameState.playerTwo.winningPieces" class="white winning"></ad-circle>
+                            <ad-circle num-pieces="gameState.playerTwo.winningPieces"
+                                index="-1"
+                                game-state="gameState"
+                                turn-state="turnState"
+                                piece-is-player-one="false"
+                                class="white winning">
+                            </ad-circle>
                         </div>                        
                     </div>
                 </div>
@@ -47,7 +53,7 @@
                                 index="24"
                                 game-state="gameState"
                                 turn-state="turnState"
-                                piece-is-player-one="false"">
+                                piece-is-player-one="false">
                             </ad-circle>
                         </div>                        
                     </div>
@@ -56,7 +62,13 @@
                             <h4 class="text-center align-bottom">Winning</h4>
                         </div>
                         <div class="grid-block v-align align-center">
-                            <ad-circle num-pieces="gameState.playerOne.winningPieces" class="red winning"></ad-circle>
+                            <ad-circle num-pieces="gameState.playerOne.winningPieces"
+                                index="24"
+                                game-state="gameState"
+                                turn-state="turnState"
+                                piece-is-player-one="true"
+                                class="red winning">
+                            </ad-circle>
                         </div>                            
                     </div>
                 </div>

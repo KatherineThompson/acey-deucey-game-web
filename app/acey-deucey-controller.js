@@ -7,6 +7,9 @@ const assert = require("assert");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState = gameEngine.getInitialGameState();
+    $scope.gameState.playerOne.initialPieces = 0;
+    $scope.gameState.board[18].isPlayerOne = true;
+    $scope.gameState.board[18].numPieces = 2;
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(17, 11);

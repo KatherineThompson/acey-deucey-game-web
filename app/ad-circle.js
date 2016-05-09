@@ -49,14 +49,14 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 if (isWinningPiece()) {
                     if (
                         scope.turnState.currentPiecePosition === null ||
-                        !scope.gameEngine.canMoveOffBoard(scope.gameState)
+                        !gameEngine.canMoveOffBoard(scope.gameState)
                     ) {
                         return;
                     }
                     const proposedMove =  {
-                        currentPiecePosition: scope.turnState.currentPiecePosition,
+                        currentPosition: scope.turnState.currentPiecePosition,
                         isBar: scope.turnState.isBar,
-                        numberOfSpaces: Math.abs(scope.index - proposedMove.currentPiecePosition)
+                        numberOfSpaces: Math.abs(scope.index - scope.turnState.currentPiecePosition)
                     };
                     scope.$emit("make-move", proposedMove);                    
                 } else {

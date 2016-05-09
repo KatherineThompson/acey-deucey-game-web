@@ -36,10 +36,15 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 scope.selectedClass.selectable = isPieceSelectable();
             }, true);
             
+            function diceMatch() {
+                return _(scope.turnState.rolls).reject("used").find(roll => roll.num >= Math.abs(scope.index - scope.turnState.currentPiecePosition));
+            }
+            
             scope.$watch("[numPieces, gameState.isPlayerOne, turnState.currentPiecePosition]", () => {
+                debugger;
                 if (isWinningPiece()) {
-                    scope.selectedClass.unusable = !hasPlayerRolled(scope.turnState) &&
-                        scope.currentPiecePosition !== null;
+                    scope.selectedClass.unusable = !(hasPlayerRolled(scope.turnState) &&
+                        scope.turnState.currentPiecePosition !== null && diceMatch());
                 } else {
                     scope.selectedClass.unusable = !scope.numPieces;
                 }

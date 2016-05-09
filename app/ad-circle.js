@@ -4,6 +4,7 @@ const angular = require("angular");
 const getPlayerParams = require("./get-player-params");
 const hasPlayerRolled = require("./has-player-rolled");
 const gameEngine = require("acey-deucey-game-engine");
+const _ = require("lodash");
 
 angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $timeout) {
     return {
@@ -37,11 +38,12 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
             }, true);
             
             function diceMatch() {
-                return _(scope.turnState.rolls).reject("used").find(roll => roll.num >= Math.abs(scope.index - scope.turnState.currentPiecePosition));
+                return _(scope.turnState.rolls)
+                    .reject("used")
+                    .find(roll => roll.num >= Math.abs(scope.index - scope.turnState.currentPiecePosition));
             }
             
             scope.$watch("[numPieces, gameState.isPlayerOne, turnState.currentPiecePosition]", () => {
-                debugger;
                 if (isWinningPiece()) {
                     scope.selectedClass.unusable = !(hasPlayerRolled(scope.turnState) &&
                         scope.turnState.currentPiecePosition !== null && diceMatch());

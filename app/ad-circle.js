@@ -35,10 +35,27 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
             });
             
             scope.selectPiece = function() {
-                adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable);
-                if (!scope.turnState.availableSpaces.length) {
-                    element.addClass("unavailable");
-                    $timeout(() => element.removeClass("unavailable"), 1000);
+                const isWinningPiece = (scope.pieceIsPlayerOne && scope.index === 24) ||
+                    (!scope.pieceIsPlayerOne && scope.index === -1);
+                if (isWinningPiece) {
+                    if (
+                        scope.turnState.currentPiecePosition === null ||
+                        !scope.gameEngine.canMoveOffBoard(scope.gameState)
+                    ) {
+                        return;
+                    }
+                    const proposedMove =  {
+                        currentPiecePosition: scope.turnState.currentPiecePosition,
+                        isBar: scope.turnState.isBar,
+                        numberOfSpaces: Math.abs(scope.index - proposedMove.currentPiecePosition)
+                    };
+                    scope.$emit("make-move", proposedMove);                    
+                } else {
+                    adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable);
+                    if (!scope.turnState.availableSpaces.length) {
+                        element.addClass("unavailable");
+                        $timeout(() => element.removeClass("unavailable"), 1000);
+                    }
                 }
             };
             

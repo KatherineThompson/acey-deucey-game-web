@@ -33,10 +33,7 @@ angular.module("acey-deucey").directive("adSpace", function(adSelectPiece, $time
                     scope.turnState.availableSpaces; 
             });
             
-            scope.$watch("[boardSpace, gameState.isPlayerOne]",
-                () => scope.pieceClass.selectable = isPieceSelectable(),
-                true
-            );
+            scope.$watch("turnState.rolls", () => scope.pieceClass.selectable = isPieceSelectable(), true);
             
             function isPieceSelectable() {
                 const isCorrectPlayer = scope.boardSpace.isPlayerOne === scope.gameState.isPlayerOne;

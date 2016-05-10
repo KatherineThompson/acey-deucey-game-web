@@ -43,20 +43,24 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 }
             }, true);
             
+            function selectWinningPiece() {
+                debugger;
+                if (!isPieceSelectable()) {
+                    element.addClass("unavailable");
+                    $timeout(() => element.removeClass("unavailable"), 1000);
+                    return;
+                }
+                const proposedMove =  {
+                    currentPosition: scope.turnState.currentPiecePosition,
+                    isBar: scope.turnState.isBar,
+                    numberOfSpaces: Math.abs(scope.index - scope.turnState.currentPiecePosition)
+                };
+                scope.$emit("make-move", proposedMove);                    
+            }
+            
             scope.selectPiece = function() {
                 if (isWinningPiece) {
-                    if (
-                        scope.turnState.currentPiecePosition === null ||
-                        !gameEngine.canMoveOffBoard(scope.gameState)
-                    ) {
-                        return;
-                    }
-                    const proposedMove =  {
-                        currentPosition: scope.turnState.currentPiecePosition,
-                        isBar: scope.turnState.isBar,
-                        numberOfSpaces: Math.abs(scope.index - scope.turnState.currentPiecePosition)
-                    };
-                    scope.$emit("make-move", proposedMove);                    
+                    selectWinningPiece();
                 } else {
                     adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable);
                     if (!scope.turnState.availableSpaces.length) {

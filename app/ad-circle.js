@@ -16,10 +16,8 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
             element.addClass("align-center grid-block");
             element.addClass(getPlayerParams(scope.pieceIsPlayerOne).spanClass);
             
-            function isWinningPiece(){
-                return (scope.pieceIsPlayerOne && scope.index === 24) ||
+            const isWinningPiece = (scope.pieceIsPlayerOne && scope.index === 24) ||
                     (!scope.pieceIsPlayerOne && scope.index === -1);
-            }
             
             scope.selectedClass = {};
             
@@ -33,27 +31,20 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 true
             );
             
-            scope.$watch("[turnState.rolls]", () => {
+            scope.$watch("[turnState.rolls, turnState.currentPiecePosition]", () => {
                 scope.selectedClass.selectable = isPieceSelectable();
             }, true);
             
-            function diceMatch() {
-                return _(scope.turnState.rolls)
-                    .reject("used")
-                    .find(roll => roll.num >= Math.abs(scope.index - scope.turnState.currentPiecePosition));
-            }
-            
             scope.$watch("[numPieces, gameState.isPlayerOne, turnState.currentPiecePosition]", () => {
-                if (isWinningPiece()) {
-                    scope.selectedClass.unusable = !(hasPlayerRolled(scope.turnState) &&
-                        scope.turnState.currentPiecePosition !== null && diceMatch());
+                if (isWinningPiece) {
+                    scope.selectedClass.unusable = !(scope.numPieces || isPieceSelectable());                
                 } else {
                     scope.selectedClass.unusable = !scope.numPieces;
                 }
             }, true);
             
             scope.selectPiece = function() {
-                if (isWinningPiece()) {
+                if (isWinningPiece) {
                     if (
                         scope.turnState.currentPiecePosition === null ||
                         !gameEngine.canMoveOffBoard(scope.gameState)
@@ -75,6 +66,7 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 }
             };
             
+            
             function isPieceSelectable() {
                 if (!scope.gameState || !hasPlayerRolled(scope.turnState)) {
                     return false;
@@ -87,8 +79,11 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 if (isCorrectPlayer) {
                     if (isBar) {
                         pieceOrSpaceExists = scope.gameState[activePlayer].barPieces;
-                    } else if (isWinningPiece()) {
-                        pieceOrSpaceExists = gameEngine.canMoveOffBoard(scope.gameState);
+                    } else if (isWinningPiece) {
+                        const isNotCurrentPiece = scope.turnState.currentPiecePosition !== null;
+                        const canMoveToSpace = _.includes(scope.turnState.availableSpaces, 24) &&
+                            gameEngine.canMoveOffBoard(scope.gameState);
+                        pieceOrSpaceExists = isNotCurrentPiece && canMoveToSpace;
                     } else {
                         pieceOrSpaceExists = scope.gameState[activePlayer].initialPieces;
                     }

@@ -41,6 +41,7 @@
                 </div>
                 <ad-message-area id="left-message-area"
                     active-player="gameState.isPlayerOne"
+                    game-state="gameState"
                     turn-state="turnState"> 
                 </ad-message-area>                 
                 <div id="bottom-home" class="vertical grid-block">
@@ -106,6 +107,7 @@
                     </div>
                     <ad-message-area id="right-message-area"
                         turn-state="turnState"
+                        game-state="gameState"
                         active-player="gameState.isPlayerOne">
                     </ad-message-area>
                     <div id="white-bar" class="grid-block align-center v-align">

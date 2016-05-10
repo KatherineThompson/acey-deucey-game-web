@@ -4,6 +4,7 @@ const angular = require("angular");
 const _ = require("lodash");
 const getPlayerParams = require("./get-player-params");
 const isAceyDeucey = require("./is-acey-deucey");
+const gameEngine = require("acey-deucey-game-engine");
 
 angular.module("acey-deucey").directive("adMessageArea", function() {
     return {
@@ -29,7 +30,8 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
             scope.$watch("turnState.rolls", newRolls => scope.resetEnabled = _.some(newRolls, "used"), true);
             
             scope.$watch("turnState.rolls", newRolls => {
-                scope.submitEnabled = _.every(newRolls, "used") && !isAceyDeucey(newRolls);
+                const noMovesLeft = _(newRolls).reject("used").every(roll => !gameEngine.findAvailableSpaces(scope.gameState, roll.num).length);
+                scope.submitEnabled = (_.every(newRolls, "used") && !isAceyDeucey(newRolls)) || noMovesLeft;
             }, true);
             
             element.addClass("shrink grid-block");
@@ -46,7 +48,8 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
         },
         scope: {
             activePlayer: "=",
-            turnState: "="
+            turnState: "=",
+            gameState: "="
         }
     };
 });

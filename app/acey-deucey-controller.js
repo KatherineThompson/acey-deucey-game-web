@@ -79,9 +79,19 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         $scope.gameState = gameEngine.makeMove($scope.gameState, proposedMove);
         $scope.turnState.proposedMoves.push(proposedMove);
         resetPieces();
-        const matchingRoll = _.find($scope.turnState.rolls, {used: null, num: proposedMove.numberOfSpaces});
-        assert(matchingRoll, `could not find matching roll for num = ${proposedMove.numberOfSpaces}`);
-        matchingRoll.used = true;
+        debugger;
+        const proposedSpace = proposedMove.currentPosition + proposedMove.numberOfSpaces * ($scope.gameState.isPlayerOne ? 1 : -1);
+        const isWinningPiece = ($scope.gameState.isPlayerOne && proposedSpace >= 24) || 
+            (!$scope.gameState.isPlayerOne && proposedSpace <= -1);
+        if (isWinningPiece) {
+            const matchingRoll = _($scope.turnState.rolls).reject("used").sortBy("num").find(roll => roll.num >= proposedMove.numberOfSpaces);
+            assert(matchingRoll, `could not find matching roll for num = ${proposedMove.numberOfSpaces}`);
+            matchingRoll.used = true;
+        } else {
+            const matchingRoll = _.find($scope.turnState.rolls, {used: null, num: proposedMove.numberOfSpaces});
+            assert(matchingRoll, `could not find matching roll for num = ${proposedMove.numberOfSpaces}`);
+            matchingRoll.used = true;
+        }
     });
     
 });

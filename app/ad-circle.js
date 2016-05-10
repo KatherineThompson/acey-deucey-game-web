@@ -44,7 +44,6 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
             }, true);
             
             function selectWinningPiece() {
-                debugger;
                 if (!isPieceSelectable()) {
                     element.addClass("unavailable");
                     $timeout(() => element.removeClass("unavailable"), 1000);

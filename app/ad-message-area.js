@@ -31,7 +31,7 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
             
             scope.$watch("turnState.rolls", newRolls => {
                 const noMovesLeft = _(newRolls).reject("used").every(roll => !gameEngine.findAvailableSpaces(scope.gameState, roll.num).length);
-                scope.submitEnabled = (_.every(newRolls, "used") && !isAceyDeucey(newRolls)) || noMovesLeft;
+                scope.submitEnabled = (_.every(newRolls, "used") || noMovesLeft) && !isAceyDeucey(newRolls);
             }, true);
             
             element.addClass("shrink grid-block");

@@ -11,7 +11,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState.board[20].isPlayerOne = true;
     $scope.gameState.board[20].numPieces = 1;
     $scope.gameState.board[22].isPlayerOne = true;
-    $scope.gameState.board[22].numPieces = 1;
+    $scope.gameState.board[22].numPieces = 5;
     $scope.gameState.board[23].isPlayerOne = false;
     $scope.gameState.board[23].numPieces = 2;
     $scope.firstQuadrantIndices = _.range(0, 6);

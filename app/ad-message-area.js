@@ -11,8 +11,7 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
         template: `<div class="message-area vertical grid-block">
                         <p class="text-center">
                             <span ng-class="getPlayerParams(activePlayer).spanClass">
-                                {{getPlayerParams(activePlayer).playerName}}
-                            </span>,
+                                {{getPlayerParams(activePlayer).playerName}}</span>,
                             it's your turn
                         </p>
                         <button class="expand success button"

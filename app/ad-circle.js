@@ -16,9 +16,6 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
             element.addClass("align-center grid-block");
             element.addClass(getPlayerParams(scope.pieceIsPlayerOne).spanClass);
             
-            const isWinningPiece = (scope.pieceIsPlayerOne && scope.index === 24) ||
-                    (!scope.pieceIsPlayerOne && scope.index === -1);
-            
             scope.selectedClass = {};
             
             scope.$watch(
@@ -35,13 +32,11 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 scope.selectedClass.selectable = isPieceSelectable();
             }, true);
             
-            scope.$watch("[numPieces, gameState.isPlayerOne, turnState.currentPiecePosition]", () => {
-                if (isWinningPiece) {
-                    scope.selectedClass.unusable = !(scope.numPieces || isPieceSelectable());                
-                } else {
-                    scope.selectedClass.unusable = !scope.numPieces;
-                }
-            }, true);
+            const isWinningPiece = (scope.pieceIsPlayerOne && scope.index === 24) ||
+                    (!scope.pieceIsPlayerOne && scope.index === -1);
+                    
+            scope.$watch("[numPieces, gameState.isPlayerOne, turnState.currentPiecePosition]", () =>
+                true);
             
             function selectWinningPiece() {
                 if (!isPieceSelectable()) {
@@ -49,7 +44,7 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                     $timeout(() => element.removeClass("unavailable"), 1000);
                     return;
                 }
-                const proposedMove =  {
+                const proposedMove = {
                     currentPosition: scope.turnState.currentPiecePosition,
                     isBar: scope.turnState.isBar,
                     numberOfSpaces: Math.abs(scope.index - scope.turnState.currentPiecePosition)
@@ -57,7 +52,7 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 scope.$emit("make-move", proposedMove);                    
             }
             
-            scope.selectPiece = function() {
+            scope.selectPiece = () => {
                 if (isWinningPiece) {
                     selectWinningPiece();
                 } else {
@@ -69,29 +64,30 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 }
             };
             
-            
             function isPieceSelectable() {
                 if (!scope.gameState || !hasPlayerRolled(scope.turnState)) {
                     return false;
                 }
+                
+                const isCorrectPlayer = scope.pieceIsPlayerOne === scope.gameState.isPlayerOne;
+                if (!isCorrectPlayer) {
+                    return false;
+                }
+                
                 const isBar = (scope.index === -2 && scope.isPlayerOne) ||
                     (scope.index === 25 && !scope.isPlayerOne);
-                const isCorrectPlayer = scope.pieceIsPlayerOne === scope.gameState.isPlayerOne;
                 const activePlayer = scope.gameState.isPlayerOne ? "playerOne" : "playerTwo";
-                let pieceOrSpaceExists;
-                if (isCorrectPlayer) {
-                    if (isBar) {
-                        pieceOrSpaceExists = scope.gameState[activePlayer].barPieces;
-                    } else if (isWinningPiece) {
-                        const isNotCurrentPiece = scope.turnState.currentPiecePosition !== null;
-                        const canMoveToSpace = _.includes(scope.turnState.availableSpaces, 24) &&
-                            gameEngine.canMoveOffBoard(scope.gameState);
-                        pieceOrSpaceExists = isNotCurrentPiece && canMoveToSpace;
-                    } else {
-                        pieceOrSpaceExists = scope.gameState[activePlayer].initialPieces;
-                    }
+                if (isBar) {
+                    return scope.gameState[activePlayer].barPieces;
                 }
-                return pieceOrSpaceExists;
+                if (isWinningPiece) {
+                    const isNotCurrentPiece = scope.turnState.currentPiecePosition !== null;
+                    const winningIndex = scope.gameState.isPlayerOne ? 24 : -1; 
+                    const canMoveToSpace = _.includes(scope.turnState.availableSpaces, winningIndex) &&
+                        gameEngine.canMoveOffBoard(scope.gameState);
+                    return isNotCurrentPiece && canMoveToSpace;
+                } 
+                return scope.gameState[activePlayer].initialPieces;
             }            
             
         },

@@ -88,7 +88,8 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         const isWinningPiece = ($scope.gameState.isPlayerOne && proposedSpace >= 24) || 
             (!$scope.gameState.isPlayerOne && proposedSpace <= -1);
         if (isWinningPiece) {
-            const matchingRoll = _($scope.turnState.rolls).reject("used")
+            const matchingRoll = _($scope.turnState.rolls)
+                .reject("used")
                 .sortBy("num")
                 .find(roll => roll.num >= proposedMove.numberOfSpaces);
             assert(matchingRoll, `could not find matching roll for num = ${proposedMove.numberOfSpaces}`);

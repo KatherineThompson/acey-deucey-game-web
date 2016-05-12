@@ -36,6 +36,7 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                     (!scope.pieceIsPlayerOne && scope.index === -1);
                     
             scope.$watch("[numPieces, gameState.isPlayerOne, turnState.currentPiecePosition]", () =>
+                scope.selectedClass.unusable = !(scope.numPieces || (isWinningPiece && isPieceSelectable())),
                 true);
             
             function selectWinningPiece() {

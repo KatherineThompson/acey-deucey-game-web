@@ -52,9 +52,9 @@ angular.module("acey-deucey").directive("adDice", function() {
             scope.isAceyDeucey = isAceyDeucey;
             
             scope.rollDice = () => {
-                // _.forEach(scope.rolls, roll => roll.num = _.sample(scope.diceNums));
-                scope.rolls[0].num = 1;
-                scope.rolls[1].num = 2;
+                _.forEach(scope.rolls, roll => roll.num = _.sample(scope.diceNums));
+                // scope.rolls[0].num = 1;
+                // scope.rolls[1].num = 2;
                 
                 if (scope.rolls[0].num === scope.rolls[1].num) {
                     scope.rolls.push(_.cloneDeep(scope.rolls[0]), _.cloneDeep(scope.rolls[0]));

@@ -4,6 +4,7 @@ const angular = require("angular");
 const gameEngine = require("acey-deucey-game-engine");
 const _ = require("lodash");
 const assert = require("assert");
+const getPieceInfo = require("./get-piece-info");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState = gameEngine.getInitialGameState();
@@ -83,10 +84,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         $scope.gameState = gameEngine.makeMove($scope.gameState, proposedMove);
         $scope.turnState.proposedMoves.push(proposedMove);
         resetPieces();
-        const proposedSpace = proposedMove.currentPosition +
-            proposedMove.numberOfSpaces * ($scope.gameState.isPlayerOne ? 1 : -1);
-        const isWinningPiece = ($scope.gameState.isPlayerOne && proposedSpace >= 24) || 
-            (!$scope.gameState.isPlayerOne && proposedSpace <= -1);
+        const {isWinningPiece} = getPieceInfo($scope.gameState, proposedMove);
         if (isWinningPiece) {
             const matchingRoll = _($scope.turnState.rolls)
                 .reject("used")

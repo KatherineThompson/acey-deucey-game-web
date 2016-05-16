@@ -29,8 +29,18 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
             scope.$watch("turnState.rolls", newRolls => scope.resetEnabled = _.some(newRolls, "used"), true);
             
             scope.$watch("turnState.rolls", newRolls => {
-                const noMovesLeft = _(newRolls).reject("used").every(roll => !gameEngine.findAvailableSpaces(scope.gameState, roll.num).length);
-                scope.submitEnabled = (_.every(newRolls, "used") || noMovesLeft) && !isAceyDeucey(newRolls);
+                let diceRoll = _(newRolls).map("num").take(3).value();
+                
+                if (!gameEngine.getAceyDeucey(diceRoll).isAceyDeucey) {
+                    diceRoll = _(newRolls).map("num").take(2).value();
+                }
+                scope.submitEnabled = scope.turnState.initialGameState &&
+                    gameEngine.isValidTurn(
+                        scope.turnState.initialGameState,
+                        diceRoll,
+                        scope.turnState.proposedMoves
+                    ) && !(isAceyDeucey(newRolls) && _.every(newRolls, "used"));
+
             }, true);
             
             element.addClass("shrink grid-block");

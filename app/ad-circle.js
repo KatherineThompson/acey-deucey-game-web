@@ -32,8 +32,9 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 scope.selectedClass.selectable = isPieceSelectable();
             }, true);
             
-            const isWinningPiece = (scope.pieceIsPlayerOne && scope.index === 24) ||
-                    (!scope.pieceIsPlayerOne && scope.index === -1);
+            const isWinningPiece =
+                (scope.pieceIsPlayerOne && scope.index === gameEngine.constants.PLAYER_ONE_END_SPACE) ||
+                    (!scope.pieceIsPlayerOne && scope.index === gameEngine.constants.PLAYER_TWO_END_SPACE);
                     
             scope.$watch("[numPieces, gameState.isPlayerOne, turnState.currentPiecePosition]", () =>
                 scope.selectedClass.unusable = !(scope.numPieces || (isWinningPiece && isPieceSelectable())),

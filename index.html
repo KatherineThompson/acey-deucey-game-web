@@ -20,8 +20,7 @@
                                 index="-1"
                                 game-state="gameState"
                                 turn-state="turnState"
-                                piece-is-player-one="true"
-                                is-bar="false">
+                                piece-is-player-one="true">
                             </ad-circle>
                         </div>
                     </div>
@@ -30,12 +29,19 @@
                             <h4 class=" text-center align-bottom">Winning</h4>
                         </div>
                         <div class="align-center v-align grid-block">
-                            <ad-circle num-pieces="gameState.playerTwo.winningPieces" class="white winning"></ad-circle>
+                            <ad-circle num-pieces="gameState.playerTwo.winningPieces"
+                                index="-1"
+                                game-state="gameState"
+                                turn-state="turnState"
+                                piece-is-player-one="false"
+                                class="white winning">
+                            </ad-circle>
                         </div>                        
                     </div>
                 </div>
                 <ad-message-area id="left-message-area"
                     active-player="gameState.isPlayerOne"
+                    game-state="gameState"
                     turn-state="turnState"> 
                 </ad-message-area>                 
                 <div id="bottom-home" class="vertical grid-block">
@@ -48,8 +54,7 @@
                                 index="24"
                                 game-state="gameState"
                                 turn-state="turnState"
-                                piece-is-player-one="false""
-                                is-bar="false">
+                                piece-is-player-one="false">
                             </ad-circle>
                         </div>                        
                     </div>
@@ -58,7 +63,13 @@
                             <h4 class="text-center align-bottom">Winning</h4>
                         </div>
                         <div class="grid-block v-align align-center">
-                            <ad-circle num-pieces="gameState.playerOne.winningPieces" class="red winning"></ad-circle>
+                            <ad-circle num-pieces="gameState.playerOne.winningPieces"
+                                index="24"
+                                game-state="gameState"
+                                turn-state="turnState"
+                                piece-is-player-one="true"
+                                class="red winning">
+                            </ad-circle>
                         </div>                            
                     </div>
                 </div>
@@ -91,12 +102,12 @@
                             index="-2"
                             game-state="gameState"
                             turn-state="turnState"
-                            piece-is-player-one="true"
-                            is-bar="true">
+                            piece-is-player-one="true">
                         </ad-circle>
                     </div>
                     <ad-message-area id="right-message-area"
                         turn-state="turnState"
+                        game-state="gameState"
                         active-player="gameState.isPlayerOne">
                     </ad-message-area>
                     <div id="white-bar" class="grid-block align-center v-align">
@@ -105,8 +116,7 @@
                             index="25"
                             game-state="gameState"
                             turn-state="turnState"
-                            piece-is-player-one="false"
-                            is-bar="true">
+                            piece-is-player-one="false">
                         </ad-circle>           
                     </div>
                 </div>

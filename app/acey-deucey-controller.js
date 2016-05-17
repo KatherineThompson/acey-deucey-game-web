@@ -4,9 +4,17 @@ const angular = require("angular");
 const gameEngine = require("acey-deucey-game-engine");
 const _ = require("lodash");
 const assert = require("assert");
+const getPieceInfo = require("./get-piece-info");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
     $scope.gameState = gameEngine.getInitialGameState();
+    $scope.gameState.playerOne.initialPieces = 0;
+    $scope.gameState.board[20].isPlayerOne = true;
+    $scope.gameState.board[20].numPieces = 1;
+    $scope.gameState.board[22].isPlayerOne = true;
+    $scope.gameState.board[22].numPieces = 5;
+    $scope.gameState.board[23].isPlayerOne = false;
+    $scope.gameState.board[23].numPieces = 2;
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(17, 11);
@@ -76,9 +84,19 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         $scope.gameState = gameEngine.makeMove($scope.gameState, proposedMove);
         $scope.turnState.proposedMoves.push(proposedMove);
         resetPieces();
-        const matchingRoll = _.find($scope.turnState.rolls, {used: null, num: proposedMove.numberOfSpaces});
-        assert(matchingRoll, `could not find matching roll for num = ${proposedMove.numberOfSpaces}`);
-        matchingRoll.used = true;
+        const {isWinningPiece} = getPieceInfo($scope.gameState, proposedMove);
+        if (isWinningPiece) {
+            const matchingRoll = _($scope.turnState.rolls)
+                .reject("used")
+                .sortBy("num")
+                .find(roll => roll.num >= proposedMove.numberOfSpaces);
+            assert(matchingRoll, `could not find matching roll for num = ${proposedMove.numberOfSpaces}`);
+            matchingRoll.used = true;
+        } else {
+            const matchingRoll = _.find($scope.turnState.rolls, {used: null, num: proposedMove.numberOfSpaces});
+            assert(matchingRoll, `could not find matching roll for num = ${proposedMove.numberOfSpaces}`);
+            matchingRoll.used = true;
+        }
     });
     
 });

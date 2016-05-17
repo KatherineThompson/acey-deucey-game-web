@@ -4,14 +4,14 @@ const angular = require("angular");
 const _ = require("lodash");
 const getPlayerParams = require("./get-player-params");
 const isAceyDeucey = require("./is-acey-deucey");
+const gameEngine = require("acey-deucey-game-engine");
 
 angular.module("acey-deucey").directive("adMessageArea", function() {
     return {
         template: `<div class="message-area vertical grid-block">
                         <p class="text-center">
                             <span ng-class="getPlayerParams(activePlayer).spanClass">
-                                {{getPlayerParams(activePlayer).playerName}}
-                            </span>,
+                                {{getPlayerParams(activePlayer).playerName}}</span>,
                             it's your turn
                         </p>
                         <button class="expand success button"
@@ -29,7 +29,18 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
             scope.$watch("turnState.rolls", newRolls => scope.resetEnabled = _.some(newRolls, "used"), true);
             
             scope.$watch("turnState.rolls", newRolls => {
-                scope.submitEnabled = _.every(newRolls, "used") && !isAceyDeucey(newRolls);
+                let diceRoll = _(newRolls).map("num").take(3).value();
+                
+                if (!gameEngine.getAceyDeucey(diceRoll).isAceyDeucey) {
+                    diceRoll = _(newRolls).map("num").take(2).value();
+                }
+                scope.submitEnabled = scope.turnState.initialGameState &&
+                    gameEngine.isValidTurn(
+                        scope.turnState.initialGameState,
+                        diceRoll,
+                        scope.turnState.proposedMoves
+                    ) && !(isAceyDeucey(newRolls) && _.every(newRolls, "used"));
+
             }, true);
             
             element.addClass("shrink grid-block");
@@ -46,7 +57,8 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
         },
         scope: {
             activePlayer: "=",
-            turnState: "="
+            turnState: "=",
+            gameState: "="
         }
     };
 });

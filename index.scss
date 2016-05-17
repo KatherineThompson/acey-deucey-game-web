@@ -98,13 +98,14 @@ body {
         }
     }
     
-    .#{$name}.unavailable .piece.selectable circle, .#{$name}.unavailable.piece.selectable circle {
+    .#{$name}.unavailable .piece.selectable circle, .#{$name}.unavailable.piece.selectable circle,
+        .#{$name}.unavailable.winning .piece:not(.unusable) circle {
         animation-duration: .6s;
         animation-name: unavailable-#{$name}-piece;
         animation-timing-function: step-end;
     }
     
-    .#{$name}:hover:not(.winning) .piece.selectable, .#{$name}.piece.selectable:hover {
+    .#{$name}:hover .piece.selectable, .#{$name}.piece.selectable:hover {
         cursor: pointer;
         @include fill-object("circle", $dark-primary-color);
     }
@@ -161,7 +162,7 @@ body {
     animation-timing-function: linear;
 }
 
-ad-circle.unavailable .piece.selectable {
+ad-circle.unavailable .piece.selectable, ad-circle.unavailable.winning .piece:not(.unusable) {
     @include unavailable-animation-details;
     animation-name: unavailable-ad-circle;
 }

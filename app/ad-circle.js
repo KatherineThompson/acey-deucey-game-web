@@ -3,6 +3,8 @@
 const angular = require("angular");
 const getPlayerParams = require("./get-player-params");
 const hasPlayerRolled = require("./has-player-rolled");
+const gameEngine = require("acey-deucey-game-engine");
+const _ = require("lodash");
 
 angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $timeout) {
     return {
@@ -26,35 +28,68 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 true
             );
             
-            scope.$watch("[gameState.isPlayerOne, gameState.playerOne, gameState.playerTwo, turnState.rolls]", () => {
+            scope.$watch("[turnState.rolls, turnState.currentPiecePosition]", () => {
                 scope.selectedClass.selectable = isPieceSelectable();
             }, true);
             
-            scope.$watch("numPieces", () => {
-                scope.selectedClass.unusable = !scope.numPieces;
-            });
+            const isWinningPiece =
+                (scope.pieceIsPlayerOne && scope.index === gameEngine.constants.PLAYER_ONE_END_SPACE) ||
+                    (!scope.pieceIsPlayerOne && scope.index === gameEngine.constants.PLAYER_TWO_END_SPACE);
+                    
+            scope.$watch("[numPieces, gameState.isPlayerOne, turnState.currentPiecePosition]", () =>
+                scope.selectedClass.unusable = !(scope.numPieces || (isWinningPiece && isPieceSelectable())),
+                true);
             
-            scope.selectPiece = function() {
-                adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable);
-                if (!scope.turnState.availableSpaces.length) {
+            function selectWinningPiece() {
+                if (!isPieceSelectable()) {
                     element.addClass("unavailable");
                     $timeout(() => element.removeClass("unavailable"), 1000);
+                    return;
+                }
+                const proposedMove = {
+                    currentPosition: scope.turnState.currentPiecePosition,
+                    isBar: scope.turnState.isBar,
+                    numberOfSpaces: Math.abs(scope.index - scope.turnState.currentPiecePosition)
+                };
+                scope.$emit("make-move", proposedMove);                    
+            }
+            
+            scope.selectPiece = () => {
+                if (isWinningPiece) {
+                    selectWinningPiece();
+                } else {
+                    adSelectPiece(scope.index, scope.turnState, scope.gameState, isPieceSelectable);
+                    if (!scope.turnState.availableSpaces.length) {
+                        element.addClass("unavailable");
+                        $timeout(() => element.removeClass("unavailable"), 1000);
+                    }
                 }
             };
             
             function isPieceSelectable() {
-                if (!scope.gameState) {
+                if (!scope.gameState || !hasPlayerRolled(scope.turnState)) {
                     return false;
-                }  
-                const isCorrectPlayer = scope.pieceIsPlayerOne === scope.gameState.isPlayerOne;
-                const activePlayer = scope.gameState.isPlayerOne ? "playerOne" : "playerTwo";
-                let pieceExists;
-                if (scope.isBar) {
-                    pieceExists = scope.gameState[activePlayer].barPieces;
-                } else {
-                    pieceExists = scope.gameState[activePlayer].initialPieces;
                 }
-                return hasPlayerRolled(scope.turnState) && isCorrectPlayer && pieceExists;
+                
+                const isCorrectPlayer = scope.pieceIsPlayerOne === scope.gameState.isPlayerOne;
+                if (!isCorrectPlayer) {
+                    return false;
+                }
+                
+                const isBar = (scope.index === -2 && scope.isPlayerOne) ||
+                    (scope.index === 25 && !scope.isPlayerOne);
+                const activePlayer = scope.gameState.isPlayerOne ? "playerOne" : "playerTwo";
+                if (isBar) {
+                    return scope.gameState[activePlayer].barPieces;
+                }
+                if (isWinningPiece) {
+                    const isNotCurrentPiece = scope.turnState.currentPiecePosition !== null;
+                    const winningIndex = scope.gameState.isPlayerOne ? 24 : -1; 
+                    const canMoveToSpace = _.includes(scope.turnState.availableSpaces, winningIndex) &&
+                        gameEngine.canMoveOffBoard(scope.gameState);
+                    return isNotCurrentPiece && canMoveToSpace;
+                } 
+                return scope.gameState[activePlayer].initialPieces;
             }            
             
         },
@@ -65,8 +100,7 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
             index: "=",
             gameState: "=",
             turnState: "=",
-            pieceIsPlayerOne: "=",
-            isBar: "="
+            pieceIsPlayerOne: "="
         }
     };    
 });

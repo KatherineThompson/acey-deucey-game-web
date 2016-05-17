@@ -35,7 +35,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "acey-deucey-game-engine": "^1.1.2",
+    "acey-deucey-game-engine": "^1.2.0",
     "angular": "^1.5.3",
     "lodash": "^4.11.1"
   }

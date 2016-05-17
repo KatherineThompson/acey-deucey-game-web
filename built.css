@@ -5532,14 +5532,15 @@ body {
 .white .piece.selectable.selected circle, .white.piece.selectable.selected circle {
   fill: #ffff71; }
 
-.white.unavailable .piece.selectable circle, .white.unavailable.piece.selectable circle {
+.white.unavailable .piece.selectable circle, .white.unavailable.piece.selectable circle,
+.white.unavailable.winning .piece:not(.unusable) circle {
   animation-duration: .6s;
   animation-name: unavailable-white-piece;
   animation-timing-function: step-end; }
 
-.white:hover:not(.winning) .piece.selectable, .white.piece.selectable:hover {
+.white:hover .piece.selectable, .white.piece.selectable:hover {
   cursor: pointer; }
-  .white:hover:not(.winning) .piece.selectable circle, .white.piece.selectable:hover circle {
+  .white:hover .piece.selectable circle, .white.piece.selectable:hover circle {
     fill: #ffff71; }
 
 ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
@@ -5572,14 +5573,15 @@ p .white, p.white {
 .red .piece.selectable.selected circle, .red.piece.selectable.selected circle {
   fill: maroon; }
 
-.red.unavailable .piece.selectable circle, .red.unavailable.piece.selectable circle {
+.red.unavailable .piece.selectable circle, .red.unavailable.piece.selectable circle,
+.red.unavailable.winning .piece:not(.unusable) circle {
   animation-duration: .6s;
   animation-name: unavailable-red-piece;
   animation-timing-function: step-end; }
 
-.red:hover:not(.winning) .piece.selectable, .red.piece.selectable:hover {
+.red:hover .piece.selectable, .red.piece.selectable:hover {
   cursor: pointer; }
-  .red:hover:not(.winning) .piece.selectable circle, .red.piece.selectable:hover circle {
+  .red:hover .piece.selectable circle, .red.piece.selectable:hover circle {
     fill: maroon; }
 
 ad-dice.red span.dice, ad-dice.red button, div span.dice, div button {
@@ -5607,7 +5609,7 @@ p .red, p.red {
   100% {
     margin-right: 0; } }
 
-ad-circle.unavailable .piece.selectable {
+ad-circle.unavailable .piece.selectable, ad-circle.unavailable.winning .piece:not(.unusable) {
   animation-duration: .1s;
   animation-iteration-count: 6;
   animation-timing-function: linear;

@@ -130,7 +130,7 @@ body {
         }
     }
     
-    p .#{$name}, p.#{$name} {   
+    p .#{$name}, p.#{$name}, h2 .#{$name} {   
         color: $primary-color;
     }
 }

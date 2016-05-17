@@ -5555,7 +5555,7 @@ ad-dice.white #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
   color: red;
   background-color: #ffff71; }
 
-p .white, p.white {
+p .white, p.white, h2 .white {
   color: ivory; }
 
 @keyframes unavailable-red-piece {
@@ -5596,7 +5596,7 @@ ad-dice.red #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
   color: ivory;
   background-color: maroon; }
 
-p .red, p.red {
+p .red, p.red, h2 .red {
   color: red; }
 
 @keyframes unavailable-ad-circle {

@@ -77,7 +77,9 @@
             <div id="spaces" class="grid-block">
                 <div id="win-modal" zf-modal="">
                     <a class="close-button" zf-close="">×</a>
-                    <h2><span>Player</span>, You've won!</h2>
+                    <h2 class="text-center">
+                        <span class="{{getPlayerParams(winner).spanClass}}">{{getPlayerParams(winner).playerName}}</span>, you won!
+                    </h2>
                 </div>
                 <div id="left-spaces" class="vertical grid-block">
                     <div class="grid-block">

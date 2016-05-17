@@ -30,6 +30,8 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
         proposedMoves: []
     };
     
+    $scope.getPlayerParams = getPlayerParams;
+    
     function resetPieces() {
         $scope.turnState.currentPiecePosition = null;
         $scope.turnState.isBar = null;
@@ -65,8 +67,12 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
             diceRoll,
             $scope.turnState.proposedMoves
         );
+        
         resetWholeTurnState();
-        if (gameEngine.checkForWinner($scope.gameState) !== null) {
+        
+        $scope.winner = gameEngine.checkForWinner($scope.gameState);
+        
+        if ($scope.winner !== null) {
             FoundationApi.publish("win-modal", "show");
         }
     });

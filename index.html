@@ -7,7 +7,7 @@
     <script type="text/javascript" src="built.js" charset="utf-8"></script>
 </head>
 <body ng-app="acey-deucey" ng-controller="AceyDeuceyCtrl">
-    <div class="grid-frame">
+    <div class="grid-frame" ng-class="{winState: winner !== null}">
         <div id="board" class="grid-block">
             <div id="home" class="small-1 vertical grid-block">
                 <div id="top-home" class="vertical grid-block">
@@ -90,7 +90,7 @@
                             turn-state="turnState">
                         </ad-space>
                     </div>
-                    <ad-dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
+                    <ad-dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls" winner="winner"></ad-dice>
                     <div class="grid-block">
                         <ad-space ng-repeat="index in fourthQuadrantIndices"
                             index="index"
@@ -135,7 +135,7 @@
                             board-space="gameState.board[index]">
                         </ad-space>                   
                     </div>
-                    <ad-dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls"></ad-dice>
+                    <ad-dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls" winner="winner"></ad-dice>
                     <div class="grid-block">
                         <ad-space ng-repeat="index in thirdQuadrantIndices"
                             index="index"

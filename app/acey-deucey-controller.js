@@ -29,6 +29,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
         initialGameState: null,
         proposedMoves: []
     };
+    $scope.winner = gameEngine.checkForWinner($scope.gameState);
     
     $scope.getPlayerParams = getPlayerParams;
     

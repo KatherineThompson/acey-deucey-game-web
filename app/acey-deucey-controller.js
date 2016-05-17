@@ -5,10 +5,12 @@ const gameEngine = require("acey-deucey-game-engine");
 const _ = require("lodash");
 const assert = require("assert");
 const getPieceInfo = require("./get-piece-info");
+const getPlayerParams = require("./get-player-params");
 
-angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
+angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, FoundationApi) {
     $scope.gameState = gameEngine.getInitialGameState();
     $scope.gameState.playerOne.initialPieces = 0;
+    $scope.gameState.playerOne.winningPieces = 13;
     $scope.gameState.board[20].isPlayerOne = true;
     $scope.gameState.board[20].numPieces = 1;
     $scope.gameState.board[22].isPlayerOne = true;
@@ -64,6 +66,9 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
             $scope.turnState.proposedMoves
         );
         resetWholeTurnState();
+        if (gameEngine.checkForWinner($scope.gameState) !== null) {
+            FoundationApi.publish("win-modal", "show");
+        }
     });
     
     $scope.$on("reset-turn", () => {

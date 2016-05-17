@@ -8,7 +8,7 @@ const getPieceInfo = require("./get-piece-info");
 const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, FoundationApi) {
-    $scope.gameState = gameEngine.getInitialGameState();
+    initializeGameState();
     $scope.gameState.playerOne.initialPieces = 0;
     $scope.gameState.playerOne.winningPieces = 13;
     $scope.gameState.board[20].isPlayerOne = true;
@@ -21,17 +21,21 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(17, 11);
     $scope.fourthQuadrantIndices = _.range(23, 17);
-    $scope.turnState = {
-        rolls: [{num: null, used: null}, {num: null, used: null}],
-        currentPiecePosition: null,
-        availableSpaces: [],
-        isBar: null,
-        initialGameState: null,
-        proposedMoves: []
-    };
-    $scope.winner = gameEngine.checkForWinner($scope.gameState);
     
-    $scope.getPlayerParams = getPlayerParams;
+    function initializeGameState() {
+        $scope.gameState = gameEngine.getInitialGameState();
+        $scope.turnState = {
+            rolls: [{num: null, used: null}, {num: null, used: null}],
+            currentPiecePosition: null,
+            availableSpaces: [],
+            isBar: null,
+            initialGameState: null,
+            proposedMoves: []
+        };
+        $scope.winner = gameEngine.checkForWinner($scope.gameState);
+        
+        $scope.getPlayerParams = getPlayerParams;
+    }
     
     function resetPieces() {
         $scope.turnState.currentPiecePosition = null;
@@ -88,6 +92,10 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
         $scope.turnState.proposedMoves = [];
         $scope.turnState.initialGameState = null;
     }); 
+    
+    $scope.$on("reset-game", () => {
+        initializeGameState();
+    });
     
     $scope.$on("make-move", (event, proposedMove) => {
         if (!$scope.turnState.initialGameState) {

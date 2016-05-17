@@ -19,10 +19,14 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
                             ng-class="{disabled: !submitEnabled}">
                             Submit turn
                         </button>
-                        <button class="expand alert button"
+                        <button class="expand warning button"
                             ng-class="{disabled: !resetEnabled}"
                             ng-click="resetTurn()">
                             Reset turn
+                        </button>
+                        <button class="expand alert button"
+                            ng-click="resetGame()">
+                            Reset game
                         </button>
                     </div>`,
         link: function(scope, element) {
@@ -48,11 +52,15 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
             scope.getPlayerParams = getPlayerParams;
             
             scope.resetTurn = function() {
-                scope.$emit("reset-turn", "reset");
+                scope.$emit("reset-turn", "resetTurn");
             };
             
             scope.submitTurn = function() {
                 scope.$emit("submit-turn", "submit");
+            };
+            
+            scope.resetGame = function() {
+                scope.$emit("reset-game", "resetGame");
             };
         },
         scope: {

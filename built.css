@@ -5504,7 +5504,7 @@ body {
 
 #right-message-area {
   border: 2px solid darkgray;
-  background-color: #f6f6f6; }
+  background-color: gainsboro; }
   #right-message-area:not(.ng-hide) {
     display: none !important;
     display: block !important; }
@@ -5558,8 +5558,11 @@ ad-dice.white #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
   color: #FF3636;
   background-color: #b3b3b3; }
 
-p .white, p.white, h2 .white {
+p .white, p.white {
   color: #FFFFFF; }
+
+h2 .white {
+  color: #b3b3b3; }
 
 @keyframes unavailable-red-piece {
   0% {
@@ -5602,7 +5605,10 @@ ad-dice.red #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
   color: #FFFFFF;
   background-color: #9c0000; }
 
-p .red, p.red, h2 .red {
+p .red, p.red {
+  color: #FF3636; }
+
+h2 .red {
   color: #FF3636; }
 
 @keyframes unavailable-ad-circle {

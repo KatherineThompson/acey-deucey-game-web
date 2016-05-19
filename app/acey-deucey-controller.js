@@ -17,6 +17,14 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
     $scope.gameState.board[22].numPieces = 5;
     $scope.gameState.board[23].isPlayerOne = false;
     $scope.gameState.board[23].numPieces = 2;
+    // $scope.gameState.playerTwo.initialPieces = 0;
+    // $scope.gameState.playerTwo.winningPieces = 13;
+    // $scope.gameState.board[3].isPlayerOne = false;
+    // $scope.gameState.board[3].numPieces = 1;
+    // $scope.gameState.board[1].isPlayerOne = false;
+    // $scope.gameState.board[1].numPieces = 5;
+    // $scope.gameState.board[0].isPlayerOne = true;
+    // $scope.gameState.board[0].numPieces = 2;
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(17, 11);

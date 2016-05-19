@@ -5465,12 +5465,12 @@ blockquote p {
   float: none; }
 
 body {
-  background-color: lightgray; }
+  background-color: gainsboro; }
 
 #board {
-  border: 10px solid mediumseagreen; }
+  border: 10px solid darkgray; }
   #board #home {
-    border-right: 5px solid mediumseagreen;
+    border-right: 5px solid darkgray;
     flex: 0 0 12.5%;
     max-width: 12.5%; }
     #board #home h4 {
@@ -5479,13 +5479,13 @@ body {
       margin-top: 0.7rem;
       margin-bottom: 0; }
     #board #home #top-home {
-      border-bottom: 5px solid mediumseagreen; }
+      border-bottom: 5px solid darkgray; }
     #board #home #bottom-home {
-      border-top: 5px solid mediumseagreen; }
+      border-top: 5px solid darkgray; }
   #board #spaces {
-    border-left: 5px solid mediumseagreen; }
+    border-left: 5px solid darkgray; }
     #board #spaces #bar {
-      background-color: mediumseagreen; }
+      background-color: darkgray; }
       #board #spaces #bar .button {
         padding: .85em .5em; }
 
@@ -5503,8 +5503,8 @@ body {
       display: block !important; } }
 
 #right-message-area {
-  border: 2px solid mediumseagreen;
-  background-color: #a7e1c1; }
+  border: 2px solid darkgray;
+  background-color: #f6f6f6; }
   #right-message-area:not(.ng-hide) {
     display: none !important;
     display: block !important; }
@@ -5519,18 +5519,18 @@ body {
 
 @keyframes unavailable-white-piece {
   0% {
-    fill: #ffff71; }
+    fill: #999999; }
   100% {
-    fill: ivory; } }
+    fill: #FFFFFF; } }
 
 .white .piece circle, .white.piece circle {
-  fill: ivory; }
+  fill: #FFFFFF; }
 
 .white .piece text, .white.piece text {
-  fill: red; }
+  fill: #FF3636; }
 
 .white .piece.selectable.selected circle, .white.piece.selectable.selected circle {
-  fill: #ffff71; }
+  fill: #999999; }
 
 .white.unavailable .piece.selectable circle, .white.unavailable.piece.selectable circle,
 .white.unavailable.winning .piece:not(.unusable) circle {
@@ -5541,37 +5541,37 @@ body {
 .white:hover .piece.selectable, .white.piece.selectable:hover {
   cursor: pointer; }
   .white:hover .piece.selectable circle, .white.piece.selectable:hover circle {
-    fill: #ffff71; }
+    fill: #999999; }
 
 ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
-  color: red;
-  background-color: ivory; }
+  color: #FF3636;
+  background-color: #FFFFFF; }
   ad-dice.white span.dice:hover:not(.dice), ad-dice.white span.dice:focus:not(.dice), ad-dice.white button:hover:not(.dice), ad-dice.white button:focus:not(.dice), div span.dice:hover:not(.dice), div span.dice:focus:not(.dice), div button:hover:not(.dice), div button:focus:not(.dice) {
-    color: red;
-    background-color: #ffff71;
-    outline-color: red; }
+    color: #FF3636;
+    background-color: #999999;
+    outline-color: #FF3636; }
 
 ad-dice.white #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
-  color: red;
-  background-color: #ffff71; }
+  color: #FF3636;
+  background-color: #999999; }
 
 p .white, p.white, h2 .white {
-  color: ivory; }
+  color: #FFFFFF; }
 
 @keyframes unavailable-red-piece {
   0% {
-    fill: maroon; }
+    fill: #690000; }
   100% {
-    fill: red; } }
+    fill: #FF3636; } }
 
 .red .piece circle, .red.piece circle {
-  fill: red; }
+  fill: #FF3636; }
 
 .red .piece text, .red.piece text {
-  fill: ivory; }
+  fill: #FFFFFF; }
 
 .red .piece.selectable.selected circle, .red.piece.selectable.selected circle {
-  fill: maroon; }
+  fill: #690000; }
 
 .red.unavailable .piece.selectable circle, .red.unavailable.piece.selectable circle,
 .red.unavailable.winning .piece:not(.unusable) circle {
@@ -5582,22 +5582,22 @@ p .white, p.white, h2 .white {
 .red:hover .piece.selectable, .red.piece.selectable:hover {
   cursor: pointer; }
   .red:hover .piece.selectable circle, .red.piece.selectable:hover circle {
-    fill: maroon; }
+    fill: #690000; }
 
 ad-dice.red span.dice, ad-dice.red button, div span.dice, div button {
-  color: ivory;
-  background-color: red; }
+  color: #FFFFFF;
+  background-color: #FF3636; }
   ad-dice.red span.dice:hover:not(.dice), ad-dice.red span.dice:focus:not(.dice), ad-dice.red button:hover:not(.dice), ad-dice.red button:focus:not(.dice), div span.dice:hover:not(.dice), div span.dice:focus:not(.dice), div button:hover:not(.dice), div button:focus:not(.dice) {
-    color: ivory;
-    background-color: maroon;
-    outline-color: ivory; }
+    color: #FFFFFF;
+    background-color: #690000;
+    outline-color: #FFFFFF; }
 
 ad-dice.red #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
-  color: ivory;
-  background-color: maroon; }
+  color: #FFFFFF;
+  background-color: #690000; }
 
 p .red, p.red, h2 .red {
-  color: red; }
+  color: #FF3636; }
 
 @keyframes unavailable-ad-circle {
   25% {
@@ -5686,11 +5686,16 @@ ad-space {
     margin-bottom: auto; }
   ad-space.bottom {
     margin-top: auto; }
-  ad-space svg.space {
+  ad-space:nth-child(even) svg.space {
     width: 100%;
     height: 100%; }
-    ad-space svg.space polygon {
-      fill: green; }
+    ad-space:nth-child(even) svg.space polygon {
+      fill: #317E48; }
+  ad-space:nth-child(odd) svg.space {
+    width: 100%;
+    height: 100%; }
+    ad-space:nth-child(odd) svg.space polygon {
+      fill: #1D9410; }
 
 .dice {
   font-size: 1.5rem;
@@ -5704,10 +5709,14 @@ ad-space {
 .unusable {
   opacity: 0.35;
   cursor: default; }
-  .unusable.space {
+  ad-space:nth-child(odd) .unusable.space {
     opacity: 1; }
-    .unusable.space polygon {
-      fill: rgba(0, 128, 0, 0.35); }
+    ad-space:nth-child(odd) .unusable.space polygon {
+      fill: rgba(29, 148, 16, 0.35); }
+  ad-space:nth-child(even) .unusable.space {
+    opacity: 1; }
+    ad-space:nth-child(even) .unusable.space polygon {
+      fill: rgba(49, 126, 72, 0.35); }
 
 .winner {
   font-weight: bold;

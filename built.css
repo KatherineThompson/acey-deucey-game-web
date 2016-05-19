@@ -5519,7 +5519,7 @@ body {
 
 @keyframes unavailable-white-piece {
   0% {
-    fill: #999999; }
+    fill: #b3b3b3; }
   100% {
     fill: #FFFFFF; } }
 
@@ -5530,7 +5530,7 @@ body {
   fill: #FF3636; }
 
 .white .piece.selectable.selected circle, .white.piece.selectable.selected circle {
-  fill: #999999; }
+  fill: #b3b3b3; }
 
 .white.unavailable .piece.selectable circle, .white.unavailable.piece.selectable circle,
 .white.unavailable.winning .piece:not(.unusable) circle {
@@ -5541,26 +5541,29 @@ body {
 .white:hover .piece.selectable, .white.piece.selectable:hover {
   cursor: pointer; }
   .white:hover .piece.selectable circle, .white.piece.selectable:hover circle {
-    fill: #999999; }
+    fill: #b3b3b3; }
 
 ad-dice.white span.dice, ad-dice.white button, div span.dice, div button {
   color: #FF3636;
   background-color: #FFFFFF; }
   ad-dice.white span.dice:hover:not(.dice), ad-dice.white span.dice:focus:not(.dice), ad-dice.white button:hover:not(.dice), ad-dice.white button:focus:not(.dice), div span.dice:hover:not(.dice), div span.dice:focus:not(.dice), div button:hover:not(.dice), div button:focus:not(.dice) {
     color: #FF3636;
-    background-color: #999999;
+    background-color: #b3b3b3;
     outline-color: #FF3636; }
+
+ad-dice.white .button.white, div .button.white {
+  background-color: #FFFFFF; }
 
 ad-dice.white #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
   color: #FF3636;
-  background-color: #999999; }
+  background-color: #b3b3b3; }
 
 p .white, p.white, h2 .white {
   color: #FFFFFF; }
 
 @keyframes unavailable-red-piece {
   0% {
-    fill: #690000; }
+    fill: #9c0000; }
   100% {
     fill: #FF3636; } }
 
@@ -5571,7 +5574,7 @@ p .white, p.white, h2 .white {
   fill: #FFFFFF; }
 
 .red .piece.selectable.selected circle, .red.piece.selectable.selected circle {
-  fill: #690000; }
+  fill: #9c0000; }
 
 .red.unavailable .piece.selectable circle, .red.unavailable.piece.selectable circle,
 .red.unavailable.winning .piece:not(.unusable) circle {
@@ -5582,19 +5585,22 @@ p .white, p.white, h2 .white {
 .red:hover .piece.selectable, .red.piece.selectable:hover {
   cursor: pointer; }
   .red:hover .piece.selectable circle, .red.piece.selectable:hover circle {
-    fill: #690000; }
+    fill: #9c0000; }
 
 ad-dice.red span.dice, ad-dice.red button, div span.dice, div button {
   color: #FFFFFF;
   background-color: #FF3636; }
   ad-dice.red span.dice:hover:not(.dice), ad-dice.red span.dice:focus:not(.dice), ad-dice.red button:hover:not(.dice), ad-dice.red button:focus:not(.dice), div span.dice:hover:not(.dice), div span.dice:focus:not(.dice), div button:hover:not(.dice), div button:focus:not(.dice) {
     color: #FFFFFF;
-    background-color: #690000;
+    background-color: #9c0000;
     outline-color: #FFFFFF; }
+
+ad-dice.red .button.red, div .button.red {
+  background-color: #FF3636; }
 
 ad-dice.red #doubles-modal .dice:hover, div #doubles-modal .dice:hover {
   color: #FFFFFF;
-  background-color: #690000; }
+  background-color: #9c0000; }
 
 p .red, p.red, h2 .red {
   color: #FF3636; }

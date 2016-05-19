@@ -24,7 +24,7 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
                             ng-click="resetTurn()">
                             Reset turn
                         </button>
-                        <button class="expand alert button"
+                        <button class="expand red button"
                             ng-click="resetGame()">
                             Reset game
                         </button>

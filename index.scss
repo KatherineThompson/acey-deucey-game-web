@@ -80,7 +80,7 @@ body {
 
 
 @mixin piece-classes($name, $primary-color, $secondary-color) {
-    $dark-primary-color: darken($primary-color, 40%);
+    $dark-primary-color: darken($primary-color, 30%);
 
     @keyframes unavailable-#{$name}-piece {
         0% {
@@ -123,6 +123,9 @@ body {
                 background-color: $dark-primary-color;
                 outline-color: $secondary-color;
             }
+        }
+        .button.#{$name} {
+            background-color: $primary-color;
         }
         
         #doubles-modal .dice {

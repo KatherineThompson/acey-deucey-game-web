@@ -316,5 +316,7 @@ button.centered {
 }
 
 .winState {
-    opacity: .6;
+    #left-spaces, #right-spaces, #top-home, #bottom-home {
+        opacity: 0.6;
+    }
 }

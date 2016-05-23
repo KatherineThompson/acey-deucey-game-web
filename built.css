@@ -5756,5 +5756,5 @@ button.centered {
   margin-bottom: auto;
   margin-top: auto; }
 
-.winState {
-  opacity: .6; }
+.winState #left-spaces, .winState #right-spaces, .winState #top-home, .winState #bottom-home {
+  opacity: 0.6; }

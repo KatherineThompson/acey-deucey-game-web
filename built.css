@@ -5696,18 +5696,44 @@ ad-space {
   -ms-overflow-style: -ms-autohiding-scrollbar; }
   ad-space.top {
     margin-bottom: auto; }
+    ad-space.top:nth-child(even) svg.space {
+      width: 100%;
+      height: 100%; }
+      ad-space.top:nth-child(even) svg.space polygon {
+        fill: #317E48; }
+      ad-space.top:nth-child(even) svg.space.unusable {
+        opacity: 1; }
+        ad-space.top:nth-child(even) svg.space.unusable polygon {
+          fill: rgba(49, 126, 72, 0.35); }
+    ad-space.top:nth-child(odd) svg.space {
+      width: 100%;
+      height: 100%; }
+      ad-space.top:nth-child(odd) svg.space polygon {
+        fill: #1D9410; }
+      ad-space.top:nth-child(odd) svg.space.unusable {
+        opacity: 1; }
+        ad-space.top:nth-child(odd) svg.space.unusable polygon {
+          fill: rgba(29, 148, 16, 0.35); }
   ad-space.bottom {
     margin-top: auto; }
-  ad-space:nth-child(even) svg.space {
-    width: 100%;
-    height: 100%; }
-    ad-space:nth-child(even) svg.space polygon {
-      fill: #317E48; }
-  ad-space:nth-child(odd) svg.space {
-    width: 100%;
-    height: 100%; }
-    ad-space:nth-child(odd) svg.space polygon {
-      fill: #1D9410; }
+    ad-space.bottom:nth-child(even) svg.space {
+      width: 100%;
+      height: 100%; }
+      ad-space.bottom:nth-child(even) svg.space polygon {
+        fill: #1D9410; }
+      ad-space.bottom:nth-child(even) svg.space.unusable {
+        opacity: 1; }
+        ad-space.bottom:nth-child(even) svg.space.unusable polygon {
+          fill: rgba(29, 148, 16, 0.35); }
+    ad-space.bottom:nth-child(odd) svg.space {
+      width: 100%;
+      height: 100%; }
+      ad-space.bottom:nth-child(odd) svg.space polygon {
+        fill: #317E48; }
+      ad-space.bottom:nth-child(odd) svg.space.unusable {
+        opacity: 1; }
+        ad-space.bottom:nth-child(odd) svg.space.unusable polygon {
+          fill: rgba(49, 126, 72, 0.35); }
 
 .dice {
   font-size: 1.5rem;
@@ -5721,14 +5747,6 @@ ad-space {
 .unusable {
   opacity: 0.35;
   cursor: default; }
-  ad-space:nth-child(odd) .unusable.space {
-    opacity: 1; }
-    ad-space:nth-child(odd) .unusable.space polygon {
-      fill: rgba(29, 148, 16, 0.35); }
-  ad-space:nth-child(even) .unusable.space {
-    opacity: 1; }
-    ad-space:nth-child(even) .unusable.space polygon {
-      fill: rgba(49, 126, 72, 0.35); }
 
 .winner {
   font-weight: bold;

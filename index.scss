@@ -10,6 +10,7 @@ $even-space-color: #317E48;
 // $odd-space-color: #007222;
 // $even-space-color: #00BD39;
 $background-color: gainsboro;
+$unusable-opacity: 0.35;
 
 body {
     background-color: $background-color;
@@ -249,35 +250,41 @@ g.unavailable.piece.selectable {
 }
 
 ad-space {
+    @mixin space($space-name, $fill) {
+        &:nth-child(#{$space-name}) {
+            svg.space {
+                width: 100%;
+                height: 100%;
+                polygon {
+                    fill: $fill;         
+                }
+                &.unusable {
+                    opacity: 1;
+                    polygon {
+                        fill: transparentize($fill, 1 - $unusable-opacity);
+                    }
+                }
+            }
+        }
+    }
+    
+    @mixin alternatingSpaces($even, $odd) {
+        @include space("even", $even);
+        @include space("odd", $odd);
+    }
+    
     @include grid-block(2);
     
     &.top {
         margin-bottom: auto;
+        @include alternatingSpaces($even-space-color, $odd-space-color);
     }
 
     &.bottom {
         margin-top: auto;
+        @include alternatingSpaces($odd-space-color, $even-space-color);
     }
     
-    &:nth-child(even) {
-        svg.space {
-            width: 100%;
-            height: 100%;
-            polygon {
-                fill: $even-space-color;         
-            }
-        }
-    }
-    
-    &:nth-child(odd) {
-        svg.space {
-            width: 100%;
-            height: 100%;
-            polygon {
-                fill: $odd-space-color;         
-            }
-        }
-    }
 }
 
 .dice {
@@ -290,26 +297,8 @@ ad-space {
 }
 
 .unusable {
-    $opacity: .35;
-    opacity: $opacity;
+    opacity: $unusable-opacity;
     cursor: default;
-    
-    ad-space:nth-child(odd) & {
-        &.space {
-            opacity: 1;
-            polygon {
-                fill: transparentize($odd-space-color, 1 - $opacity);
-            }
-        }
-    }
-    ad-space:nth-child(even) & {
-        &.space {
-            opacity: 1;
-            polygon {
-                fill: transparentize($even-space-color, 1 - $opacity);
-            }
-        }
-    }
 }
 
 .winner {

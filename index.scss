@@ -81,7 +81,11 @@ body {
 
 
 @mixin piece-classes($name, $primary-color, $secondary-color) {
-    $dark-primary-color: darken($primary-color, 30%);
+    @if $name == "white" {
+        $dark-primary-color: darken($primary-color, 40%) !global;
+    } @else {
+        $dark-primary-color: darken($primary-color, 30%) !global;
+    }
 
     @keyframes unavailable-#{$name}-piece {
         0% {

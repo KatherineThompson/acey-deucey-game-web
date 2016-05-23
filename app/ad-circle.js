@@ -41,7 +41,9 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 true);
             
             function selectWinningPiece() {
-                if (!isPieceSelectable()) {
+                debugger;
+                const winningIndex = scope.gameState.isPlayerOne ? 24 : -1; 
+                if (!_.includes(scope.turnState.availableSpaces, winningIndex)) {
                     element.addClass("unavailable");
                     $timeout(() => element.removeClass("unavailable"), 1000);
                     return;
@@ -85,8 +87,7 @@ angular.module("acey-deucey").directive("adCircle", function(adSelectPiece, $tim
                 if (isWinningPiece) {
                     const isNotCurrentPiece = scope.turnState.currentPiecePosition !== null;
                     const winningIndex = scope.gameState.isPlayerOne ? 24 : -1; 
-                    const canMoveToSpace = _.includes(scope.turnState.availableSpaces, winningIndex) &&
-                        gameEngine.canMoveOffBoard(scope.gameState);
+                    const canMoveToSpace = gameEngine.canMoveOffBoard(scope.gameState);
                     return isNotCurrentPiece && canMoveToSpace;
                 } 
                 return scope.gameState[activePlayer].initialPieces;

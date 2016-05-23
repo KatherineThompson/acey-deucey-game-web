@@ -107,7 +107,7 @@ body {
     }
     
     .#{$name}.unavailable .piece.selectable circle, .#{$name}.unavailable.piece.selectable circle,
-        .#{$name}.unavailable.winning .piece:not(.unusable) circle {
+        .#{$name}.unavailable.winning .piece.selectable circle {
         animation-duration: .6s;
         animation-name: unavailable-#{$name}-piece;
         animation-timing-function: step-end;
@@ -181,7 +181,7 @@ body {
     animation-timing-function: linear;
 }
 
-ad-circle.unavailable .piece.selectable, ad-circle.unavailable.winning .piece:not(.unusable) {
+ad-circle.unavailable .piece.selectable, ad-circle.unavailable.winning .piece.selectable {
     @include unavailable-animation-details;
     animation-name: unavailable-ad-circle;
 }

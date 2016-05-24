@@ -5759,7 +5759,6 @@ button.centered {
 .winState #left-spaces, .winState #right-spaces, .winState #top-home, .winState #bottom-home {
   opacity: 0.6; }
 
-#help {
-  position: absolute;
-  top: 0px;
-  left: 0px; }
+#panel {
+  padding-left: 1em;
+  padding-right: .5em; }

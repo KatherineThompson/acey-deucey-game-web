@@ -18,6 +18,16 @@
 <body ng-app="acey-deucey" ng-controller="AceyDeuceyCtrl">
     <div class="grid-frame" ng-class="{winState: winner !== null}">
         <div id="board" class="grid-block">
+            <div id="panel" zf-panel="">
+                <a class="close-button" zf-close="">×</a>
+                <h4>Rules</h4>
+                <p>Acey deucey is a variant of backgammon. This rules for this particular version come from
+                    from my grandfather's time as a marine during the Korean war.
+                </p>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
             <div id="home" class="small-1 vertical grid-block">
                 <div id="top-home" class="vertical grid-block">
                     <div id="red-initial" class="vertical grid-block">
@@ -155,19 +165,6 @@
                         </ad-space>                                
                     </div>                    
                 </div>
-            </div>
-            <div id="panel" zf-panel="" position="right">
-                <a class="close-button" zf-close="">×</a>
-                <h3 class="text-center">Acey Deucey</h3>
-                <button class="success button">New game</button>
-                <button class="alert button">Reset game</button>
-                <h4>Rules</h4>
-                <p>Acey deucey is a variant of backgammon. This rules for this particular version come from
-                    from my grandfather's time as a marine during the Korean war.
-                </p>
-                <ul>
-                    <li></li>
-                </ul>
             </div>
         </div>
     </div>

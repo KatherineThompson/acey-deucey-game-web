@@ -1,12 +1,14 @@
 @import "foundation";
 $breakpoints: map-merge($breakpoints, (large: 1025px));
 
-$border-color: mediumseagreen;
+$border-color: darkgray;
 $inner-border: 5px solid $border-color;
-$red: red;
-$white: ivory;
-$space-color: green;
-$background-color: lightgray;
+$red: #FF3636;
+$white: #FFFFFF;
+$odd-space-color: #1D9410;
+$even-space-color: #317E48;
+$background-color: gainsboro;
+$unusable-opacity: 0.35;
 
 body {
     background-color: $background-color;
@@ -63,7 +65,7 @@ body {
     @include show-for(small);
     @include hide-for(large);
     border: 2px solid $border-color;
-    background-color: lighten($border-color, 30%);
+    background-color: $background-color;
 }
 .message-area {
     padding: .15em;
@@ -75,9 +77,9 @@ body {
     }
 }
 
-
 @mixin piece-classes($name, $primary-color, $secondary-color) {
-    $dark-primary-color: darken($primary-color, 25%);
+    $percent: if($name == "white", 40%, 30%);
+    $dark-primary-color: darken($primary-color, $percent);
 
     @keyframes unavailable-#{$name}-piece {
         0% {
@@ -99,7 +101,7 @@ body {
     }
     
     .#{$name}.unavailable .piece.selectable circle, .#{$name}.unavailable.piece.selectable circle,
-        .#{$name}.unavailable.winning .piece:not(.unusable) circle {
+        .#{$name}.unavailable.winning .piece.selectable circle {
         animation-duration: .6s;
         animation-name: unavailable-#{$name}-piece;
         animation-timing-function: step-end;
@@ -121,6 +123,9 @@ body {
                 outline-color: $secondary-color;
             }
         }
+        .button.#{$name} {
+            background-color: $primary-color;
+        }
         
         #doubles-modal .dice {
             &:hover {
@@ -130,8 +135,12 @@ body {
         }
     }
     
-    p .#{$name}, p.#{$name} {   
-        color: $primary-color;
+    p .#{$name}, p.#{$name} {
+        color: $primary-color
+    }
+    
+    h2 .#{$name} {
+        color: if($name == "white", $dark-primary-color, $primary-color);
     }
 }
 
@@ -162,7 +171,8 @@ body {
     animation-timing-function: linear;
 }
 
-ad-circle.unavailable .piece.selectable, ad-circle.unavailable.winning .piece:not(.unusable) {
+
+ad-circle.unavailable .piece.selectable, ad-circle.unavailable.winning .piece.selectable {
     @include unavailable-animation-details;
     animation-name: unavailable-ad-circle;
 }
@@ -235,23 +245,41 @@ g.unavailable.piece.selectable {
 }
 
 ad-space {
+    @mixin space($space-name, $fill) {
+        &:nth-child(#{$space-name}) {
+            svg.space {
+                width: 100%;
+                height: 100%;
+                polygon {
+                    fill: $fill;         
+                }
+                &.unusable {
+                    opacity: 1;
+                    polygon {
+                        fill: transparentize($fill, 1 - $unusable-opacity);
+                    }
+                }
+            }
+        }
+    }
+    
+    @mixin alternatingSpaces($even-space-color, $odd-space-color) {
+        @include space("even", $even-space-color);
+        @include space("odd", $odd-space-color);
+    }
+    
     @include grid-block(2);
     
     &.top {
         margin-bottom: auto;
+        @include alternatingSpaces($even-space-color, $odd-space-color);
     }
 
     &.bottom {
         margin-top: auto;
+        @include alternatingSpaces($odd-space-color, $even-space-color);
     }
     
-    svg.space {
-        width: 100%;
-        height: 100%;
-        polygon {
-            fill: $space-color;         
-        }
-    }
 }
 
 .dice {
@@ -264,16 +292,8 @@ ad-space {
 }
 
 .unusable {
-    $opacity: .35;
-    opacity: $opacity;
+    opacity: $unusable-opacity;
     cursor: default;
-    
-    &.space {
-        opacity: 1;
-        polygon {
-            fill: transparentize($space-color, 1 - $opacity);
-        }
-    }
 }
 
 .winner {
@@ -284,4 +304,15 @@ ad-space {
 button.centered {
     margin-bottom: auto;
     margin-top: auto;
+}
+
+.winState {
+    #left-spaces, #right-spaces, #top-home, #bottom-home {
+        opacity: 0.6;
+    }
+}
+
+#panel {
+    padding-left: 1em;
+    padding-right: .5em;
 }

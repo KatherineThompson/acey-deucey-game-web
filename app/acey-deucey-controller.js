@@ -5,28 +5,30 @@ const gameEngine = require("acey-deucey-game-engine");
 const _ = require("lodash");
 const assert = require("assert");
 const getPieceInfo = require("./get-piece-info");
+const getPlayerParams = require("./get-player-params");
 
-angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
-    $scope.gameState = gameEngine.getInitialGameState();
-    $scope.gameState.playerOne.initialPieces = 0;
-    $scope.gameState.board[20].isPlayerOne = true;
-    $scope.gameState.board[20].numPieces = 1;
-    $scope.gameState.board[22].isPlayerOne = true;
-    $scope.gameState.board[22].numPieces = 5;
-    $scope.gameState.board[23].isPlayerOne = false;
-    $scope.gameState.board[23].numPieces = 2;
+angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, FoundationApi) {
+    initializeGameState();
+
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(17, 11);
     $scope.fourthQuadrantIndices = _.range(23, 17);
-    $scope.turnState = {
-        rolls: [{num: null, used: null}, {num: null, used: null}],
-        currentPiecePosition: null,
-        availableSpaces: [],
-        isBar: null,
-        initialGameState: null,
-        proposedMoves: []
-    };
+    
+    function initializeGameState() {
+        $scope.gameState = gameEngine.getInitialGameState();
+        $scope.turnState = {
+            rolls: [{num: null, used: null}, {num: null, used: null}],
+            currentPiecePosition: null,
+            availableSpaces: [],
+            isBar: null,
+            initialGameState: null,
+            proposedMoves: []
+        };
+        $scope.winner = {player: gameEngine.checkForWinner($scope.gameState)};
+        
+        $scope.getPlayerParams = getPlayerParams;
+    }
     
     function resetPieces() {
         $scope.turnState.currentPiecePosition = null;
@@ -63,7 +65,14 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
             diceRoll,
             $scope.turnState.proposedMoves
         );
+        
         resetWholeTurnState();
+        
+        $scope.winner.player = gameEngine.checkForWinner($scope.gameState);
+        
+        if ($scope.winner.player !== null) {
+            FoundationApi.publish("win-modal", "show");
+        }
     });
     
     $scope.$on("reset-turn", () => {
@@ -76,6 +85,8 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope) {
         $scope.turnState.proposedMoves = [];
         $scope.turnState.initialGameState = null;
     }); 
+    
+    $scope.$on("reset-game", initializeGameState);
     
     $scope.$on("make-move", (event, proposedMove) => {
         if (!$scope.turnState.initialGameState) {

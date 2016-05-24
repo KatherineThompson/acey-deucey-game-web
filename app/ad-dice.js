@@ -7,7 +7,7 @@ const isAceyDeucey = require("./is-acey-deucey");
 angular.module("acey-deucey").directive("adDice", function() {
     return {
         template: `<div class="align-center v-align grid-block">
-                        <div class="align-center grid-block" ng-if="!rolls[0].num">
+                        <div class="align-center grid-block" ng-if="!rolls[0].num && winner === null">
                             <button class="centered button" ng-click="rollDice()">Roll dice!</button>
                         </div>
                         <div class="grid-block align-center shrink" ng-if="rolls[0].num">
@@ -66,7 +66,8 @@ angular.module("acey-deucey").directive("adDice", function() {
             
         },
         scope: {
-            rolls: "="
+            rolls: "=",
+            winner: "="
         }
     };
 });

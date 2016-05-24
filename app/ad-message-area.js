@@ -10,19 +10,26 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
     return {
         template: `<div class="message-area vertical grid-block">
                         <p class="text-center">
-                            <span ng-class="getPlayerParams(activePlayer).spanClass">
+                            <span class="badge shrink float-right" zf-open="panel">?</span>    
+                            <span ng-if="winner.player === null">
+                                <span ng-class="getPlayerParams(activePlayer).spanClass">
                                 {{getPlayerParams(activePlayer).playerName}}</span>,
-                            it's your turn
+                                it's your turn
+                            </span>
                         </p>
                         <button class="expand success button"
                             ng-click="submitTurn()"
                             ng-class="{disabled: !submitEnabled}">
                             Submit turn
                         </button>
-                        <button class="expand alert button"
+                        <button class="expand warning button"
                             ng-class="{disabled: !resetEnabled}"
                             ng-click="resetTurn()">
                             Reset turn
+                        </button>
+                        <button id="reset-game" class="expand red button"
+                            ng-click="resetGame()">
+                            Reset game
                         </button>
                     </div>`,
         link: function(scope, element) {
@@ -48,17 +55,22 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
             scope.getPlayerParams = getPlayerParams;
             
             scope.resetTurn = function() {
-                scope.$emit("reset-turn", "reset");
+                scope.$emit("reset-turn", "resetTurn");
             };
             
             scope.submitTurn = function() {
                 scope.$emit("submit-turn", "submit");
             };
+            
+            scope.resetGame = function() {
+                scope.$emit("reset-game", "resetGame");
+            };
         },
         scope: {
             activePlayer: "=",
             turnState: "=",
-            gameState: "="
+            gameState: "=",
+            winner: "="
         }
     };
 });

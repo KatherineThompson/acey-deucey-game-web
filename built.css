@@ -5771,3 +5771,6 @@ button.centered {
 
 .ng-cloak {
   display: none; }
+
+#board {
+  min-width: 900px; }

@@ -9,7 +9,7 @@ const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, FoundationApi) {
     initializeGameState();
-
+    
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(17, 11);

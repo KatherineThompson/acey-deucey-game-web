@@ -1,0 +1,333 @@
+@import "foundation";
+$breakpoints: map-merge($breakpoints, (large: 1025px));
+
+$border-color: darkgray;
+$inner-border: 5px solid $border-color;
+$red: #FF3636;
+$white: #FFFFFF;
+$odd-space-color: #1D9410;
+$even-space-color: #317E48;
+$background-color: gainsboro;
+$unusable-opacity: 0.35;
+
+body {
+    background-color: $background-color;
+}
+
+#board {
+    border: 10px solid $border-color;
+    
+    #home {
+        border-right: $inner-border;
+        
+        @include grid-size(1.5);
+        
+        h4 {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0.7rem;
+            margin-bottom: 0;
+        }
+        
+        #top-home {
+            border-bottom: $inner-border;
+        }
+        
+        #bottom-home {
+            border-top: $inner-border;
+        }
+    }
+    
+    #spaces {
+        border-left: $inner-border;
+
+        #bar {
+            background-color: $border-color;
+            
+            .button {
+                padding: .85em .5em;
+            }
+        }
+    }
+
+}
+
+.grid-frame {
+    min-height: 313px;
+}
+
+#left-message-area {
+    @include hide-for(small);
+    @include show-for(large);
+}
+
+#right-message-area {
+    @include show-for(small);
+    @include hide-for(large);
+    border: 2px solid $border-color;
+    background-color: $background-color;
+}
+.message-area {
+    padding: .15em;
+}
+
+@mixin fill-object($object, $color) {
+    #{$object} {
+        fill: $color;
+    }
+}
+
+@mixin piece-classes($name, $primary-color, $secondary-color) {
+    $percent: if($name == "white", 40%, 30%);
+    $dark-primary-color: darken($primary-color, $percent);
+
+    @keyframes unavailable-#{$name}-piece {
+        0% {
+            fill: $dark-primary-color;
+        }
+        
+        100% {
+            fill: $primary-color;
+        }
+    }
+    
+    
+    .#{$name} .piece, .#{$name}.piece {
+        @include fill-object("circle", $primary-color);
+        @include fill-object("text", $secondary-color);
+        &.selectable.selected {
+            @include fill-object("circle", $dark-primary-color);
+        }
+    }
+    
+    .#{$name}.unavailable .piece.selectable circle, .#{$name}.unavailable.piece.selectable circle,
+        .#{$name}.unavailable.winning .piece.selectable circle {
+        animation-duration: .6s;
+        animation-name: unavailable-#{$name}-piece;
+        animation-timing-function: step-end;
+    }
+    
+    .#{$name}:hover .piece.selectable, .#{$name}.piece.selectable:hover {
+        cursor: pointer;
+        @include fill-object("circle", $dark-primary-color);
+    }
+    
+    ad-dice.#{$name}, div {
+        span.dice, button {
+            color: $secondary-color;
+            background-color: $primary-color;
+            
+            &:hover:not(.dice), &:focus:not(.dice) {
+                color: $secondary-color;
+                background-color: $dark-primary-color;
+                outline-color: $secondary-color;
+            }
+        }
+        .button.#{$name} {
+            background-color: $primary-color;
+        }
+        
+        #doubles-modal .dice {
+            &:hover {
+                color: $secondary-color;
+                background-color: $dark-primary-color;
+            }
+        }
+    }
+    
+    p .#{$name}, p.#{$name} {
+        color: $primary-color
+    }
+    
+    h2 .#{$name} {
+        color: if($name == "white", $dark-primary-color, $primary-color);
+    }
+}
+
+@include piece-classes("white", $white, $red);
+@include piece-classes("red", $red, $white);
+
+@keyframes unavailable-ad-circle {
+    25% {
+        margin-left: 2%;
+    }
+    
+    50% {
+        margin-left: 0;
+    }
+    
+    75% {
+        margin-right: 2%;
+    }
+    
+    100% {
+        margin-right: 0;
+    }
+}
+
+@mixin unavailable-animation-details {
+    animation-duration: .1s;
+    animation-iteration-count: 6;
+    animation-timing-function: linear;
+}
+
+
+ad-circle.unavailable .piece.selectable, ad-circle.unavailable.winning .piece.selectable {
+    @include unavailable-animation-details;
+    animation-name: unavailable-ad-circle;
+}
+
+@mixin transform-g-piece($x-transform, $y-transform) {
+    transform: scale(.75) translate($x-transform, $y-transform);
+}
+
+@mixin unavailable-animation($y-transform, $name) {
+    $animation-name: unavailable-#{$name}-g-piece;
+    $x-middle: 17px;
+    
+    @keyframes #{$animation-name} {
+        25% {
+            @include transform-g-piece(15px, $y-transform);
+        }
+        
+        50% {
+            @include transform-g-piece($x-middle, $y-transform);
+        }
+        
+        75% {
+            @include transform-g-piece(19px, $y-transform);
+        }
+        
+        100% {
+            @include transform-g-piece($x-middle, $y-transform);
+        }
+    }
+    
+    @include transform-g-piece($x-middle, $y-transform);
+    @include unavailable-animation-details;
+    animation-name: $animation-name;
+}
+
+g.unavailable.piece.selectable {
+    ad-space.top & {
+        @include unavailable-animation(-105px, "top");
+    }
+    
+    ad-space.bottom & {
+        @include unavailable-animation(220px, "bottom");
+    }
+}
+
+.piece {
+    cursor: default;
+    
+    #home & {
+        @include breakpoint(small) {
+            height: 55%;
+            width: 55%;
+        }
+        @include breakpoint(large) {
+            height: 100%;
+            width: 50%;
+        }
+    }
+    
+    #bar & {
+        @include breakpoint(small) {
+            width: 80%;
+            height: 45%;
+        }
+        @include breakpoint(large) {
+            width: 80%;
+            height: 20%;
+        }
+    }
+}
+
+ad-space {
+    @mixin space($space-name, $fill) {
+        &:nth-child(#{$space-name}) {
+            svg.space {
+                width: 100%;
+                height: 100%;
+                polygon {
+                    fill: $fill;         
+                }
+                &.unusable {
+                    opacity: 1;
+                    polygon {
+                        fill: transparentize($fill, 1 - $unusable-opacity);
+                    }
+                }
+            }
+        }
+    }
+    
+    @mixin alternatingSpaces($even-space-color, $odd-space-color) {
+        @include space("even", $even-space-color);
+        @include space("odd", $odd-space-color);
+    }
+    
+    @include grid-block(2);
+    
+    &.top {
+        margin-bottom: auto;
+        @include alternatingSpaces($even-space-color, $odd-space-color);
+    }
+
+    &.bottom {
+        margin-top: auto;
+        @include alternatingSpaces($odd-space-color, $even-space-color);
+    }
+    
+}
+
+.dice {
+    @include badge (
+        $diameter: 3rem,
+        $fontsize: 1.5rem
+    );
+    border-radius: 15%;
+    cursor: default;
+}
+
+.unusable {
+    opacity: $unusable-opacity;
+    cursor: default;
+}
+
+.winner {
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+button.centered {
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.win-state {
+    #left-spaces, #right-spaces, #top-home, #bottom-home, #red-bar, #white-bar {
+        opacity: 0.6;
+    }
+}
+
+#panel {
+    padding-left: 1em;
+    padding-right: .5em;
+}
+
+#help-badge {
+    z-index: 1;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.ng-cloak {
+    display: none;   
+}
+
+#board {
+    min-width: 900px;
+}

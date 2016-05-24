@@ -16,7 +16,7 @@
     </script>
 </head>
 <body ng-app="acey-deucey" ng-controller="AceyDeuceyCtrl">
-    <div class="grid-frame" ng-class="{winState: winner !== null}">
+    <div class="grid-frame" ng-class="{winState: winner.player !== null}">
         <div id="board" class="grid-block">
             <div id="panel" zf-panel="">
                 <a class="close-button" zf-close="">×</a>
@@ -56,7 +56,7 @@
                     <li>A player wins by moving all their pieces off the board.
                         <ul>
                             <li>
-                                A checker may only be moved off th board when all that player's checkers are in the
+                                A checker may only be moved off the board when all that player's checkers are in the
                                 last quadrant of the board.
                             </li>
                             <li>
@@ -104,7 +104,8 @@
                 <ad-message-area id="left-message-area"
                     active-player="gameState.isPlayerOne"
                     game-state="gameState"
-                    turn-state="turnState"> 
+                    turn-state="turnState"
+                    winner="winner"> 
                 </ad-message-area>                 
                 <div id="bottom-home" class="vertical grid-block">
                     <div id="white-initial" class="vertical grid-block">
@@ -140,7 +141,7 @@
                 <div id="win-modal" zf-modal="">
                     <a class="close-button" zf-close="">×</a>
                     <h2 class="text-center">
-                        <span class="{{getPlayerParams(winner).spanClass}}">{{getPlayerParams(winner).playerName}}</span>, you won!
+                        <span class="{{getPlayerParams(winner.player).spanClass}}">{{getPlayerParams(winner.player).playerName}}</span>, you won!
                     </h2>
                 </div>
                 <div id="left-spaces" class="vertical grid-block">
@@ -152,7 +153,7 @@
                             turn-state="turnState">
                         </ad-space>
                     </div>
-                    <ad-dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls" winner="winner"></ad-dice>
+                    <ad-dice class="red" ng-if="gameState.isPlayerOne" rolls="turnState.rolls" winner="winner.player"></ad-dice>
                     <div class="grid-block">
                         <ad-space ng-repeat="index in fourthQuadrantIndices"
                             index="index"
@@ -176,7 +177,8 @@
                     <ad-message-area id="right-message-area"
                         turn-state="turnState"
                         game-state="gameState"
-                        active-player="gameState.isPlayerOne">
+                        active-player="gameState.isPlayerOne"
+                        winner="winner">
                     </ad-message-area>
                     <div id="white-bar" class="grid-block align-center v-align">
                         <ad-circle num-pieces="gameState.playerTwo.barPieces"
@@ -197,7 +199,7 @@
                             board-space="gameState.board[index]">
                         </ad-space>                   
                     </div>
-                    <ad-dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls" winner="winner"></ad-dice>
+                    <ad-dice class="white" ng-if="!gameState.isPlayerOne" rolls="turnState.rolls" winner="winner.player"></ad-dice>
                     <div class="grid-block">
                         <ad-space ng-repeat="index in thirdQuadrantIndices"
                             index="index"

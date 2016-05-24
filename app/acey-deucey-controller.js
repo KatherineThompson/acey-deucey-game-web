@@ -43,7 +43,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
             initialGameState: null,
             proposedMoves: []
         };
-        $scope.winner = gameEngine.checkForWinner($scope.gameState);
+        $scope.winner = {player: gameEngine.checkForWinner($scope.gameState)};
         
         $scope.getPlayerParams = getPlayerParams;
     }
@@ -86,9 +86,9 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
         
         resetWholeTurnState();
         
-        $scope.winner = gameEngine.checkForWinner($scope.gameState);
+        $scope.winner.player = gameEngine.checkForWinner($scope.gameState);
         
-        if ($scope.winner !== null) {
+        if ($scope.winner.player !== null) {
             FoundationApi.publish("win-modal", "show");
         }
     });
@@ -104,9 +104,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
         $scope.turnState.initialGameState = null;
     }); 
     
-    $scope.$on("reset-game", () => {
-        initializeGameState();
-    });
+    $scope.$on("reset-game", initializeGameState);
     
     $scope.$on("make-move", (event, proposedMove) => {
         if (!$scope.turnState.initialGameState) {

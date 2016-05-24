@@ -7,8 +7,6 @@ $red: #FF3636;
 $white: #FFFFFF;
 $odd-space-color: #1D9410;
 $even-space-color: #317E48;
-// $odd-space-color: #007222;
-// $even-space-color: #00BD39;
 $background-color: gainsboro;
 $unusable-opacity: 0.35;
 
@@ -79,13 +77,9 @@ body {
     }
 }
 
-
 @mixin piece-classes($name, $primary-color, $secondary-color) {
-    @if $name == "white" {
-        $dark-primary-color: darken($primary-color, 40%) !global;
-    } @else {
-        $dark-primary-color: darken($primary-color, 30%) !global;
-    }
+    $percent: if($name == "white", 40%, 30%);
+    $dark-primary-color: darken($primary-color, $percent);
 
     @keyframes unavailable-#{$name}-piece {
         0% {
@@ -146,11 +140,7 @@ body {
     }
     
     h2 .#{$name} {
-        @if $name == "white" {
-            color: $dark-primary-color;
-        } @else {
-            color: $primary-color;
-        }  
+        color: if($name == "white", $dark-primary-color, $primary-color);
     }
 }
 
@@ -273,9 +263,9 @@ ad-space {
         }
     }
     
-    @mixin alternatingSpaces($even, $odd) {
-        @include space("even", $even);
-        @include space("odd", $odd);
+    @mixin alternatingSpaces($even-space-color, $odd-space-color) {
+        @include space("even", $even-space-color);
+        @include space("odd", $odd-space-color);
     }
     
     @include grid-block(2);

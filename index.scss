@@ -181,6 +181,7 @@ body {
     animation-timing-function: linear;
 }
 
+
 ad-circle.unavailable .piece.selectable, ad-circle.unavailable.winning .piece.selectable {
     @include unavailable-animation-details;
     animation-name: unavailable-ad-circle;

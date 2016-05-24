@@ -9,6 +9,7 @@ const getPlayerParams = require("./get-player-params");
 
 angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, FoundationApi) {
     initializeGameState();
+    
     // $scope.gameState.playerOne.initialPieces = 0;
     // $scope.gameState.playerOne.winningPieces = 13;
     // $scope.gameState.board[20].isPlayerOne = true;
@@ -26,6 +27,7 @@ angular.module("acey-deucey").controller("AceyDeuceyCtrl", function($scope, Foun
     $scope.gameState.board[1].numPieces = 5;
     $scope.gameState.board[0].isPlayerOne = true;
     $scope.gameState.board[0].numPieces = 2;
+
     $scope.firstQuadrantIndices = _.range(0, 6);
     $scope.secondQuadrantIndices = _.range(6, 12);
     $scope.thirdQuadrantIndices = _.range(17, 11);

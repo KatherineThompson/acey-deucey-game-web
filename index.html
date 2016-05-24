@@ -16,12 +16,13 @@
     </script>
 </head>
 <body ng-app="acey-deucey" ng-controller="AceyDeuceyCtrl">
-    <div class="grid-frame" ng-class="{winState: winner.player !== null}">
-        <div id="board" class="grid-block">
+    <div class="grid-frame" ng-class="{'win-state': winner.player !== null}">
+        <div id="board" class="grid-block ng-cloak">
+            <span id="help-badge" class="badge shrink float-right" zf-open="panel">?</span>
             <div id="panel" zf-panel="">
                 <a class="close-button" zf-close="">×</a>
                 <h4>Rules</h4>
-                <p>Acey deucey is a variant of backgammon. This rules for this particular version come from
+                <p>Acey deucey is a variant of backgammon. The rules for this particular version come
                     from my <a target="_blank" href="http://i.imgur.com/xL3ONTp.jpg?1">grandfather's</a> time as a marine during the Korean war.
                 </p>
                 <ul>
@@ -38,7 +39,7 @@
                                 or a space occupied by only one of the opposing player's pieces.
                             </li>
                             <li>
-                                If a player moves to a space with one of their opponent's checker, the opponent's
+                                If a player moves to a space with one of their opponent's checkers, the opponent's
                                 checker is captured and moves to the bar.
                             </li>
                             <li>
@@ -51,7 +52,7 @@
                     <li>If a player rolls doubles, they may make four moves of that number.</li>
                     <li>
                         If a player rolls an acey deucey (a one and a two), they must use those rolls, but then may
-                        choose doubles of any number and gets to roll again.
+                        choose doubles of any number and get to roll again.
                     </li>
                     <li>A player wins by moving all their pieces off the board.
                         <ul>
@@ -68,7 +69,7 @@
                 </ul>
                 <p class="text-center">
                     This is an app by <a href="https://github.com/KatherineThompson">Katherine Thompson</a>.  
-                    <a href="https://github.com/KatherineThompson/tic-tac-toe-project">Source code is available on github</a>. 
+                    <a href="https://github.com/KatherineThompson/acey-deucey-game-web">Source code is available on github</a>. 
                 </P>
             </div>
             <div id="home" class="small-1 vertical grid-block">

@@ -5768,3 +5768,6 @@ button.centered {
   position: absolute;
   top: 5px;
   left: 5px; }
+
+.ng-cloak {
+  display: none; }

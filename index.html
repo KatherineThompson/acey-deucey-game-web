@@ -16,8 +16,9 @@
     </script>
 </head>
 <body ng-app="acey-deucey" ng-controller="AceyDeuceyCtrl">
-    <div class="grid-frame" ng-class="{winState: winner.player !== null}">
+    <div class="grid-frame" ng-class="{'win-state': winner.player !== null}">
         <div id="board" class="grid-block">
+            <span id="help-badge" class="badge shrink float-right" zf-open="panel">?</span>
             <div id="panel" zf-panel="">
                 <a class="close-button" zf-close="">×</a>
                 <h4>Rules</h4>

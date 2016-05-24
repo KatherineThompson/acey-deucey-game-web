@@ -5756,9 +5756,15 @@ button.centered {
   margin-bottom: auto;
   margin-top: auto; }
 
-.winState #left-spaces, .winState #right-spaces, .winState #top-home, .winState #bottom-home {
+.win-state #left-spaces, .win-state #right-spaces, .win-state #top-home, .win-state #bottom-home, .win-state #red-bar, .win-state #white-bar {
   opacity: 0.6; }
 
 #panel {
   padding-left: 1em;
   padding-right: .5em; }
+
+#help-badge {
+  z-index: 1;
+  position: absolute;
+  top: 5px;
+  left: 5px; }

@@ -306,8 +306,8 @@ button.centered {
     margin-top: auto;
 }
 
-.winState {
-    #left-spaces, #right-spaces, #top-home, #bottom-home {
+.win-state {
+    #left-spaces, #right-spaces, #top-home, #bottom-home, #red-bar, #white-bar {
         opacity: 0.6;
     }
 }
@@ -315,4 +315,11 @@ button.centered {
 #panel {
     padding-left: 1em;
     padding-right: .5em;
+}
+
+#help-badge {
+    z-index: 1;
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }

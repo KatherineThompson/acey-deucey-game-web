@@ -10,7 +10,6 @@ angular.module("acey-deucey").directive("adMessageArea", function() {
     return {
         template: `<div class="message-area vertical grid-block">
                         <p class="text-center">
-                            <span class="badge shrink float-right" zf-open="panel">?</span>    
                             <span ng-if="winner.player === null">
                                 <span ng-class="getPlayerParams(activePlayer).spanClass">
                                 {{getPlayerParams(activePlayer).playerName}}</span>,

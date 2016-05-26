@@ -13,3 +13,4 @@ require("./ad-space");
 require("./ad-circle");
 require("./ad-message-area");
 require("./ad-select-piece");
+require("../index.scss");

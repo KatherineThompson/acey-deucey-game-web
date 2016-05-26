@@ -1,6 +1,6 @@
 "use strict";
 
-// const autoprefixer = require("autoprefixer"); 
+const autoprefixer = require("autoprefixer"); 
 const path = require("path");
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
+                loaders: ["style", "css","postcss", "sass"]
             }
         ],
         noParse: [/foundation-apps/, /lodash/, /angular.js$/]
@@ -27,6 +27,6 @@ module.exports = {
     sassLoader: {
         includePaths: [path.join(__dirname, "node_modules", "foundation-apps", "scss")]
     },
-    // postcss: [],
+    postcss: [autoprefixer({browsers: ["last 3 versions"]})],
     devtool: "inline-source-map"
 };  
